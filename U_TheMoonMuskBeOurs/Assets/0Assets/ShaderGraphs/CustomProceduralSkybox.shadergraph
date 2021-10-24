@@ -817,8 +817,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -53.000091552734378,
-            "y": 445.00006103515627,
+            "x": -279.0,
+            "y": 393.9999694824219,
             "width": 208.00001525878907,
             "height": 302.0000305175781
         }
@@ -885,8 +885,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2092.0,
-            "y": 690.0000610351563,
+            "x": -2318.0,
+            "y": 639.0,
             "width": 126.00000762939453,
             "height": 173.0
         }
@@ -998,8 +998,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1275.0001220703125,
-            "y": 253.99993896484376,
+            "x": -1501.0001220703125,
+            "y": 203.0,
             "width": 208.00001525878907,
             "height": 326.0
         }
@@ -1078,17 +1078,17 @@
     "m_Type": "UnityEditor.ShaderGraph.MultiplyNode",
     "m_ObjectId": "3a4a6610b633415abf2a033edad18f53",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "5e769757839f473188d83e6d2a9a740f"
     },
     "m_Name": "Multiply",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 307.9999694824219,
-            "y": 486.0,
+            "x": 104.99998474121094,
+            "y": 513.9998168945313,
             "width": 207.99998474121095,
-            "height": 301.9999694824219
+            "height": 302.0
         }
     },
     "m_Slots": [
@@ -1285,8 +1285,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2023.0001220703125,
-            "y": 923.0000610351563,
+            "x": -2249.0,
+            "y": 872.0,
             "width": 177.00001525878907,
             "height": 34.0
         }
@@ -1517,8 +1517,8 @@
     "m_ObjectId": "5e769757839f473188d83e6d2a9a740f",
     "m_Title": "Skybox Stars",
     "m_Position": {
-        "x": -2117.0,
-        "y": 156.0
+        "x": -2343.0,
+        "y": 105.0
     }
 }
 
@@ -1567,8 +1567,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -207.00006103515626,
-            "y": 730.0,
+            "x": -433.00006103515627,
+            "y": 679.0,
             "width": 122.0,
             "height": 34.0
         }
@@ -1673,8 +1673,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -619.0000610351563,
-            "y": 263.00006103515627,
+            "x": -845.0000610351563,
+            "y": 211.99996948242188,
             "width": 208.00001525878907,
             "height": 278.0
         }
@@ -1708,8 +1708,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1043.0001220703125,
-            "y": 324.99993896484377,
+            "x": -1269.0001220703125,
+            "y": 274.0,
             "width": 139.0,
             "height": 34.0
         }
@@ -2020,8 +2020,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 372.9999694824219,
-            "y": -41.0,
+            "x": 389.0,
+            "y": -18.9999942779541,
             "width": 208.0,
             "height": 302.0
         }
@@ -2360,8 +2360,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1767.0001220703125,
-            "y": 690.0000610351563,
+            "x": -1993.0001220703125,
+            "y": 639.0,
             "width": 208.00001525878907,
             "height": 302.0000305175781
         }
@@ -2716,17 +2716,17 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "c25955419d3b40eb86b6e31b14d4e931",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "5e769757839f473188d83e6d2a9a740f"
     },
     "m_Name": "Property",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 163.00003051757813,
-            "y": 696.0,
+            "x": -52.00004196166992,
+            "y": 608.0000610351563,
             "width": 145.0,
-            "height": 34.000003814697269
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -2806,8 +2806,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1961.0,
-            "y": 263.00006103515627,
+            "x": -2187.0,
+            "y": 211.99996948242188,
             "width": 208.00001525878907,
             "height": 316.0
         }
@@ -2839,8 +2839,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -354.0000305175781,
-            "y": 358.99993896484377,
+            "x": -580.0,
+            "y": 308.0,
             "width": 208.00001525878907,
             "height": 278.0
         }
@@ -2919,8 +2919,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1419.0001220703125,
-            "y": 615.0001220703125,
+            "x": -1645.0001220703125,
+            "y": 564.0,
             "width": 128.0,
             "height": 101.0
         }
@@ -3110,8 +3110,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -886.0000610351563,
-            "y": 214.99996948242188,
+            "x": -1112.0001220703125,
+            "y": 163.99998474121095,
             "width": 208.00001525878907,
             "height": 326.0
         }
@@ -3277,8 +3277,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1642.0001220703125,
-            "y": 253.99993896484376,
+            "x": -1868.0001220703125,
+            "y": 203.0,
             "width": 208.00001525878907,
             "height": 278.0
         }
