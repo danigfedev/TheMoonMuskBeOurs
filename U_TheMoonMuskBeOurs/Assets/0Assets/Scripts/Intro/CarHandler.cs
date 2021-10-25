@@ -44,7 +44,7 @@ public class CarHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("CarTrigger"))
+        if (other.tag.Equals(TagList.carTriggerTag))
             StopCar(2.18f); //Car's horizontal extents
     }
 
