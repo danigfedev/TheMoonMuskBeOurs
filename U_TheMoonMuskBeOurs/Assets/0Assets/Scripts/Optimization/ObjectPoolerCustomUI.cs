@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -21,3 +22,5 @@ public class ObjectPoolerCustomUI : Editor
 
     }
 }
+
+#endif

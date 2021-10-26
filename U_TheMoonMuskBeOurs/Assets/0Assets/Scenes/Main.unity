@@ -293,7 +293,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355552954}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 3.0328531
   m_Height: 7
@@ -312,6 +312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 1733313181}
+  maxVerticalRotation_Left: 30
+  rotationDuration: 0.15
 --- !u!54 &355552957
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -884,11 +886,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 767cfcfbb447d0641a3ea286106bcf24, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7072302
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 767cfcfbb447d0641a3ea286106bcf24, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7069834
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 767cfcfbb447d0641a3ea286106bcf24, type: 3}
       propertyPath: m_LocalRotation.y
@@ -900,7 +902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 767cfcfbb447d0641a3ea286106bcf24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -89.98
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 767cfcfbb447d0641a3ea286106bcf24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1524,6 +1526,10 @@ PrefabInstance:
     - target: {fileID: 8073327743022942837, guid: 84a2ed49301079941a186b309c2d3a9d, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073327743022942837, guid: 84a2ed49301079941a186b309c2d3a9d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9178561019579647209, guid: 84a2ed49301079941a186b309c2d3a9d, type: 3}
       propertyPath: m_RootOrder
