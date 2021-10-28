@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1517279487056717861}
   - component: {fileID: 1517279487056717866}
   - component: {fileID: 1517279487056717867}
-  m_Layer: 0
+  - component: {fileID: 1796540642}
+  m_Layer: 6
   m_Name: Player_Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,8 +92,24 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517279487056717864}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1796540642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517279487056717864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6959b51a104bf4b9171ad8fc8cb10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldDuration: 5
+  shiedlFadeTime: 0.5
+  fadePctg: 0.1
+  shieldMaterial: {fileID: 2100000, guid: 9a7e3e7688bd83949831d746dbf02b5d, type: 2}

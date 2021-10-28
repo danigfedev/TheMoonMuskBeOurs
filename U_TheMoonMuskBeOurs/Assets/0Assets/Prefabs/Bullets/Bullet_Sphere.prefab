@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3747212978054226930}
   m_Layer: 0
   m_Name: Bullet_Sphere_Prototype
-  m_TagString: Untagged
+  m_TagString: Bullet_Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
