@@ -1,3 +1,17 @@
 {
-	"name": "SpaceshipsAssemblyDef"
+    "name": "SpaceshipsAssemblyDef",
+    "rootNamespace": "",
+    "references": [
+        "GUID:00f590c523e8a5140a866c08608ec3c2",
+        "GUID:ecd61a6eec500a34d96f0c1cd42b95bc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
