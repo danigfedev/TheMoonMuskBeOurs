@@ -26,7 +26,7 @@ public class FrameRateController : MonoBehaviour
             if(!canvas.activeInHierarchy) canvas.SetActive(true);
             if (Time.frameCount % debugStep == 0)
             {
-                fpsLabel.text = string.Format("FPS: {0}", 1 / Time.deltaTime);
+                fpsLabel.text = string.Format("FPS: {0}",(int) (1 / Time.deltaTime));
                 //Debug.Log(string.Format("FPS: {0}", 1 / Time.deltaTime));
             }
         }
