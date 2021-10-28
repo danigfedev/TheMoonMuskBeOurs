@@ -1806,6 +1806,10 @@ PrefabInstance:
       propertyPath: poolParent
       value: 
       objectReference: {fileID: 664035510}
+    - target: {fileID: 291438292, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
+      propertyPath: poolList.Array.data[0].poolSize
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4593372616558086548, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1856,7 +1860,7 @@ PrefabInstance:
       objectReference: {fileID: 1733313181}
     - target: {fileID: 6496214716329941203, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
       propertyPath: fireRate
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8404614168245655613, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
       propertyPath: m_Name

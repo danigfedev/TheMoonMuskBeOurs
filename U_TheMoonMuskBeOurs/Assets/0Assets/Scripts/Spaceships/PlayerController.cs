@@ -300,20 +300,21 @@ using UnityEngine;
 
         float elapsedTime = 0;
     [Tooltip("Firerate measured in bullets/second")]
-        public float fireRate = 1;
-        private IEnumerator ShootCoroutine()
+    public float fireRate = 1;
+    private IEnumerator ShootCoroutine()
+    {
+        while (true)
         {
-            while (true)
+            if(elapsedTime /*/ fireRate*/ >= 1)
             {
-                if(elapsedTime /*/ fireRate*/ >= 1)
-                {
-                    bulletPooler.SpawnFromPool(TagList.bulletTag, bulletSpawnPosition.position);
-                    elapsedTime = 0;
-                }
-                elapsedTime += Time.deltaTime* fireRate;
-                yield return null;
+                //bulletPooler.SpawnSingleElementFromPool(TagList.bulletTag, bulletSpawnPosition.position);
+                bulletPooler.SpawnPackFromPool(TagList.bulletTag, 3, bulletSpawnPosition.position, 0.1f);
+                elapsedTime = 0;
             }
+            elapsedTime += Time.deltaTime* fireRate;
+            yield return null;
         }
+    }
 
 #endregion
 }
