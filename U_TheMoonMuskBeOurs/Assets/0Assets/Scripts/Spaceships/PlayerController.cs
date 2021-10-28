@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    [RequireComponent(typeof(ObjectPooler))]
     public class PlayerController : MonoBehaviour
     {
     public enum RotationDirections
@@ -12,39 +11,24 @@ using UnityEngine;
         RIGHT
     }
 
-    //For testing purposes
-    [Header("== TESTING ==")]
-    public bool allowShooting = true;
-    [Range(1,3)]public int bulletCount = 1;
-
     [SerializeField] private Camera mainCam;
 
     [Tooltip("The spaceship's max vertical rotation in degrees caused by horizontal strafe. " +
             "Positive values rotate the object to the left from camera's PoV. Negative values rotate to the right.")]
     [SerializeField] private float maxVerticalRotation_Left = 30;
     [SerializeField] private float rotationDuration = 1;
-    [SerializeField] private Transform bulletSpawnPosition;
 
 
     private Vector2 invalidInput;
     private Vector3? worldPos;
     private Coroutine rotationCoroutine = null;
-    private ObjectPooler bulletPooler;
 
     #region === Monobehaviour Methods ===
 
-    private void Awake()
-    {
-        bulletPooler = GetComponent<ObjectPooler>();
-    }
-
     private void Start()
-        {
-            invalidInput = Vector2.zero - Vector2.one;
-
-            if (allowShooting)
-                Shoot(bulletCount);
-        }
+    {
+        invalidInput = Vector2.zero - Vector2.one;
+    }
        
 
 
@@ -239,83 +223,56 @@ using UnityEngine;
         }
 #endif
 
-        private void RotateVertically(RotationDirections rotDirection)
-        {
-            if (rotationCoroutine != null)
-                StopCoroutine(rotationCoroutine);
-
-            //Right: -30 deg
-            //Middle: 0 deg
-            //Left: 30 deg
-            if (rotDirection == RotationDirections.LEFT)
-                rotationCoroutine = StartCoroutine(RotateToReachAngle(maxVerticalRotation_Left));
-            else if (rotDirection == RotationDirections.MIDDLE)
-                rotationCoroutine = StartCoroutine(RotateToReachAngle(0));
-            else if (rotDirection == RotationDirections.RIGHT)
-                rotationCoroutine = StartCoroutine(RotateToReachAngle(-1 * maxVerticalRotation_Left));
-
-        }
-
-        /// <summary>
-        /// Handles spaceship vertical rotation
-        /// </summary>
-        /// <param name="endAngle">The destination angle</param>
-        /// <returns></returns>
-        private IEnumerator RotateToReachAngle(float endAngle)
-        {
-            //Get current vertical rotation
-            Vector3 startRotation = transform.localEulerAngles;
-
-            float t = 0;
-            while (t <= 1)
-            {
-                //Clamp rotation value in the range (-180, 180] degrees
-                float vertRot = startRotation.y;
-                if (vertRot > 180) vertRot -= 360;
-
-                float newRotation = Mathf.Lerp(vertRot, endAngle, t);
-                transform.localEulerAngles = new Vector3(startRotation.x, newRotation, startRotation.z);
-
-                t += Time.deltaTime / rotationDuration;
-
-                yield return null;
-            }
-
-            transform.localEulerAngles = new Vector3(startRotation.x, endAngle, startRotation.z);
-
-            rotationCoroutine = null;
-        }
-
-
-
-        //Invoked by event?
-        private void Shoot(int bulletCount)
-        {
-            StartCoroutine(ShootCoroutine(bulletCount));
-        }
-
-        private void StopShooting()
-        {
-
-        }
-
-        float elapsedTime = 0;
-    [Tooltip("Firerate measured in bullets/second")]
-    public float fireRate = 1;
-    private IEnumerator ShootCoroutine(int bulletCount)
+    private void RotateVertically(RotationDirections rotDirection)
     {
-        while (true)
+        if (rotationCoroutine != null)
+            StopCoroutine(rotationCoroutine);
+
+        //Right: -30 deg
+        //Middle: 0 deg
+        //Left: 30 deg
+        if (rotDirection == RotationDirections.LEFT)
+            rotationCoroutine = StartCoroutine(RotateToReachAngle(maxVerticalRotation_Left));
+        else if (rotDirection == RotationDirections.MIDDLE)
+            rotationCoroutine = StartCoroutine(RotateToReachAngle(0));
+        else if (rotDirection == RotationDirections.RIGHT)
+            rotationCoroutine = StartCoroutine(RotateToReachAngle(-1 * maxVerticalRotation_Left));
+
+    }
+
+    /// <summary>
+    /// Handles spaceship vertical rotation
+    /// </summary>
+    /// <param name="endAngle">The destination angle</param>
+    /// <returns></returns>
+    private IEnumerator RotateToReachAngle(float endAngle)
+    {
+        //Get current vertical rotation
+        Vector3 startRotation = transform.localEulerAngles;
+
+        float t = 0;
+        while (t <= 1)
         {
-            if(elapsedTime /*/ fireRate*/ >= 1)
-            {
-                //bulletPooler.SpawnSingleElementFromPool(TagList.bulletTag, bulletSpawnPosition.position);
-                bulletPooler.SpawnPackFromPool(TagList.bulletTag, bulletCount, bulletSpawnPosition.position, 0.1f);
-                elapsedTime = 0;
-            }
-            elapsedTime += Time.deltaTime* fireRate;
+            //Clamp rotation value in the range (-180, 180] degrees
+            float vertRot = startRotation.y;
+            if (vertRot > 180) vertRot -= 360;
+
+            float newRotation = Mathf.Lerp(vertRot, endAngle, t);
+            transform.localEulerAngles = new Vector3(startRotation.x, newRotation, startRotation.z);
+
+            t += Time.deltaTime / rotationDuration;
+
             yield return null;
         }
+
+        transform.localEulerAngles = new Vector3(startRotation.x, endAngle, startRotation.z);
+
+        rotationCoroutine = null;
     }
+
+
+
+        
 
 #endregion
 }

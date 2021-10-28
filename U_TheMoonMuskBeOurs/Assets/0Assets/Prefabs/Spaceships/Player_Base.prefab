@@ -41,7 +41,10 @@ GameObject:
   - component: {fileID: 3831229393835374556}
   - component: {fileID: 791970740422333141}
   - component: {fileID: 5814853034087736987}
-  m_Layer: 0
+  - component: {fileID: 3680136979420843694}
+  - component: {fileID: 251491799988946095}
+  - component: {fileID: 9096705219074050368}
+  m_Layer: 8
   m_Name: Player_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,8 +94,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f593643a5313247a2e9b683ea12422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowShooting: 1
   mainCam: {fileID: 0}
   maxVerticalRotation_Left: 30
   rotationDuration: 0.15
+--- !u!114 &3680136979420843694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9094600350708229749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bbb95f41e5113f4d97187f9cc9b5b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolParent: {fileID: 0}
+  poolList: []
+--- !u!114 &251491799988946095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9094600350708229749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d69440c00e1873c4e8b7e8fa4d67ca81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowShooting: 1
+  bulletCount: 1
   bulletSpawnPosition: {fileID: 8449224798720635984}
+  fireRate: 1
+--- !u!114 &9096705219074050368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9094600350708229749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212735f260d104848aa231652f770669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerShip: {fileID: 0}
+  shieldPrefab: {fileID: 1517279487056717860, guid: c1776ca7e0d33c4478516cc6640615af, type: 3}
+  shieldSpawnPos: {fileID: 0}

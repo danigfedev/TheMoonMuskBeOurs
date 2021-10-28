@@ -28,6 +28,10 @@ public class ObjectPooler : MonoBehaviour
 
         public void SetPrefabExtents(GameObject prefabInstance)
         {
+            //IMPORTANT
+            //Collider's bounding box has 0 extents if object is inactive or disabled
+            //Docs: https://docs.unity3d.com/ScriptReference/Collider-bounds.html
+
             if (prefabHorExtents > 0) return; //Already set
 
             prefabHorExtents = prefabInstance.transform.
@@ -46,12 +50,6 @@ public class ObjectPooler : MonoBehaviour
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
         InitializePools();
-    }
-
-
-    private void Start()
-    {
-        //InitializePools();
     }
 
     /// <summary>
@@ -91,6 +89,25 @@ public class ObjectPooler : MonoBehaviour
     }
 
     /// <summary>
+    /// Sets object pool back to its initial state (all objects hidden and concentrated in the same position)
+    /// </summary>
+    /// <param name="tag"></param>
+    public void ResetPool(string tag)
+    {
+        if (poolDictionary[tag] == null) return;
+
+        GameObject tmp;
+        for (int i = 0; i < poolDictionary[tag].Count; i++)
+        {
+            tmp = poolDictionary[tag].Dequeue();
+            tmp.transform.localPosition = Vector3.zero;
+            tmp.SetActive(false);
+            poolDictionary[tag].Enqueue(tmp);
+        }
+    }
+
+
+    /// <summary>
     /// Retrieves a single object from the pool
     /// </summary>
     /// <param name="tag">the pool we want to retrieve from</param>
@@ -122,7 +139,6 @@ public class ObjectPooler : MonoBehaviour
 
         //Get preab extents (from collider)
         float horExtents = poolList.Find(p => p.GetPoolTag() == _tag).GetPrefabExtents();
-            //GetItemHorizontalExtents(_tag);
 
         Vector3[] positions = CalculatePackPositions(basePosition, packSize, horExtents, offset);
 
@@ -141,41 +157,23 @@ public class ObjectPooler : MonoBehaviour
         return spawnObjPack;
     }
 
-    public void ResetPool(string tag)
-    {
-        if (poolDictionary[tag] == null) return;
-
-        GameObject tmp;
-        for (int i = 0; i < poolDictionary[tag].Count; i++)
-        {
-            tmp = poolDictionary[tag].Dequeue();
-            //tmp.transform.position
-            tmp.SetActive(false);
-        }
-    }
-
-    private float GetItemHorizontalExtents(string poolTag)
-    {
-        GameObject tmp = poolList.Find(p => p.GetPoolTag() == poolTag).poolPrefab;
-
-        //IMPORTANT
-        //Collider's bounding box has 0 extents if object is inactive or disabled
-        //Docs: https://docs.unity3d.com/ScriptReference/Collider-bounds.html
-
-        //GameObject tmp = poolDictionary[poolTag].Dequeue();
-        //Debug.Log(tmp.name);
-        //tmp.transform.GetChild(0);
-        float radius = tmp.transform.GetChild(0).GetComponent<SphereCollider>().radius / 2;
-        
-        //Debug.Log(string.Format("Radius: {0}", radius));
-        float horExtents = radius;
-        //tmp.GetComponentInChildren<Collider>().bounds.extents.x;
-        //poolDictionary[poolTag].Enqueue(tmp);
-        return horExtents;
-    }
-
+    /// <summary>
+    /// Given a number of items and a base position, linearly distributes the items along the X axis
+    /// and around the given position based on their extents and an offset value to add some separation.
+    /// </summary>
+    /// <param name="basePos"></param>
+    /// <param name="packSize"></param>
+    /// <param name="horExtents"></param>
+    /// <param name="offset"></param>
+    /// <returns></returns>
     private Vector3[] CalculatePackPositions(Vector3 basePos, int packSize, float horExtents, float offset)
     {
+        if (packSize <= 0)
+        {
+            Debug.LogError("Invalid pack size. Plece introduce a value higher than 0");
+            return null;
+        }
+
         int initialIndex = 0;
         Vector3[] positions = new Vector3[packSize];
 
