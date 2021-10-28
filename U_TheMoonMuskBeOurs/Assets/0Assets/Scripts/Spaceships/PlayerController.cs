@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public class PlayerController : MonoBehaviour
-    {
+public class PlayerController : MonoBehaviour
+{
     public enum RotationDirections
     {
         LEFT = 0,
@@ -29,26 +29,24 @@ using UnityEngine;
     {
         invalidInput = Vector2.zero - Vector2.one;
     }
-       
 
+    void Update()
+    {
 
-        void Update()
-        {
-
-            InputPointToWorldCoordinates();
-            if (worldPos == null) return; //Keep current transform 
-            transform.position = (Vector3) worldPos;
+        InputPointToWorldCoordinates();
+        if (worldPos == null) return; //Keep current transform 
+        transform.position = (Vector3) worldPos;
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-            RotationInPC();
+        RotationInPC();
 #elif UNITY_ANDROID
-    RotationAndroid();
+        RotationAndroid();
 #endif
 
             
-        }
+    }
 
-        #endregion
+    #endregion
 
         #region === Private Methods ===
 
@@ -223,6 +221,10 @@ using UnityEngine;
         }
 #endif
 
+    /// <summary>
+    /// Handles spaceship's vertical rotation based on user input
+    /// </summary>
+    /// <param name="rotDirection">Player's input direction</param>
     private void RotateVertically(RotationDirections rotDirection)
     {
         if (rotationCoroutine != null)
@@ -268,11 +270,7 @@ using UnityEngine;
         transform.localEulerAngles = new Vector3(startRotation.x, endAngle, startRotation.z);
 
         rotationCoroutine = null;
-    }
-
-
-
-        
+    }  
 
 #endregion
 }

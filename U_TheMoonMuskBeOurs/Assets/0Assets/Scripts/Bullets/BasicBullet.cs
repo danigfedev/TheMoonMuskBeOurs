@@ -5,13 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class BasicBullet : Bullet
 {
-    //public float bulletSpeed = 1;
-    public BulletDirections bulletDirection;
-    public enum BulletDirections
-    {
-        TOP_BOTTOM=0,
-        BOTTOM_TOP
-    }
     private Rigidbody bulletRB;
 
     void Awake()
@@ -25,10 +18,12 @@ public class BasicBullet : Bullet
     }
 
 
-    public override void Move(/*float speed*/)
+    public override void Move()
     {
         //TODO review direction,make it relative to spaceship?
-        Vector3 bulletDirectionV3 = (bulletDirection == BulletDirections.BOTTOM_TOP) ? Vector3.up : Vector3.down;
+        //Vector3 bulletDirectionV3 = (bulletDirection == BulletDirections.BOTTOM_TOP) ? Vector3.up : Vector3.down;
+
+        Vector3 bulletDirectionV3 = transform.up;
         bulletRB.velocity = bulletDirectionV3 * base.bulletSpeed;
     }
 }

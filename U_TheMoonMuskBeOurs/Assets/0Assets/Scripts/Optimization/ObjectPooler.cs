@@ -112,13 +112,16 @@ public class ObjectPooler : MonoBehaviour
     /// </summary>
     /// <param name="tag">the pool we want to retrieve from</param>
     /// <returns></returns>
-    public GameObject SpawnSingleElementFromPool(string tag, Vector3 position)
+    public GameObject SpawnSingleElementFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (poolDictionary[tag] == null) return null;
 
         GameObject spawnObj = poolDictionary[tag].Dequeue();
         spawnObj.SetActive(true);
         spawnObj.transform.position=position;
+
+        spawnObj.transform.localRotation = rotation;
+
         poolDictionary[tag].Enqueue(spawnObj);
         return spawnObj;
     }
@@ -129,7 +132,7 @@ public class ObjectPooler : MonoBehaviour
     /// </summary>
     /// <param name="_tag">the pool we want to retrieve from</param>
     /// <returns></returns>
-    public GameObject[] SpawnPackFromPool(string _tag, int packSize, Vector3 basePosition , float offset = -1)
+    public GameObject[] SpawnPackFromPool(string _tag, int packSize, Vector3 basePosition, Quaternion rotation, float offset = -1)
     {
         if (poolDictionary[_tag] == null)
         {
@@ -137,6 +140,7 @@ public class ObjectPooler : MonoBehaviour
             return null;
         }
 
+        
         //Get preab extents (from collider)
         float horExtents = poolList.Find(p => p.GetPoolTag() == _tag).GetPrefabExtents();
 
@@ -150,9 +154,11 @@ public class ObjectPooler : MonoBehaviour
             tmp.SetActive(true);
 
             tmp.transform.position = positions[i];
+            tmp.transform.localRotation = rotation;
 
             poolDictionary[_tag].Enqueue(tmp);
         }
+        
 
         return spawnObjPack;
     }

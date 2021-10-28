@@ -5,16 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectPooler))]
 public class WeaponHandler : MonoBehaviour
 {
+    public enum BulletDirections
+    {
+        VERTICALLY_ALIGNED = 0, //Following shooting object's vertical axis
+        VERTICALLY_OPPOSED //opposing shooting object's vertical axis
+    }
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
     [Header("== TESTING ==")]
     public bool allowShooting = true;
     [Range(1, 3)] public int bulletCount = 1;
     [Space(5)]
-#endif
+//#endif
 
-    [SerializeField] private Transform bulletSpawnPosition;
+    [SerializeField] Transform bulletSpawnPosition;
 
+    [SerializeField] BulletDirections bulletDirection;
+    
     private ObjectPooler bulletPooler;
     private Coroutine shootingCoroutine = null;
 
@@ -27,7 +34,7 @@ public class WeaponHandler : MonoBehaviour
     private void Start()
     {
         if (allowShooting)
-            Shoot(bulletCount);
+            Shoot(bulletCount, bulletDirection);
     }
 
     
@@ -51,9 +58,6 @@ public class WeaponHandler : MonoBehaviour
             case TagList.PU_weaponPlayerFlamethrowTag:
                 Debug.LogError("Musk flamethrower not on sale yet.");
                 break;
-            //default:
-            //    Shoot(1);
-            //    break;
         }
 
         other.gameObject.SetActive(false);
@@ -95,7 +99,7 @@ public class WeaponHandler : MonoBehaviour
     /// Starts or updates the shooting process
     /// </summary>
     /// <param name="bulletCount">The number of bullets that should be spawned per shot</param>
-    public void Shoot(int bulletCount)
+    public void Shoot(int bulletCount, BulletDirections direction= BulletDirections.VERTICALLY_ALIGNED)
     {
         if (shootingCoroutine != null)
         {
@@ -103,7 +107,7 @@ public class WeaponHandler : MonoBehaviour
             shootingCoroutine = null;
         }
 
-        shootingCoroutine = StartCoroutine(ShootCoroutine(bulletCount));
+        shootingCoroutine = StartCoroutine(ShootCoroutine(bulletCount, direction));
     }
 
     /// <summary>
@@ -123,15 +127,22 @@ public class WeaponHandler : MonoBehaviour
     float elapsedTime = 0;
     [Tooltip("Firerate measured in bullets/second")]
     public float fireRate = 1;
-    private IEnumerator ShootCoroutine(int bulletCount)
+    private IEnumerator ShootCoroutine(int bulletCount, BulletDirections direction)
     {
         while (true)
         {
-            if (elapsedTime /*/ fireRate*/ >= 1)
+            if (elapsedTime >= 1)
             {
-                //bulletPooler.SpawnSingleElementFromPool(TagList.bulletTag, bulletSpawnPosition.position);
-                bulletPooler.SpawnPackFromPool(TagList.bulletTag, bulletCount, bulletSpawnPosition.position, 0.1f);
+                Quaternion rot = (direction == BulletDirections.VERTICALLY_ALIGNED) ?
+                    transform.localRotation
+                    : Quaternion.FromToRotation(transform.up, -transform.up);
                 
+                //Alternative to get rotation:
+                //transform.localRotation * Quaternion.Euler(transform.forward * 180);
+                
+                bulletPooler.SpawnPackFromPool(TagList.bulletTag, bulletCount, bulletSpawnPosition.position, rot, 0.1f);
+
+
                 //TODO Play Shot Sound
 
                 elapsedTime = 0;
@@ -140,4 +151,44 @@ public class WeaponHandler : MonoBehaviour
             yield return null;
         }
     }
+
+    /// <summary>
+    /// Given a number of items and a base position, linearly distributes the items along the X axis
+    /// and around the given position based on their extents and an offset value to add some separation.
+    /// </summary>
+    /// <param name="basePos"></param>
+    /// <param name="packSize"></param>
+    /// <param name="horExtents"></param>
+    /// <param name="offset"></param>
+    /// <returns></returns>
+    private Vector3[] CalculatePackPositions(Vector3 basePos, int packSize, float horExtents, float offset)
+    {
+        if (packSize <= 0)
+        {
+            Debug.LogError("Invalid pack size. Plece introduce a value higher than 0");
+            return null;
+        }
+
+        int initialIndex = 0;
+        Vector3[] positions = new Vector3[packSize];
+
+        if (packSize % 2 != 0)
+        {
+            initialIndex = 1;
+            positions[0] = basePos;
+        }
+
+
+        for (int i = initialIndex; i <= packSize - 2; i += 2)
+        {
+            float horDisplacement = (i + 1) * (horExtents + offset / 2);
+            Vector3 displacement = Vector3.right * horDisplacement;
+            positions[i] = basePos + displacement;
+            positions[i + 1] = basePos - displacement;
+        }
+
+        return positions;
+    }
+
+
 }
