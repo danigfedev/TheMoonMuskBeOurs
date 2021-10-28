@@ -13,8 +13,9 @@ using UnityEngine;
     }
 
     //For testing purposes
+    [Header("== TESTING ==")]
     public bool allowShooting = true;
-
+    [Range(1,3)]public int bulletCount = 1;
 
     [SerializeField] private Camera mainCam;
 
@@ -42,7 +43,7 @@ using UnityEngine;
             invalidInput = Vector2.zero - Vector2.one;
 
             if (allowShooting)
-                Shoot();
+                Shoot(bulletCount);
         }
        
 
@@ -288,9 +289,9 @@ using UnityEngine;
 
 
         //Invoked by event?
-        private void Shoot()
+        private void Shoot(int bulletCount)
         {
-            StartCoroutine(ShootCoroutine());
+            StartCoroutine(ShootCoroutine(bulletCount));
         }
 
         private void StopShooting()
@@ -301,14 +302,14 @@ using UnityEngine;
         float elapsedTime = 0;
     [Tooltip("Firerate measured in bullets/second")]
     public float fireRate = 1;
-    private IEnumerator ShootCoroutine()
+    private IEnumerator ShootCoroutine(int bulletCount)
     {
         while (true)
         {
             if(elapsedTime /*/ fireRate*/ >= 1)
             {
                 //bulletPooler.SpawnSingleElementFromPool(TagList.bulletTag, bulletSpawnPosition.position);
-                bulletPooler.SpawnPackFromPool(TagList.bulletTag, 3, bulletSpawnPosition.position, 0.1f);
+                bulletPooler.SpawnPackFromPool(TagList.bulletTag, bulletCount, bulletSpawnPosition.position, 0.1f);
                 elapsedTime = 0;
             }
             elapsedTime += Time.deltaTime* fireRate;
