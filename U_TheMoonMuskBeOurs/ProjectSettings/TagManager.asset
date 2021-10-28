@@ -12,6 +12,7 @@ TagManager:
   - PU_weaponPlayerGun3
   - PU_weaponPlayerFlame
   - PU_shield
+  - Bullet_Box
   layers:
   - Default
   - TransparentFX

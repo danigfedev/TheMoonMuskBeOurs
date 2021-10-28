@@ -11,6 +11,14 @@ public class WeaponHandler : MonoBehaviour
         VERTICALLY_OPPOSED //opposing shooting object's vertical axis
     }
 
+    public enum BuletTypes
+    {
+        PLAYER=0,
+        BOX,
+        SMILE,
+        OTHER
+    }
+
 //#if UNITY_EDITOR
     [Header("== TESTING ==")]
     public bool allowShooting = true;
@@ -21,9 +29,11 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] Transform bulletSpawnPosition;
 
     [SerializeField] BulletDirections bulletDirection;
+    [SerializeField] BuletTypes bulletType;
     
     private ObjectPooler bulletPooler;
     private Coroutine shootingCoroutine = null;
+    private string bulletTag;
 
     #region === MonoBehaviour Methods ===
     private void Awake()
@@ -35,6 +45,16 @@ public class WeaponHandler : MonoBehaviour
     {
         if (allowShooting)
             Shoot(bulletCount, bulletDirection);
+
+        switch (bulletType)
+        {
+            case BuletTypes.PLAYER:
+                bulletTag = TagList.bulletTag;
+                break;
+            case BuletTypes.BOX:
+                bulletTag = TagList.bulletBoxTag;
+            break;
+        }
     }
 
     
@@ -107,6 +127,7 @@ public class WeaponHandler : MonoBehaviour
             shootingCoroutine = null;
         }
 
+
         shootingCoroutine = StartCoroutine(ShootCoroutine(bulletCount, direction));
     }
 
@@ -140,7 +161,7 @@ public class WeaponHandler : MonoBehaviour
                 //Alternative to get rotation:
                 //transform.localRotation * Quaternion.Euler(transform.forward * 180);
                 
-                bulletPooler.SpawnPackFromPool(TagList.bulletTag, bulletCount, bulletSpawnPosition.position, rot, 0.1f);
+                bulletPooler.SpawnPackFromPool(bulletTag, bulletCount, bulletSpawnPosition.position, rot, 0.1f);
 
 
                 //TODO Play Shot Sound
