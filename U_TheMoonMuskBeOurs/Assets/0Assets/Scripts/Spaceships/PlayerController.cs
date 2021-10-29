@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rotationDuration = 1;
 
 
-    /*[SerializeField]*/ private Camera mainCam;
+    private Camera mainCam;
     private Rigidbody spaceshipRB;    
 
     private float horizontalAmount = 0;

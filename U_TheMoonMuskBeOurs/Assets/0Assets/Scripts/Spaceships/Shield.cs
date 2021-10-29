@@ -7,7 +7,7 @@ public class Shield : MonoBehaviour
 {
     [SerializeField] float shieldDuration;
     [SerializeField] float shiedlFadeTime;
-    [SerializeField] [Range(0,1)]float fadePctg = 0.25f;
+    //[SerializeField] [Range(0,1)]float fadePctg = 0.25f;
     [SerializeField] Material shieldMaterial; 
 
     private Transform playerShip;
@@ -22,19 +22,36 @@ public class Shield : MonoBehaviour
     private void Awake()
     {
         shieldRB = GetComponent<Rigidbody>();
-        shieldVisibleTime = shieldDuration - shiedlFadeTime;
     }
 
-
+    /*
     private void OnEnable()
     {
+        if (shiedlFadeTime >= shieldDuration)
+            shiedlFadeTime = shieldDuration / 4;
+        shieldVisibleTime = shieldDuration - shiedlFadeTime;
+
         StartCoroutine(DisableShield());
     }
+    */
 
     private void FixedUpdate()
     {
         if (playerShip != null)
             shieldRB.MovePosition(playerShip.position);
+    }
+
+    public void EnableShield(int duration)
+    {
+        shieldDuration = duration;
+
+        if (shiedlFadeTime >= shieldDuration)
+            shiedlFadeTime = shieldDuration / 4;
+        shieldVisibleTime = shieldDuration - shiedlFadeTime;
+
+        StartCoroutine(DisableShield());
+
+
     }
 
     private IEnumerator DisableShield()

@@ -15,15 +15,20 @@ public class Player_WeaponHandler : WeaponHandler_Base
         switch (other.tag)
         {
             //Powerups
-            case TagList.PU_weaponPlayerGun1Tag:
-                Shoot(1);
+            case TagList.PU_weaponTag:
+                int bulletCount = other.gameObject.GetComponent<PowerUpHandler>().GetPowerUpAmount();
+                bulletCount = Mathf.Clamp(bulletCount, 1, 3);
+                Shoot(bulletCount);
                 break;
-            case TagList.PU_weaponPlayerGun2Tag:
-                Shoot(2);
-                break;
-            case TagList.PU_weaponPlayerGun3Tag:
-                Shoot(3);
-                break;
+            //case TagList.PU_weaponPlayerGun1Tag:
+            //    Shoot(1);
+            //    break;
+            //case TagList.PU_weaponPlayerGun2Tag:
+            //    Shoot(2);
+            //    break;
+            //case TagList.PU_weaponPlayerGun3Tag:
+            //    Shoot(3);
+            //    break;
             case TagList.PU_weaponPlayerFlamethrowTag:
                 Debug.LogError("Musk flamethrower not on sale yet.");
                 break;

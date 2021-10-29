@@ -23,9 +23,10 @@ public static class TagList
     //Power ups:
     public const string PU_shieldTag = "PU_Shield";
     public const string PU_healthTag = "PU_Health";
-    public const string PU_weaponPlayerGun1Tag = "PU_Weapon_T1";
-    public const string PU_weaponPlayerGun2Tag = "PU_Weapon_T2";
-    public const string PU_weaponPlayerGun3Tag = "PU_Weapon_T3";
+    public const string PU_weaponTag = "PU_Weapon";
+    //public const string PU_weaponPlayerGun1Tag = "PU_Weapon_T1";
+    //public const string PU_weaponPlayerGun2Tag = "PU_Weapon_T2";
+    //public const string PU_weaponPlayerGun3Tag = "PU_Weapon_T3";
     public const string PU_weaponPlayerFlamethrowTag = "PU_Weapon_Flame";
     
 }

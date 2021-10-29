@@ -21,9 +21,13 @@ public class Player_StateHandler : StateHandler_Base
         switch (other.tag)
         {
             case TagList.PU_shieldTag:
-                EnableShield();
+                int shieldDuration = other.gameObject.GetComponent<PowerUpHandler>().GetPowerUpAmount();
+                EnableShield(shieldDuration);
                 break;
-
+            case TagList.PU_healthTag:
+                int healthAmount = other.gameObject.GetComponent<PowerUpHandler>().GetPowerUpAmount();
+                HandleHealing(healthAmount);
+                break;
             case TagList.enemyTag:
                 HandleDamage(2);
                 break;
@@ -44,15 +48,19 @@ public class Player_StateHandler : StateHandler_Base
         shieldInstance.GetComponent<Shield>().PlayerShip = playerShip;
     }
 
-    private void EnableShield()
+    private void EnableShield(int shieldDuration)
     {
         shieldInstance.gameObject.SetActive(true);
+        shieldInstance.GetComponent<Shield>().EnableShield(shieldDuration);
     }
 
 
     protected override void HandleDamage(float damage)
     {
         totalHealth -= damage;
+
+        Debug.Log("Damage taken: " + totalHealth);
+
         //Edit material
         if(totalHealth <= 0)
         {
@@ -63,6 +71,9 @@ public class Player_StateHandler : StateHandler_Base
     protected override void HandleHealing(float health)
     {
         totalHealth += health;
+
+        Debug.Log("Healing: " + totalHealth);
+
         if (totalHealth > maxHealth) totalHealth = maxHealth;
 
         //Edit material
