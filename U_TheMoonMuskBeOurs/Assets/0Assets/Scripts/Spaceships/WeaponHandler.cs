@@ -49,7 +49,7 @@ public class WeaponHandler : MonoBehaviour
         switch (bulletType)
         {
             case BuletTypes.PLAYER:
-                bulletTag = TagList.bulletTag;
+                bulletTag = TagList.bulletPlayerTag;
                 break;
             case BuletTypes.BOX:
                 bulletTag = TagList.bulletBoxTag;
@@ -61,8 +61,9 @@ public class WeaponHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Collisions filtered based on collision matrix
-        
-        if (other.tag == TagList.bulletTag) return;
+        string otherTag = other.tag;
+        if(otherTag == TagList.bulletPlayerTag
+            || otherTag== TagList.shieldTag) return;
 
         switch (other.tag)
         {
@@ -142,7 +143,7 @@ public class WeaponHandler : MonoBehaviour
             shootingCoroutine = null;
         }
         elapsedTime = 0;
-        bulletPooler.ResetPool(TagList.bulletTag);
+        bulletPooler.ResetPool(TagList.bulletPlayerTag);
     }
 
     float elapsedTime = 0;

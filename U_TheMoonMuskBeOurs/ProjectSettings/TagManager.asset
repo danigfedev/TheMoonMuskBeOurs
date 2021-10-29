@@ -13,6 +13,7 @@ TagManager:
   - PU_weaponPlayerFlame
   - PU_shield
   - Bullet_Box
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Shield
   - PowerUp
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 

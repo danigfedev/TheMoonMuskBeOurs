@@ -1,9 +1,16 @@
 
 public static class TagList
 {
+    //Spaceships:
+    public const string playerTag = "Player";
+    public const string enemyTag = "Enemy";
+
+    //Interactions
     public const string carTriggerTag = "CarTrigger";
-    public const string bulletTag = "Bullet_Player";
+    public const string bulletPlayerTag = "Bullet_Player";
     public static string bulletBoxTag = "Bullet_Box";
+    public static string shieldTag = "Shield";
+
 
 
     //Power ups:

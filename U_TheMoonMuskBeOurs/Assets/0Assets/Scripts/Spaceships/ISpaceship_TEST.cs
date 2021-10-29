@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ITEST
+public interface ISpaceship_TEST
 {
     public enum RotationDirections
     {

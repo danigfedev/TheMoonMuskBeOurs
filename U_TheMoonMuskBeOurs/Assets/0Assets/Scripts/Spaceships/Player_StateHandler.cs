@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateHandler : MonoBehaviour
+public class Player_StateHandler : MonoBehaviour, IStateHandler
 {
     [SerializeField] Transform playerShip;
     [SerializeField] Transform shieldPrefab;
@@ -15,11 +15,11 @@ public class StateHandler : MonoBehaviour
         InitializeShield();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         //Debug.Log(other.name);
 
-        if (other.tag == TagList.bulletTag) return;
+        if (other.tag == TagList.bulletPlayerTag) return;
 
         switch (other.tag)
         {
@@ -40,5 +40,20 @@ public class StateHandler : MonoBehaviour
     private void EnableShield()
     {
         shieldInstance.gameObject.SetActive(true);
+    }
+
+    private void HandleDamage()
+    {
+
+    }
+
+    void IStateHandler.HandleDamage(float damage)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void HandleHealing(float health)
+    {
+        throw new System.NotImplementedException();
     }
 }

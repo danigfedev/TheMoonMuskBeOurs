@@ -31,7 +31,7 @@ public class Shield : MonoBehaviour
     private void LateUpdate()
     {
         if(playerShip != null)
-        transform.position = playerShip.position;
+            transform.position = playerShip.position;
     }
 
     private IEnumerator DisableShield()
