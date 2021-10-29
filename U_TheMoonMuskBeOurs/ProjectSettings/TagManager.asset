@@ -15,6 +15,7 @@ TagManager:
   - PU_Weapon_T3
   - PU_Weapon_Flame
   - Enemy
+  - Bullet_Smile
   layers:
   - Default
   - TransparentFX

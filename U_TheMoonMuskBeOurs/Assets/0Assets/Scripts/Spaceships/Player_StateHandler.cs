@@ -10,7 +10,6 @@ public class Player_StateHandler : StateHandler_Base
 
     private Transform shieldInstance;
     
-
     public override void Awake()
     {
         InitializeShield();

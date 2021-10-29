@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Shield : MonoBehaviour
 {
     [SerializeField] float shieldDuration;
@@ -10,6 +11,7 @@ public class Shield : MonoBehaviour
     [SerializeField] Material shieldMaterial; 
 
     private Transform playerShip;
+    private Rigidbody shieldRB;
     private float shieldVisibleTime;
 
     public Transform PlayerShip
@@ -19,6 +21,7 @@ public class Shield : MonoBehaviour
 
     private void Awake()
     {
+        shieldRB = GetComponent<Rigidbody>();
         shieldVisibleTime = shieldDuration - shiedlFadeTime;
     }
 
@@ -28,10 +31,10 @@ public class Shield : MonoBehaviour
         StartCoroutine(DisableShield());
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        if(playerShip != null)
-            transform.position = playerShip.position;
+        if (playerShip != null)
+            shieldRB.MovePosition(playerShip.position);
     }
 
     private IEnumerator DisableShield()

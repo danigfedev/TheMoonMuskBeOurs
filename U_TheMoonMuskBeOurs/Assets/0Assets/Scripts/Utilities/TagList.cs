@@ -12,6 +12,7 @@ public static class TagList
     public const string bulletPrefix = "Bullet";
     public const string bulletPlayerTag = "Bullet_Player";
     public const string bulletBoxTag = "Bullet_Box";
+    public const string bulletSmileTag = "Bullet_Smile";
 
     //State:
     public const string shieldTagID = "Shield";
