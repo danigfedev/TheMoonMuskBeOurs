@@ -7,13 +7,13 @@ TagManager:
   - CarTrigger
   - Bullet
   - Bullet_Player
-  - PU_weaponPlayerGun1
-  - PU_weaponPlayerGun2
-  - PU_weaponPlayerGun3
-  - PU_weaponPlayerFlame
-  - PU_shield
   - Bullet_Box
   - Shield
+  - PU_Shield
+  - PU_Weapon_T1
+  - PU_Weapon_T2
+  - PU_Weapon_T3
+  - PU_Weapon_Flame
   layers:
   - Default
   - TransparentFX
@@ -25,7 +25,7 @@ TagManager:
   - PowerUp
   - Player
   - Enemy
-  - 
+  - Projectile
   - 
   - 
   - 

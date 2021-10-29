@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5675928233904000525}
   - component: {fileID: 7074550759370014452}
   - component: {fileID: 3747212978054226930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet_Sphere_Prototype
   m_TagString: Bullet_Player
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 1
-  bulletSpeed: 5
+  bulletSpeed: 15
 --- !u!1001 &7537804359600425537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,6 +120,10 @@ PrefabInstance:
     - target: {fileID: 20084350518269338, guid: 486b8458b385baa47a52b2bd7db89265, type: 3}
       propertyPath: m_Name
       value: Bullet_Sphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 20084350518269338, guid: 486b8458b385baa47a52b2bd7db89265, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 20084350518269338, guid: 486b8458b385baa47a52b2bd7db89265, type: 3}
       propertyPath: m_TagString

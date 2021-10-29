@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Van_StateHandler : MonoBehaviour, IStateHandler
+public class Enemy_Van_StateHandler : StateHandler_Base
 {
-    [SerializeField] float totalHealth = 2;
 
-    public void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         //Control collisions with:
             //- Player bullet
@@ -16,12 +15,12 @@ public class Enemy_Van_StateHandler : MonoBehaviour, IStateHandler
             HandleDamage(totalHealth);
         else if(other.tag == TagList.bulletPlayerTag)
         {
-            float damage = other.transform.parent.GetComponent<Bullet>().GetBulletDamage();
+            float damage = other.GetComponentInParent<Bullet>().GetBulletDamage();
             HandleDamage(damage);
         }
     }
 
-    public void HandleDamage(float damage)
+    protected override void HandleDamage(float damage)
     {
         totalHealth -= damage;
         if (totalHealth <= 0)
@@ -32,7 +31,7 @@ public class Enemy_Van_StateHandler : MonoBehaviour, IStateHandler
         }    
     }
 
-    public void HandleHealing(float health)
+    protected override void HandleHealing(float health)
     {
         throw new System.NotImplementedException("No healing for me");
     }

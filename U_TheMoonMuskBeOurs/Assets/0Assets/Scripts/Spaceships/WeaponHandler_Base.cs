@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ObjectPooler))]
-public class WeaponHandler : MonoBehaviour
+public abstract class WeaponHandler_Base: MonoBehaviour
 {
     public enum BulletDirections
     {
@@ -13,39 +12,40 @@ public class WeaponHandler : MonoBehaviour
 
     public enum BuletTypes
     {
-        PLAYER=0,
+        PLAYER = 0,
         BOX,
         SMILE,
         OTHER
     }
 
-//#if UNITY_EDITOR
     [Header("== TESTING ==")]
     public bool allowShooting = true;
     [Range(1, 3)] public int bulletCount = 1;
-    [Space(5)]
-//#endif
+    [Space(10)]
+    //Fields:
+    [SerializeField] protected BuletTypes bulletType;
+    [SerializeField] protected BulletDirections bulletDirection;
+    [SerializeField] protected Transform bulletSpawnPosition;
 
-    [SerializeField] Transform bulletSpawnPosition;
+    [Tooltip("Firerate measured in bullets/second")]
+    [SerializeField] protected float fireRate = 1;
 
-    [SerializeField] BulletDirections bulletDirection;
-    [SerializeField] BuletTypes bulletType;
-    
-    private ObjectPooler bulletPooler;
-    private Coroutine shootingCoroutine = null;
-    private string bulletTag;
+    protected ObjectPooler bulletPooler;
+    protected Coroutine shootingCoroutine = null;
+    protected string bulletTag;
+    protected float shootingElapsedTime = 0;
 
-    #region === MonoBehaviour Methods ===
-    private void Awake()
+    //Methods:
+    public abstract void OnTriggerEnter(Collider other);
+
+    protected void Awake()
     {
+        Debug.Log("Awake");
         bulletPooler = GetComponent<ObjectPooler>();
     }
 
-    private void Start()
+    public virtual void Start()
     {
-        if (allowShooting)
-            Shoot(bulletCount, bulletDirection);
-
         switch (bulletType)
         {
             case BuletTypes.PLAYER:
@@ -53,39 +53,12 @@ public class WeaponHandler : MonoBehaviour
                 break;
             case BuletTypes.BOX:
                 bulletTag = TagList.bulletBoxTag;
-            break;
-        }
-    }
-
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        // Collisions filtered based on collision matrix
-        string otherTag = other.tag;
-        if(otherTag == TagList.bulletPlayerTag
-            || otherTag== TagList.shieldTag) return;
-
-        switch (other.tag)
-        {
-            case TagList.PU_weaponPlayerGun1Tag:
-                Shoot(1);
-                break;
-            case TagList.PU_weaponPlayerGun2Tag:
-                Shoot(2);
-                break;
-            case TagList.PU_weaponPlayerGun3Tag:
-                Shoot(3);
-                break;
-            case TagList.PU_weaponPlayerFlamethrowTag:
-                Debug.LogError("Musk flamethrower not on sale yet.");
                 break;
         }
 
-        other.gameObject.SetActive(false);
+        if (allowShooting)
+            Shoot(bulletCount, bulletDirection);
     }
-    
-
-    #endregion
 
     #region === Editor Only Code ===
 
@@ -120,14 +93,13 @@ public class WeaponHandler : MonoBehaviour
     /// Starts or updates the shooting process
     /// </summary>
     /// <param name="bulletCount">The number of bullets that should be spawned per shot</param>
-    public void Shoot(int bulletCount, BulletDirections direction= BulletDirections.VERTICALLY_ALIGNED)
+    public void Shoot(int bulletCount, BulletDirections direction = BulletDirections.VERTICALLY_ALIGNED)
     {
         if (shootingCoroutine != null)
         {
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
         }
-
 
         shootingCoroutine = StartCoroutine(ShootCoroutine(bulletCount, direction));
     }
@@ -135,41 +107,38 @@ public class WeaponHandler : MonoBehaviour
     /// <summary>
     /// Stops the spaceship from shooting
     /// </summary>
-    private void StopShooting()
+    protected void StopShooting()
     {
         if (shootingCoroutine != null)
         {
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
         }
-        elapsedTime = 0;
+        shootingElapsedTime = 0;
         bulletPooler.ResetPool(TagList.bulletPlayerTag);
     }
 
-    float elapsedTime = 0;
-    [Tooltip("Firerate measured in bullets/second")]
-    public float fireRate = 1;
-    private IEnumerator ShootCoroutine(int bulletCount, BulletDirections direction)
+    protected IEnumerator ShootCoroutine(int bulletCount, BulletDirections direction)
     {
         while (true)
         {
-            if (elapsedTime >= 1)
+            if (shootingElapsedTime >= 1)
             {
                 Quaternion rot = (direction == BulletDirections.VERTICALLY_ALIGNED) ?
                     transform.localRotation
                     : Quaternion.FromToRotation(transform.up, -transform.up);
-                
+
                 //Alternative to get rotation:
                 //transform.localRotation * Quaternion.Euler(transform.forward * 180);
-                
+
                 bulletPooler.SpawnPackFromPool(bulletTag, bulletCount, bulletSpawnPosition.position, rot, 0.1f);
 
 
                 //TODO Play Shot Sound
 
-                elapsedTime = 0;
+                shootingElapsedTime = 0;
             }
-            elapsedTime += Time.deltaTime * fireRate;
+            shootingElapsedTime += Time.deltaTime * fireRate;
             yield return null;
         }
     }
@@ -211,6 +180,5 @@ public class WeaponHandler : MonoBehaviour
 
         return positions;
     }
-
 
 }
