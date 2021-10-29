@@ -15,6 +15,7 @@ public class Enemy_Van_StateHandler : StateHandler_Base
             HandleDamage(totalHealth);
         else if(other.tag == TagList.bulletPlayerTag)
         {
+            Debug.LogWarning(other.name);
             float damage = other.GetComponentInParent<Bullet>().GetBulletDamage();
             HandleDamage(damage);
         }

@@ -14,6 +14,7 @@ TagManager:
   - PU_Weapon_T2
   - PU_Weapon_T3
   - PU_Weapon_Flame
+  - Enemy
   layers:
   - Default
   - TransparentFX

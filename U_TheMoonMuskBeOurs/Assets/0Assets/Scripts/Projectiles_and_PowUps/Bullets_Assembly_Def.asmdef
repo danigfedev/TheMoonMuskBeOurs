@@ -1,0 +1,16 @@
+{
+    "name": "Bullets_Assembly_Def",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ecd61a6eec500a34d96f0c1cd42b95bc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
