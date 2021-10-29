@@ -10,9 +10,10 @@ public abstract class WeaponHandler_Base: MonoBehaviour
         VERTICALLY_OPPOSED //opposing shooting object's vertical axis
     }
 
-    public enum BuletTypes
+    public enum BulletTypes
     {
         PLAYER = 0,
+        ENEMY,
         BOX,
         SMILE,
         OTHER
@@ -23,7 +24,7 @@ public abstract class WeaponHandler_Base: MonoBehaviour
     [Range(1, 3)] public int bulletCount = 1;
     [Space(10)]
     //Fields:
-    [SerializeField] protected BuletTypes bulletType;
+    [SerializeField] protected BulletTypes bulletType;
     [SerializeField] protected BulletDirections bulletDirection;
     [SerializeField] protected Transform bulletSpawnPosition;
 
@@ -47,13 +48,16 @@ public abstract class WeaponHandler_Base: MonoBehaviour
     {
         switch (bulletType)
         {
-            case BuletTypes.PLAYER:
+            case BulletTypes.PLAYER:
                 bulletTag = TagList.bulletPlayerTag;
                 break;
-            case BuletTypes.BOX:
+            case BulletTypes.ENEMY:
+                bulletTag = TagList.bulletEnemyGenericTag;
+                break;
+            case BulletTypes.BOX:
                 bulletTag = TagList.bulletBoxTag;
                 break;
-            case BuletTypes.SMILE:
+            case BulletTypes.SMILE:
                 bulletTag = TagList.bulletSmileTag;
                 break;
             default:

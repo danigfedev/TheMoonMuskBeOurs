@@ -28,7 +28,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowShooting: 1
   bulletCount: 1
-  bulletType: 2
+  bulletType: 1
   bulletDirection: 0
   bulletSpawnPosition: {fileID: 7762535915448013898}
   fireRate: 1
@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1624300936765470418, guid: 0b3941354042fb34b9a505233211aa0b, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: EnemyShip_Destructor-T1
       objectReference: {fileID: 0}
     - target: {fileID: 4949193336527774670, guid: 0b3941354042fb34b9a505233211aa0b, type: 3}
       propertyPath: m_RootOrder
@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5645029242725759918, guid: 0b3941354042fb34b9a505233211aa0b, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: EnemyShip_Destructor-T1
       objectReference: {fileID: 0}
     - target: {fileID: 8360034193733868616, guid: 0b3941354042fb34b9a505233211aa0b, type: 3}
       propertyPath: m_Name
@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360034193733868616, guid: 0b3941354042fb34b9a505233211aa0b, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: EnemyShip_Destructor-T1
       objectReference: {fileID: 0}
     - target: {fileID: 8571452762391937393, guid: 0b3941354042fb34b9a505233211aa0b, type: 3}
       propertyPath: m_IsTrigger
@@ -134,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2052557161877590530, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: poolList.Array.data[0].poolTag
-      value: Bullet_Smile
+      value: Bullet_Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2052557161877590530, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: poolList.Array.data[0].poolSize
@@ -151,6 +151,10 @@ PrefabInstance:
     - target: {fileID: 6161632117812519795, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: m_Name
       value: Enemy_Destructor_Proto Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161632117812519795, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
+      propertyPath: m_TagString
+      value: EnemyShip_Destructor-T1
       objectReference: {fileID: 0}
     - target: {fileID: 8307287418940115715, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: m_RootOrder

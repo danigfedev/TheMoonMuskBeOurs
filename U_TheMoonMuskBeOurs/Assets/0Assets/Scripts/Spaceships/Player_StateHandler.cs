@@ -29,9 +29,12 @@ public class Player_StateHandler : StateHandler_Base
             int healthAmount = other.gameObject.GetComponent<PowerUpHandler>().GetPowerUpAmount();
             HandleHealing(healthAmount);
         }
-        else if(_tag== TagList.enemyTag)
+        else if(_tag.Contains(TagList.enemyTag) /*== TagList.enemyTag*/)
         {
             // Collision with enemy.
+            Debug.Log("Parent: " + other.transform.parent.name);
+            Debug.Log("Tag: " + _tag);
+            Debug.Log(other.name);
             float damage = other.gameObject.GetComponentInParent<StateHandler_Base>().GetHitDamage();
             HandleDamage(damage);//hardcoded for now
         }

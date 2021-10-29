@@ -13,12 +13,14 @@ TagManager:
   - PU_Weapon_T2
   - PU_Weapon_T3
   - PU_Weapon_Flame
-  - Enemy
   - Bullet_Smile
   - PU_Health
   - PU_Weapon
   - ObjectPoolContainer
   - Bullet_Enemy
+  - EnemyShip_Van-T1
+  - EnemyShip_Destructor-T1
+  - EnemyShip
   layers:
   - Default
   - TransparentFX

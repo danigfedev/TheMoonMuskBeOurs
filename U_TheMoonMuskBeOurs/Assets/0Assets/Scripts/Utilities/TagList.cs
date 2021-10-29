@@ -6,7 +6,9 @@ public static class TagList
 
     //Spaceships:
     public const string playerTag = "Player";
-    public const string enemyTag = "Enemy";
+    public const string enemyTag = "EnemyShip";
+    public const string enemyVanT1Tag = "EnemyShip_Van-T1";
+    public const string enemyDestructorT1Tag = "EnemyShip_Destructor-T1";
 
     //Interactions
     public const string carTriggerTag = "CarTrigger";

@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Van_Proto
       objectReference: {fileID: 0}
+    - target: {fileID: 7163857064726274921, guid: 8e20429403e2c584caa38d861bc56a60, type: 3}
+      propertyPath: m_TagString
+      value: EnemyShip_Van-T1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e20429403e2c584caa38d861bc56a60, type: 3}
 --- !u!1001 &6644417903361473060
@@ -102,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2052557161877590530, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: poolList.Array.data[0].poolTag
-      value: Bullet_Box
+      value: Bullet_Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2052557161877590530, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: poolList.Array.data[0].poolSize
@@ -119,6 +123,10 @@ PrefabInstance:
     - target: {fileID: 6161632117812519795, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: m_Name
       value: Enemy_Van_Proto Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161632117812519795, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
+      propertyPath: m_TagString
+      value: EnemyShip_Van-T1
       objectReference: {fileID: 0}
     - target: {fileID: 8307287418940115715, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: m_RootOrder

@@ -34,12 +34,18 @@ public class Enemy_Generic_StateHandler : StateHandler_Base
         {
             //TODO Play Sound
             //TODO VFX
-            gameObject.SetActive(false);
+            StartCoroutine(Destroy());
         }
     }
 
     protected override void HandleHealing(float health)
     {
         throw new System.NotImplementedException("No healing for me");
+    }
+
+    private IEnumerator Destroy()
+    {
+        yield return new WaitForEndOfFrame();
+        gameObject.SetActive(false);
     }
 }

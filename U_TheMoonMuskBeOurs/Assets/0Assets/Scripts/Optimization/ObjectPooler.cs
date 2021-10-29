@@ -136,7 +136,7 @@ public class ObjectPooler : MonoBehaviour
     /// <returns></returns>
     public GameObject[] SpawnPackFromPool(string _tag, int packSize, Vector3 basePosition, Quaternion rotation, float offset = -1)
     {
-        //Debug.LogWarning(_tag);
+        Debug.LogWarning(_tag);
         if (poolDictionary[_tag] == null)
         {
             Debug.LogError(string.Format("No pool with tag {0}", _tag));
@@ -162,6 +162,28 @@ public class ObjectPooler : MonoBehaviour
             poolDictionary[_tag].Enqueue(tmp);
         }
         
+
+        return spawnObjPack;
+    }
+
+    public GameObject[] SpawnPackFromPool(string _tag, int packSize/*, Vector3 basePosition, Quaternion rotation, float offset = -1*/)
+    {
+        //Debug.LogWarning(_tag);
+        if (poolDictionary[_tag] == null)
+        {
+            Debug.LogError(string.Format("No pool with tag {0}", _tag));
+            return null;
+        }
+
+        GameObject[] spawnObjPack = new GameObject[packSize];
+        for (int i = 0; i < packSize; i++)
+        {
+            GameObject tmp = poolDictionary[_tag].Dequeue();
+            spawnObjPack[i] = tmp;
+            tmp.SetActive(true);
+
+            poolDictionary[_tag].Enqueue(tmp);
+        }
 
         return spawnObjPack;
     }
