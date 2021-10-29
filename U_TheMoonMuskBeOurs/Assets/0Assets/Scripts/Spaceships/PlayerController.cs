@@ -28,8 +28,12 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         invalidInput = Vector2.zero - Vector2.one;
+
+
+        gameObject.GetComponent<Rigidbody>().velocity = -Vector3.right * 0.7f;
     }
 
+    /*
     void Update()
     {
 
@@ -42,19 +46,24 @@ public class PlayerController : MonoBehaviour
 #elif UNITY_ANDROID
         RotationAndroid();
 #endif
-
-            
+    
     }
+    */
+
+    //private void FixedUpdate()
+    //{
+        
+    //}
 
     #endregion
 
-        #region === Private Methods ===
+    #region === Private Methods ===
 
-        /// <summary>
-        /// Gets input's screen coordinates (pixel untis) and translates it into World coordinates
-        /// </summary>
-        /// <returns>Input position in World Coordinates</returns>
-        private void InputPointToWorldCoordinates()
+    /// <summary>
+    /// Gets input's screen coordinates (pixel untis) and translates it into World coordinates
+    /// </summary>
+    /// <returns>Input position in World Coordinates</returns>
+    private void InputPointToWorldCoordinates()
         {
             // Getting input in screen coordinates
 
