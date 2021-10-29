@@ -100,9 +100,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9096705219074050368, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+      propertyPath: hitDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096705219074050368, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
       propertyPath: playerShip
       value: 
       objectReference: {fileID: 4166128435520767570}
+    - target: {fileID: 9096705219074050368, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+      propertyPath: totalHealth
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 706345276747377360, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}

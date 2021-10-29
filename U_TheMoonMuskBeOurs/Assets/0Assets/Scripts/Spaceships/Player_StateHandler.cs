@@ -18,26 +18,32 @@ public class Player_StateHandler : StateHandler_Base
 
     protected override void OnTriggerEnter(Collider other)
     {
-        switch (other.tag)
+        string _tag = other.tag;
+        if(_tag == TagList.PU_shieldTag)
         {
-            case TagList.PU_shieldTag:
-                int shieldDuration = other.gameObject.GetComponent<PowerUpHandler>().GetPowerUpAmount();
-                EnableShield(shieldDuration);
-                break;
-            case TagList.PU_healthTag:
-                int healthAmount = other.gameObject.GetComponent<PowerUpHandler>().GetPowerUpAmount();
-                HandleHealing(healthAmount);
-                break;
-            case TagList.enemyTag:
-                HandleDamage(2);
-                break;
-            case TagList.bulletBoxTag: //Enemy bullet
+            int shieldDuration = other.gameObject.GetComponent<PowerUpHandler>().GetPowerUpAmount();
+            EnableShield(shieldDuration);
+        }
+        else if(_tag== TagList.PU_healthTag)
+        {
+            int healthAmount = other.gameObject.GetComponent<PowerUpHandler>().GetPowerUpAmount();
+            HandleHealing(healthAmount);
+        }
+        else if(_tag== TagList.enemyTag)
+        {
+            // Collision with enemy.
+            float damage = other.gameObject.GetComponentInParent<StateHandler_Base>().GetHitDamage();
+            HandleDamage(damage);//hardcoded for now
+        }
+        else if (_tag.Contains(TagList.bulletPrefix))
+        {
+            if (_tag != TagList.bulletPlayerTag)
+            {
                 float damage = other.GetComponentInParent<Bullet>().GetBulletDamage();
                 HandleDamage(damage);
-                break;
+            }
         }
 
-        //other.gameObject.SetActive(false);
     }
 
     private void InitializeShield()
@@ -58,13 +64,12 @@ public class Player_StateHandler : StateHandler_Base
     protected override void HandleDamage(float damage)
     {
         totalHealth -= damage;
-
-        Debug.Log("Damage taken: " + totalHealth);
-
+        //Debug.Log("Damage taken: " + totalHealth);
         //Edit material
         if(totalHealth <= 0)
         {
             //GameOver!
+            Debug.LogError("YOU DIED");
         }
     }
 
@@ -72,10 +77,9 @@ public class Player_StateHandler : StateHandler_Base
     {
         totalHealth += health;
 
-        Debug.Log("Healing: " + totalHealth);
-
         if (totalHealth > maxHealth) totalHealth = maxHealth;
-
+        
+        Debug.Log("Healing: " + totalHealth);
         //Edit material
     }
 }

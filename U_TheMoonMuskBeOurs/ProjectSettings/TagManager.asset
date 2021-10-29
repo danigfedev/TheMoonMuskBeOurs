@@ -17,6 +17,8 @@ TagManager:
   - Bullet_Smile
   - PU_Health
   - PU_Weapon
+  - ObjectPoolContainer
+  - Bullet_Enemy
   layers:
   - Default
   - TransparentFX

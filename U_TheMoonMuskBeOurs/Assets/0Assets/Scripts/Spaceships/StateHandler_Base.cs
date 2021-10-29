@@ -6,7 +6,10 @@ public abstract class StateHandler_Base: MonoBehaviour
 {
 
     [SerializeField] protected float totalHealth;
+    [SerializeField] protected float hitDamage;
     protected float maxHealth;
+    
+    // Definitions:
 
     protected abstract void OnTriggerEnter(Collider other);
     protected abstract void HandleDamage(float damage);
@@ -14,8 +17,11 @@ public abstract class StateHandler_Base: MonoBehaviour
 
 
     //Implementations:
+
     public virtual void Awake()
     {
         maxHealth = totalHealth;
     }
+
+    public float GetHitDamage() => hitDamage;
 }

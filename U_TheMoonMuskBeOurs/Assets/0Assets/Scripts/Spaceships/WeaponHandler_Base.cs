@@ -40,7 +40,6 @@ public abstract class WeaponHandler_Base: MonoBehaviour
 
     protected void Awake()
     {
-        Debug.Log("Awake");
         bulletPooler = GetComponent<ObjectPooler>();
     }
 
@@ -53,6 +52,12 @@ public abstract class WeaponHandler_Base: MonoBehaviour
                 break;
             case BuletTypes.BOX:
                 bulletTag = TagList.bulletBoxTag;
+                break;
+            case BuletTypes.SMILE:
+                bulletTag = TagList.bulletSmileTag;
+                break;
+            default:
+                Debug.LogError("[WeaponHandler_Base] Error getting bullet tag");
                 break;
         }
 

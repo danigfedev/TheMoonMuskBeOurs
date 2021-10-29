@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Van_WeaponHandler : WeaponHandler_Base
+public class Enemy_Destructor_WeaponHandler : WeaponHandler_Base
 {
- 
     public override void OnTriggerEnter(Collider other)
     {
         //There are no weapon Power ups for the enemies,

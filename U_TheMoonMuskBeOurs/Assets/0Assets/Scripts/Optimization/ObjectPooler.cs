@@ -36,18 +36,18 @@ public class ObjectPooler : MonoBehaviour
 
             prefabHorExtents = prefabInstance.transform.
                 GetComponentInChildren<Collider>().bounds.extents.x;
-
-            Debug.Log(string.Format("Pool extents: {0}", prefabHorExtents));
         }
         public float GetPrefabExtents() => prefabHorExtents;
     }
 
-    [SerializeField] private Transform poolParent;
+    /*[SerializeField]*/ private Transform poolContainer;
     [SerializeField] private List<Pool> poolList;
     [SerializeField] private Dictionary<string, Queue<GameObject>> poolDictionary;
 
     private void Awake()
     {
+        poolContainer = GameObject.FindGameObjectWithTag(TagList.poolContainerTag).transform;
+
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
         InitializePools();
     }
@@ -70,12 +70,14 @@ public class ObjectPooler : MonoBehaviour
         GameObject tmp;
         foreach(Pool pool in poolList)
         {
+            
             string poolTag = pool.GetPoolTag();
+            Debug.Log(poolTag);
             poolDictionary.Add(poolTag, new Queue<GameObject>());
 
             //Create Container object to organize the pool
             parent = new GameObject(poolTag + "_Pool");
-            parent.transform.parent = poolParent;// transform;
+            parent.transform.parent = poolContainer;// transform;
 
             for(int i=0; i< pool.poolSize; i++)
             {
@@ -134,6 +136,7 @@ public class ObjectPooler : MonoBehaviour
     /// <returns></returns>
     public GameObject[] SpawnPackFromPool(string _tag, int packSize, Vector3 basePosition, Quaternion rotation, float offset = -1)
     {
+        //Debug.LogWarning(_tag);
         if (poolDictionary[_tag] == null)
         {
             Debug.LogError(string.Format("No pool with tag {0}", _tag));

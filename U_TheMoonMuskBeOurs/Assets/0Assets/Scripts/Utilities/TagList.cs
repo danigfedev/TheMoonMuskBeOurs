@@ -1,6 +1,9 @@
 
 public static class TagList
 {
+    //Object Pool
+    public const string poolContainerTag = "ObjectPoolContainer";
+
     //Spaceships:
     public const string playerTag = "Player";
     public const string enemyTag = "Enemy";
@@ -11,6 +14,7 @@ public static class TagList
     //Weapons
     public const string bulletPrefix = "Bullet";
     public const string bulletPlayerTag = "Bullet_Player";
+    public const string bulletEnemyGenericTag = "Bullet_Enemy";
     public const string bulletBoxTag = "Bullet_Box";
     public const string bulletSmileTag = "Bullet_Smile";
 

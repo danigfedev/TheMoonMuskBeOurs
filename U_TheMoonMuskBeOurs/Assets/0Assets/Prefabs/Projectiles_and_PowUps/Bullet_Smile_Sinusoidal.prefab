@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 206752250}
   m_Layer: 10
   m_Name: Capsule
-  m_TagString: Bullet_Smile
+  m_TagString: Bullet_Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 20084350518269338, guid: 486b8458b385baa47a52b2bd7db89265, type: 3}
       propertyPath: m_TagString
-      value: Bullet_Smile
+      value: Bullet_Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2190292135938116538, guid: 486b8458b385baa47a52b2bd7db89265, type: 3}
       propertyPath: m_RootOrder
