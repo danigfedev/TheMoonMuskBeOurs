@@ -17,7 +17,7 @@ public class StateHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
+        //Debug.Log(other.name);
 
         if (other.tag == TagList.bulletTag) return;
 

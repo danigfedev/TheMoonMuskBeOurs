@@ -10,104 +10,113 @@ public class PlayerController : MonoBehaviour
         MIDDLE,
         RIGHT
     }
-
-    [SerializeField] private Camera mainCam;
-
+    
     [Tooltip("The spaceship's max vertical rotation in degrees caused by horizontal strafe. " +
             "Positive values rotate the object to the left from camera's PoV. Negative values rotate to the right.")]
-    [SerializeField] private float maxVerticalRotation_Left = 30;
-    [SerializeField] private float rotationDuration = 1;
+    [SerializeField] float maxVerticalRotation_Left = 30;
+    [SerializeField] float rotationDuration = 1;
 
 
-    private Vector2 invalidInput;
-    private Vector3? worldPos;
+    /*[SerializeField]*/ private Camera mainCam;
+    private Rigidbody spaceshipRB;    
+
+    private float horizontalAmount = 0;
+    private float threshold = 25;
+    private int stationaryMaxCount = 15;
+    private int stationaryCount = 0;
     private Coroutine rotationCoroutine = null;
 
-    #region === Monobehaviour Methods ===
+    #region === MonoBehaviour Methods ===
 
-    private void Start()
+    private void Awake()
     {
-        invalidInput = Vector2.zero - Vector2.one;
-
-
-        gameObject.GetComponent<Rigidbody>().velocity = -Vector3.right * 0.7f;
+        mainCam = Camera.main;
+        spaceshipRB = gameObject.GetComponent<Rigidbody>();
     }
 
-    /*
-    void Update()
-    {
-
-        InputPointToWorldCoordinates();
-        if (worldPos == null) return; //Keep current transform 
-        transform.position = (Vector3) worldPos;
-
-#if UNITY_EDITOR || UNITY_STANDALONE
-        RotationInPC();
-#elif UNITY_ANDROID
-        RotationAndroid();
-#endif
-    
-    }
-    */
-
-    //private void FixedUpdate()
+    //private void Start()
     //{
+    //    //invalidInput = Vector2.zero - Vector2.one;
         
     //}
 
+
+    private void FixedUpdate()
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        MovePC();
+        RotationInPC();
+#elif UNITY_ANDROID
+        MoveAndroid();
+        RotationAndroid();
+#endif
+    }
+
     #endregion
 
-    #region === Private Methods ===
 
-    /// <summary>
-    /// Gets input's screen coordinates (pixel untis) and translates it into World coordinates
-    /// </summary>
-    /// <returns>Input position in World Coordinates</returns>
-    private void InputPointToWorldCoordinates()
+
+    #region === Player Movement ===
+
+    private void MovePC()
+    {
+        Move(GetMovementInputPC());
+    }
+
+    private void MoveAndroid()
+    {
+        Move(GetMovementInputAndroid());
+    }
+
+
+    private void Move(Vector3 newPosition)
+    {
+        spaceshipRB.MovePosition(newPosition);
+    }
+
+    private Vector3 GetMovementInputPC()
+    {
+        if (Input.GetMouseButton(0)) //MLB pressed
         {
-            // Getting input in screen coordinates
+            Vector3 mousePos = Input.mousePosition;
 
-            Vector2 inputCoords = invalidInput; //negative vector
-#if UNITY_EDITOR || UNITY_STANDALONE
-            if (Input.GetMouseButton(0))
-            {
-                inputCoords = Input.mousePosition; //z discarded
-                if ((inputCoords.x < 0 || inputCoords.x > Screen.width)
-                    || (inputCoords.y < 0 || inputCoords.y > Screen.height))
-                    inputCoords = invalidInput;
-            }
-            
-#elif UNITY_ANDROID
-            if(Input.touchCount > 0)
-            {
-                //Input.touches[0]
-                Touch userTouch = Input.GetTouch(0);
-                inputCoords= new Vector2(userTouch.position.x, userTouch.position.y);
-            }
-#endif
+            //Correct z:
+            //mousePos = new Vector3(
+            //        mousePos.x,
+            //        mousePos.y,
+            //        -1 * mainCam.transform.position.z);
 
-            //Conversion into Vector3. z value must be positive
-
-            Vector3 touchPos = new Vector3(
-                    inputCoords.x,
-                    inputCoords.y,
-                    -1 * mainCam.transform.position.z);
-
-            //Calculate World position
-
-            if (inputCoords.Equals(invalidInput))
-            {
-                worldPos = null;
-                return;
-            }
-
-            worldPos = mainCam.ScreenToWorldPoint(touchPos);
+            mousePos = mainCam.ScreenToWorldPoint(mousePos);
+            return new Vector3(mousePos.x, mousePos.y, transform.position.z);
         }
 
-        float horizontalAmount = 0;
-        float threshold = 25;
-        int stationaryMaxCount = 15;
-        int stationaryCount = 0;
+        return transform.position;
+    }
+
+    private Vector3 GetMovementInputAndroid()
+    {
+        if (Input.touches.Length > 0)
+        {
+            Touch mainTouch = Input.GetTouch(0);
+
+            if (mainTouch.phase == TouchPhase.Began || mainTouch.phase == TouchPhase.Moved)
+            {
+                Vector3 inputPos = mainTouch.position; //Vector2 -> Vector3 ==> z = 0
+                inputPos = mainCam.ScreenToWorldPoint(inputPos);
+                return new Vector3(inputPos.x, inputPos.y, transform.position.z);
+            }
+        }
+
+        return transform.position;
+    }
+
+    #endregion
+
+
+
+    #region === Player Rotation ===
+
+
 #if UNITY_EDITOR || UNITY_STANDALONE
         Vector2 currentInput;
         Vector2 prevInput;
@@ -116,7 +125,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-
                 currentInput = Input.mousePosition;
 
                 if (Input.GetMouseButtonDown(0))
