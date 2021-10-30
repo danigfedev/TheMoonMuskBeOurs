@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1caa3972509cb4691f1124c6b8aa8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenHeight: 2340
-  screenWidth: 1080
   screenPosition: 0
-  biggestPoolableObjectPrefab: {fileID: 8360034193733868616, guid: 0b3941354042fb34b9a505233211aa0b, type: 3}
+  biggestPoolableObjectPrefab: {fileID: 724396758521675903, guid: d94f259d2438fee48bdc692ad2b1246c, type: 3}
+  prefabCountAsMargin: 3

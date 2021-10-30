@@ -41,8 +41,8 @@ GameObject:
   - component: {fileID: 791902448356460661}
   - component: {fileID: 791902448356460656}
   - component: {fileID: 791902448356460658}
-  - component: {fileID: 791902448356460659}
-  - component: {fileID: 791902448356460660}
+  - component: {fileID: 1090171737598334830}
+  - component: {fileID: 7589616157797870400}
   m_Layer: 9
   m_Name: Enemy_Van_Base
   m_TagString: Enemy
@@ -93,12 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbb95f41e5113f4d97187f9cc9b5b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolParent: {fileID: 0}
   poolList:
   - poolSize: 10
     poolPrefab: {fileID: 3653402098641378839, guid: 8e4fc7d9e6d9b6a4f8ba01ea61ae19b7, type: 3}
     poolTag: Bullet_Box
---- !u!114 &791902448356460659
+--- !u!114 &1090171737598334830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,11 +106,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 791902448356460657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57abc524f6da3984ca4c6e3845502280, type: 3}
+  m_Script: {fileID: 11500000, guid: 39b9d9e5bf148b7419acb69b96dcd71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 2
---- !u!114 &791902448356460660
+  hitDamage: 0
+--- !u!114 &7589616157797870400
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 791902448356460657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34400d88c44d5ee409d3074dcd6130b6, type: 3}
+  m_Script: {fileID: 11500000, guid: ef3cacfdc2d11a6489a2cce647af0ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   allowShooting: 1

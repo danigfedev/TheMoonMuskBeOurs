@@ -15,14 +15,16 @@ public class GameLimitHandler : MonoBehaviour
 
     [SerializeField] ScreenPositions screenPosition;
     [SerializeField] GameObject biggestPoolableObjectPrefab;
+    [SerializeField] int prefabCountAsMargin = 4;
 
     private Vector3 prefabExtents;
 
     void Awake()
     {
-#if UNITY_ANDROID
         PlaceInScene();
-#endif
+//#if UNITY_ANDROID
+//        PlaceInScene();
+//#endif
     }
 
     [ContextMenu("Place In Scene")]
@@ -36,14 +38,14 @@ public class GameLimitHandler : MonoBehaviour
 
         ScreenExtentsWorldSpace screenExtents = Utils.GetScreenWorldExtents();
 
-        float offset = transform.localScale.y + 8 * prefabExtents.y;
+        float offset = transform.localScale.y + prefabCountAsMargin * 2 * prefabExtents.y;
 
         float posX = 0;
         float posY = 0;
         float rotZ = 0;
         if (screenPosition == ScreenPositions.TOP)
         {
-            Debug.Log(ScreenPositions.TOP);
+            //Debug.Log(ScreenPositions.TOP);
             posY = screenExtents.yMax + offset;
         }
             

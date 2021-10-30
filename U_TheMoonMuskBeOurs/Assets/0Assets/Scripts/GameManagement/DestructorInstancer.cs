@@ -3,18 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ObjectPooler))]
-public class DestructorInstancer_Test : MonoBehaviour
+public class DestructorInstancer : MonoBehaviour
 {
 
     [SerializeField] int verticalResolution;
     [SerializeField] float horizontalSeparationPercentage = 0.25f;
-    [SerializeField] float verticalOffset = 10;
+    [SerializeField] GameObject biggestPoolableObjectPrefab;
+    [SerializeField] int prefabCountAsMargin = 4;
 
+    float verticalOffset = 0;
     ObjectPooler objectPooler;
 
     void Awake()
     {
         objectPooler = GetComponent<ObjectPooler>();
+    }
+
+    private void Start()
+    {
+        verticalOffset = prefabCountAsMargin * GetPrefabExtents().y;
+
+        SpawnFromPool();
     }
 
     [ContextMenu("Spawn From Pool")]
@@ -23,7 +32,9 @@ public class DestructorInstancer_Test : MonoBehaviour
         GameObject[] objPack = objectPooler.SpawnPackFromPool(TagList.enemyDestructorT1Tag, 3);
 
         int centralPos = 0;
-        Vector3 topScreen = GetTopScreenWorlPosition();
+        //Vector3 topScreen = GetTopScreenWorlPosition();
+        ScreenExtentsWorldSpace screenExtents = Utils.GetScreenWorldExtents();
+        Vector3 topScreen = new Vector3(screenExtents.xMid, screenExtents.yMax, 0);
 
         Vector2 extents = objPack[0].GetComponentInChildren<Collider>().bounds.extents;
         float horoffset = horizontalSeparationPercentage * extents.x;
@@ -55,5 +66,16 @@ public class DestructorInstancer_Test : MonoBehaviour
 #endif
 
         return Camera.main.ScreenToWorldPoint(new Vector3(0, verticalResolution, 0));
+    }
+
+
+    private Vector3 GetPrefabExtents()
+    {
+        GameObject instance = Instantiate(biggestPoolableObjectPrefab,
+            Vector3.forward * 100,
+            Quaternion.identity);
+        Vector3 e = instance.GetComponentInChildren<Collider>().bounds.extents;
+        DestroyImmediate(instance);//Only done on load, not a problem in runtime
+        return e;
     }
 }

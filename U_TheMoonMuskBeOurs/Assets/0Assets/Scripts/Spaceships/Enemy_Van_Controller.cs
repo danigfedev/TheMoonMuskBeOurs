@@ -48,9 +48,7 @@ public class Enemy_Van_Controller : EnemyController_Base
         float mod = v.magnitude;
         v.Normalize();
 
-        Debug.Log(v);
         v = Quaternion.AngleAxis(Time.deltaTime * angularSpeed, -Vector3.forward) * v;
-        Debug.Log("Rotated: " + v);
         enemyRigidbody.MovePosition(pivotPoint+v * mod);
     }
 }
