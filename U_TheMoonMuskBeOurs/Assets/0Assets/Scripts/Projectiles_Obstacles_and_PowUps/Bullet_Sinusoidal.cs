@@ -17,6 +17,9 @@ public class Bullet_Sinusoidal : Bullet
     [SerializeField] SinusoidalDirection direction = SinusoidalDirection.VERTICAL;
 
     private float curveEndTime = 0;
+    private bool useInverseFwdSpeed = false;
+
+    private void OnDisable() => useInverseFwdSpeed = false;
 
     protected override void Start()
     {
@@ -25,7 +28,7 @@ public class Bullet_Sinusoidal : Bullet
 
         int curveKeyCount = curve.keys.Length;
         curveEndTime = curve.keys[curveKeyCount - 1].time;
-        Debug.Log(string.Format("Curve end time: {0}", curveEndTime));
+        //Debug.Log(string.Format("Curve end time: {0}", curveEndTime));
     }
 
     float time = 0;
@@ -34,6 +37,8 @@ public class Bullet_Sinusoidal : Bullet
         Move();
     }
 
+
+    public void UseNegativeSpeed() => useInverseFwdSpeed = true;
 
     protected override void OnTriggerEnter(Collider other)
     {
@@ -53,8 +58,10 @@ public class Bullet_Sinusoidal : Bullet
         time += frequency * Time.fixedDeltaTime;
         if (time > curveEndTime) time = 0;
         
-        float sinSpeed= amplitude * curve.Evaluate(time); ;
-        float linearSpeed = forwardSpeed;
+        float sinSpeed= amplitude * curve.Evaluate(time);
+        //float linearSpeed = forwardSpeed;
+        float linearSpeed = useInverseFwdSpeed ?-forwardSpeed : forwardSpeed;
+
         if (direction == SinusoidalDirection.VERTICAL)
         {
             newVelocity.x = sinSpeed;

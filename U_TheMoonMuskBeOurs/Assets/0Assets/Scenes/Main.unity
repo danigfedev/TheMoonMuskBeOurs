@@ -1381,13 +1381,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1716047593}
   - component: {fileID: 1716047592}
+  - component: {fileID: 1716047594}
   m_Layer: 0
   m_Name: =Background_Pooler=
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1716047592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,13 +1402,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolList:
-  - poolSize: 5
+  - poolSize: 10
     poolPrefab: {fileID: 2363596815587896792, guid: 3da0d175d16a3a6409b6fb5d6cd63080, type: 3}
     poolTag: Obstacle_CloudBG_1
-  - poolSize: 5
+  - poolSize: 10
     poolPrefab: {fileID: 5076314783889143601, guid: 8710c77d736e4cf4eb90fa2a7e36d813, type: 3}
     poolTag: Obstacle_CloudBG_2
-  - poolSize: 5
+  - poolSize: 10
     poolPrefab: {fileID: 6037219335504017205, guid: 98f806c965dffd04b8d478bf21dd650e, type: 3}
     poolTag: Obstacle_SatelliteBG
 --- !u!4 &1716047593
@@ -1424,6 +1425,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1716047594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716047591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77ce126cefd05249b19cba18ca2aba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instanceRate: 0.15
+  topMargin: 4
+  sideMargin: 4
+  backgrounDepthPosition: 8
 --- !u!1 &1728483767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,7 +1569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a6dff924c987bf49a152c68a4bea91d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a6dff924c987bf49a152c68a4bea91d, type: 3}
       propertyPath: m_LocalRotation.w
