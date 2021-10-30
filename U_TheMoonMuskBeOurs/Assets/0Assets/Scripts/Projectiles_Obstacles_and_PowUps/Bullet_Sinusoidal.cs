@@ -8,15 +8,7 @@ public class Bullet_Sinusoidal : Bullet
     {
         VERTICAL = 0,
         HORIZONTAL
-
-
-    //VERTICAL_UP = 0,
-    //    VERTICAL_DOWN,
-    //    HORIZONTAL_RIGHT,
-    //    HORIZONTAL_LEFT
-
     }
-
 
     [SerializeField] AnimationCurve curve;
     [SerializeField] float amplitude = 1;
@@ -73,8 +65,7 @@ public class Bullet_Sinusoidal : Bullet
             newVelocity.x = linearSpeed;
             newVelocity.y = sinSpeed;
         }
-        //newVelocity.x = amplitude * curve.Evaluate(time);
-        //newVelocity.y = forwardSpeed;
+
         bulletRB.velocity = newVelocity;
     }
 

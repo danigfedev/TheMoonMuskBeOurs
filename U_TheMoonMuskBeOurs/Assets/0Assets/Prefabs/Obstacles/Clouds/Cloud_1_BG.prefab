@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cloud_1_BG_model
       objectReference: {fileID: 0}
+    - target: {fileID: 3880260047522275599, guid: ee32099d984b851438e8fc6e2f029676, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4508845779364150197, guid: ee32099d984b851438e8fc6e2f029676, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -64,6 +68,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2526501674165596024, guid: dfd9e1aa558b28546b02e6e333ac4505, type: 3}
+      propertyPath: bulletSpeed
+      value: -0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 5286431537841884602, guid: dfd9e1aa558b28546b02e6e333ac4505, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -110,7 +118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5286431537841884604, guid: dfd9e1aa558b28546b02e6e333ac4505, type: 3}
       propertyPath: m_Name
-      value: Cloud_1_BG Variant
+      value: Cloud_1_BG
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286431537841884604, guid: dfd9e1aa558b28546b02e6e333ac4505, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5286431537841884604, guid: dfd9e1aa558b28546b02e6e333ac4505, type: 3}
       propertyPath: m_TagString
