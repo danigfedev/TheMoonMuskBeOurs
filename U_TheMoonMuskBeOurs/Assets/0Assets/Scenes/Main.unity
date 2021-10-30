@@ -673,6 +673,78 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6376156070873189683, guid: a204e849aedc0494ca3309c426e72c38, type: 3}
   m_PrefabInstance: {fileID: 6376156071384100229}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &669701013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 669701016}
+  - component: {fileID: 669701015}
+  - component: {fileID: 669701014}
+  m_Layer: 0
+  m_Name: =Obstacle_Pooler=
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &669701014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669701013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77ce126cefd05249b19cba18ca2aba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBackground: 0
+  satelliteObstacleScreenPctg: 0.4
+  instanceRate: 0.15
+  topMargin: 4
+  sideMargin: 4
+  backgrounDepthPosition: 8
+--- !u!114 &669701015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669701013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bbb95f41e5113f4d97187f9cc9b5b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolList:
+  - poolSize: 10
+    poolPrefab: {fileID: 6142436748682951595, guid: bdb69ef616a19d34a898c3f8b80369a1, type: 3}
+    poolTag: Obstacle_CloudFG_1
+  - poolSize: 10
+    poolPrefab: {fileID: 1009709022081808374, guid: 6db79d589990fbb4f82cc62bacad7131, type: 3}
+    poolTag: Obstacle_CloudFG_2
+  - poolSize: 10
+    poolPrefab: {fileID: 9018422527381769655, guid: ae60504be4781fc4bb85ec888c47b3e5, type: 3}
+    poolTag: Obstacle_SatelliteFG
+--- !u!4 &669701016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669701013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &676027794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 447770099342176729, guid: 4d524a2580bc54b42bbe637b4cf323e1, type: 3}
@@ -1426,7 +1498,7 @@ Transform:
   - {fileID: 1369712519}
   - {fileID: 1089708887}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1711051584
 GameObject:
@@ -1462,7 +1534,7 @@ Transform:
   - {fileID: 1676174454}
   - {fileID: 901490811}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1716047591
 GameObject:
@@ -1530,6 +1602,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77ce126cefd05249b19cba18ca2aba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBackground: 1
+  satelliteObstacleScreenPctg: 0.4
   instanceRate: 0.15
   topMargin: 4
   sideMargin: 4

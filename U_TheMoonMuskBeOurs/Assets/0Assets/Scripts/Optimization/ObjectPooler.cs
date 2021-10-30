@@ -74,7 +74,7 @@ public class ObjectPooler : MonoBehaviour
         {
             
             string poolTag = pool.GetPoolTag();
-            Debug.Log(poolTag);
+            Debug.Log(string.Format("Initializing pool with tag {0}", poolTag));
             poolDictionary.Add(poolTag, new Queue<GameObject>());
 
             //Create Container object to organize the pool

@@ -42,11 +42,13 @@ public class Utils
         extentsWorld.xMid = posMin.x + width / 2;
         extentsWorld.yMid = posMin.y + height / 2;
 
+        /*
         Debug.Log(string.Format("xMin: {0} | xMax: {1} | yMin: {2} | yMax: {3}",
             extentsWorld.xMin,
             extentsWorld.xMax,
             extentsWorld.yMin,
             extentsWorld.yMax));
+        */
 
         return extentsWorld;
 
