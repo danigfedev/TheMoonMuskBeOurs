@@ -8,15 +8,14 @@ public class GameLimitHandler : MonoBehaviour
     public enum ScreenPositions
     {
         BOTTOM=0,
-        TOP
+        TOP,
+        LEFT,
+        RIGHT
     }
 
-    [SerializeField] int screenHeight;
-    [SerializeField] int screenWidth;
     [SerializeField] ScreenPositions screenPosition;
     [SerializeField] GameObject biggestPoolableObjectPrefab;
 
-    private Vector3 limitExtents;
     private Vector3 prefabExtents;
 
     void Awake()
@@ -29,23 +28,41 @@ public class GameLimitHandler : MonoBehaviour
     [ContextMenu("Place In Scene")]
     public void PlaceInScene()
     {
-        limitExtents = GetComponent<Collider>().bounds.extents;
+        transform.localRotation = Quaternion.identity;
+        transform.position = Vector3.zero;
+
+        //limitExtents = GetComponent<Collider>().bounds.extents;
         prefabExtents = GetPrefabExtents();
-        //Debug.Log(prefabExtents.y);
-        
 
-        Vector2 screenSize = GetScreenSize();
-        //float verticalPos = (screenPosition == ScreenPositions.BOTTOM) ? 0 - offset : screenSize.y + offset;
+        ScreenExtentsWorldSpace screenExtents = Utils.GetScreenWorldExtents();
 
-        float verticalPos = 0;
-        float offset = limitExtents.y + 8 * prefabExtents.y;
+        float offset = transform.localScale.y + 8 * prefabExtents.y;
+
+        float posX = 0;
+        float posY = 0;
+        float rotZ = 0;
         if (screenPosition == ScreenPositions.TOP)
-        
-            verticalPos = GetScreenSize().y;
-        else
-            offset *= -1;
+        {
+            Debug.Log(ScreenPositions.TOP);
+            posY = screenExtents.yMax + offset;
+        }
+            
+        else if (screenPosition == ScreenPositions.BOTTOM)
+            posY = screenExtents.yMin - offset;
+        else if (screenPosition == ScreenPositions.LEFT)
+        {
+            rotZ = 90;
+            posX = screenExtents.xMin - offset;
+        }
+        else if (screenPosition == ScreenPositions.RIGHT)
+        {
+            rotZ = 90;
+            posX = screenExtents.xMax + offset;
+        }
 
-        transform.position = GetScreenWorlPosition(verticalPos, offset);
+        transform.position = new Vector3(posX, posY, 0);
+        transform.localRotation = Quaternion.Euler(0, 0, rotZ);
+
     }
 
     private Vector3 GetPrefabExtents()
@@ -56,30 +73,5 @@ public class GameLimitHandler : MonoBehaviour
         Vector3 e = instance.GetComponentInChildren<Collider>().bounds.extents;
         DestroyImmediate(instance);//Only done on load, not a problem in runtime
         return e;
-    }
-
-    private Vector2 GetScreenSize()
-    {
-        Vector2 screenSize;
-#if UNITY_ANDROID && !UNITY_EDITOR
-        screenSize.x = Screen.width;
-        screenSize.y = Screen.height;
-#elif UNITY_EDITOR
-        screenSize.x = screenWidth;
-        screenSize.y = screenHeight;
-#endif
-        return screenSize;
-    }
-
-    private Vector3 GetScreenWorlPosition(float verticalScreenPos, float offset)
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        screenHeight = Screen.height;
-#endif
-        //offset = 0;
-        Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(0, verticalScreenPos, 0));
-        pos = new Vector3(0, pos.y += offset, 0);
-
-        return pos;
     }
 }

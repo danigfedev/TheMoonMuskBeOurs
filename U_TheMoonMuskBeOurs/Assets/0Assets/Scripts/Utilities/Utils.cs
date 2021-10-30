@@ -18,14 +18,12 @@ public class Utils
     /// <returns></returns>
     public static ScreenExtentsWorldSpace GetScreenWorldExtents()
     {
-        Vector3 screenDimensions = new Vector3(Screen.width, Screen.height, 0);
-        /*
-#if UNITY_ANDROID && !UNITY_EDITOR
+        Vector3 screenDimensions;
+#if UNITY_EDITOR
+        screenDimensions = new Vector3(1080, 2340, 0); //Hardcoded to avoid problems in editor
+#elif UNITY_ANDROID
         screenDimensions = new Vector3(Screen.width, Screen.height, 0);
-#else
-        screenDimensions = new Vector3(screenWidth, screenHeight, 0);
 #endif
-        */
 
         Vector3 posMin = Camera.main.ScreenToWorldPoint(Vector3.zero);
         Vector3 posMax = Camera.main.ScreenToWorldPoint(screenDimensions);
