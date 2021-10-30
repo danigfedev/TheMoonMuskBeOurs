@@ -34,7 +34,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Shiel_Intensity: 0
-    - Shield_Intensity: 0.5
+    - Shield_Intensity: 1
     - Shield_Visibility: 1
     m_Colors:
     - MainColor: {r: 0.0235849, g: 0.7471096, b: 1, a: 0}

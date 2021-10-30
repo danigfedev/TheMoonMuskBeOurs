@@ -31,7 +31,7 @@ public class GameLimitHandler : MonoBehaviour
     {
         limitExtents = GetComponent<Collider>().bounds.extents;
         prefabExtents = GetPrefabExtents();
-        Debug.Log(prefabExtents.y);
+        //Debug.Log(prefabExtents.y);
         
 
         Vector2 screenSize = GetScreenSize();

@@ -13,6 +13,8 @@ public class Shield : MonoBehaviour
     private Transform playerShip;
     private Rigidbody shieldRB;
     private float shieldVisibleTime;
+    private float shieldInitialIntensity;
+    private Coroutine shieldCoroutine = null;
 
     public Transform PlayerShip
     {
@@ -22,6 +24,12 @@ public class Shield : MonoBehaviour
     private void Awake()
     {
         shieldRB = GetComponent<Rigidbody>();
+        shieldInitialIntensity = shieldMaterial.GetFloat("Shield_Intensity");
+    }
+
+    private void OnDestroy()
+    {
+        shieldMaterial.SetFloat("Shield_Intensity", shieldInitialIntensity);
     }
 
     /*
@@ -49,26 +57,39 @@ public class Shield : MonoBehaviour
             shiedlFadeTime = shieldDuration / 4;
         shieldVisibleTime = shieldDuration - shiedlFadeTime;
 
-        StartCoroutine(DisableShield());
+        if (shieldCoroutine != null)
+            StopCoroutine(shieldCoroutine);
 
-
+        shieldCoroutine = StartCoroutine(DisableShield());
     }
 
     private IEnumerator DisableShield()
     {
+        //Waiting for two FixeUpdate cycles. Waiting for just one makes shield visible at its last position
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
+        shieldMaterial.SetFloat("Shield_Intensity", shieldInitialIntensity);
+
+
         yield return new WaitForSeconds(shieldVisibleTime);
 
-        float initialValue = shieldMaterial.GetFloat("Shield_Intensity");
+        //float initialValue = shieldMaterial.GetFloat("Shield_Intensity");
         float t = 0;
         while (t < 1)
         {
-            float newValue = Mathf.Lerp(initialValue, 0, t);
+            float newValue = Mathf.Lerp(shieldInitialIntensity, 0, t);
             shieldMaterial.SetFloat("Shield_Intensity", newValue);
             t += Time.deltaTime/ shiedlFadeTime;
             
             yield return null;
         }
-        shieldMaterial.SetFloat("Shield_Intensity", initialValue);
+        //shieldMaterial.SetFloat("Shield_Intensity", shieldInitialIntensity);
+
+        //transform.position = new Vector3(0, -100, 0); //moving shield out of view to avoid the first fram
+
+        shieldCoroutine = null;
         gameObject.SetActive(false);
     }
+
 }
