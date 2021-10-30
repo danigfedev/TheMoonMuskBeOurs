@@ -34,8 +34,10 @@ public class ObjectPooler : MonoBehaviour
 
             if (prefabHorExtents > 0) return; //Already set
 
-            prefabHorExtents = prefabInstance.transform.
-                GetComponentInChildren<Collider>().bounds.extents.x;
+            Collider col = prefabInstance.transform.
+                GetComponentInChildren<Collider>();
+            if(col != null)
+                prefabHorExtents = col.bounds.extents.x;
         }
         public float GetPrefabExtents() => prefabHorExtents;
     }

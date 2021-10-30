@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cloud_2_FG
       objectReference: {fileID: 0}
+    - target: {fileID: 6860533589426396241, guid: dfd9e1aa558b28546b02e6e333ac4505, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfd9e1aa558b28546b02e6e333ac4505, type: 3}
 --- !u!4 &1009709022081808368 stripped

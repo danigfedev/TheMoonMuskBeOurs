@@ -23,6 +23,8 @@ TagManager:
   - EnemyShip
   - Enemy
   - GameLimit
+  - Obstacle_CloudBG_1
+  - Obstacle_CloudBG_2
   layers:
   - Default
   - TransparentFX

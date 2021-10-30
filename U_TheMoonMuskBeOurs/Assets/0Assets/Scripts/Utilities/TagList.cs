@@ -14,6 +14,11 @@ public static class TagList
     //Interactions
     public const string carTriggerTag = "CarTrigger";
 
+    //Obstacles:
+    public const string obstaclePrefix = "Obstacle";
+    public const string cloudBG1_Tag = "Obstacle_CloudBG_1";
+    public const string cloudBG2_Tag = "Obstacle_CloudBG_2";
+
     //Weapons
     public const string bulletPrefix = "Bullet";
     public const string bulletPlayerTag = "Bullet_Player";

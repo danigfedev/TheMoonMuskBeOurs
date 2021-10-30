@@ -4,11 +4,26 @@ using UnityEngine;
 
 public class Bullet_Sinusoidal : Bullet
 {
+    public enum SinusoidalDirection
+    {
+        VERTICAL = 0,
+        HORIZONTAL
+
+
+    //VERTICAL_UP = 0,
+    //    VERTICAL_DOWN,
+    //    HORIZONTAL_RIGHT,
+    //    HORIZONTAL_LEFT
+
+    }
+
+
     [SerializeField] AnimationCurve curve;
     [SerializeField] float amplitude = 1;
     [SerializeField] float frequency = 1;
     [SerializeField] float forwardSpeed = 1;
-    
+    [SerializeField] SinusoidalDirection direction = SinusoidalDirection.VERTICAL;
+
     private float curveEndTime = 0;
 
     protected override void Start()
@@ -45,8 +60,21 @@ public class Bullet_Sinusoidal : Bullet
 
         time += frequency * Time.fixedDeltaTime;
         if (time > curveEndTime) time = 0;
-        newVelocity.x = amplitude * curve.Evaluate(time);
-        newVelocity.y = forwardSpeed;
+        
+        float sinSpeed= amplitude * curve.Evaluate(time); ;
+        float linearSpeed = forwardSpeed;
+        if (direction == SinusoidalDirection.VERTICAL)
+        {
+            newVelocity.x = sinSpeed;
+            newVelocity.y = linearSpeed;
+        }
+        else
+        {
+            newVelocity.x = linearSpeed;
+            newVelocity.y = sinSpeed;
+        }
+        //newVelocity.x = amplitude * curve.Evaluate(time);
+        //newVelocity.y = forwardSpeed;
         bulletRB.velocity = newVelocity;
     }
 
