@@ -82,6 +82,7 @@ public class ObjectPooler : MonoBehaviour
             for(int i=0; i< pool.poolSize; i++)
             {
                 tmp = Instantiate(pool.poolPrefab, parent.transform);
+                tmp.AddComponent<PoolableObject>();
                 pool.SetPrefabExtents(tmp);
                 tmp.SetActive(false);
                 poolDictionary[poolTag].Enqueue(tmp);
@@ -121,9 +122,7 @@ public class ObjectPooler : MonoBehaviour
         GameObject spawnObj = poolDictionary[tag].Dequeue();
         spawnObj.SetActive(true);
         spawnObj.transform.position=position;
-
         spawnObj.transform.localRotation = rotation;
-
         poolDictionary[tag].Enqueue(spawnObj);
         return spawnObj;
     }
@@ -136,7 +135,7 @@ public class ObjectPooler : MonoBehaviour
     /// <returns></returns>
     public GameObject[] SpawnPackFromPool(string _tag, int packSize, Vector3 basePosition, Quaternion rotation, float offset = -1)
     {
-        Debug.LogWarning(_tag);
+        //Debug.LogWarning(_tag);
         if (poolDictionary[_tag] == null)
         {
             Debug.LogError(string.Format("No pool with tag {0}", _tag));

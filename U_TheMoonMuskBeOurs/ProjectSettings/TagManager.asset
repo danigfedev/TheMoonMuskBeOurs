@@ -21,6 +21,7 @@ TagManager:
   - EnemyShip_Van-T1
   - EnemyShip_Destructor-T1
   - EnemyShip
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Player
   - Enemy
   - Projectile
-  - 
+  - GameLimit
   - 
   - 
   - 
