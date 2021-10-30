@@ -26,6 +26,10 @@ TagManager:
   - Obstacle_CloudBG_1
   - Obstacle_CloudBG_2
   - Obstacle_Satellite
+  - Obstacle_CloudFG_1
+  - Obstacle_CloudFG_2
+  - Obstacle_SatelliteBG
+  - Obstacle_SatelliteFG
   layers:
   - Default
   - TransparentFX
@@ -40,7 +44,7 @@ TagManager:
   - Projectile
   - GameLimit
   - Obstacle
-  - 
+  - Background
   - 
   - 
   - 

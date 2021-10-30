@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1574033844348816421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -15.999999, z: 0}
-  m_LocalScale: {x: 30, y: 2, z: 1}
+  m_LocalScale: {x: 30, y: 2, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -112,4 +112,4 @@ MonoBehaviour:
   screenHeight: 2340
   screenWidth: 1080
   screenPosition: 0
-  biggestPoolableObjectPrefab: {fileID: 1621201432946875700, guid: c9d6982ba4633b743bd456d068e6b203, type: 3}
+  biggestPoolableObjectPrefab: {fileID: 8360034193733868616, guid: 0b3941354042fb34b9a505233211aa0b, type: 3}

@@ -73,6 +73,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1021248833325302867, guid: 5c7a699f71292064a91b53f7d423ccea, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle_CloudFG_2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c7a699f71292064a91b53f7d423ccea, type: 3}
 --- !u!1001 &5142574728544631370
@@ -136,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5286431537841884604, guid: dfd9e1aa558b28546b02e6e333ac4505, type: 3}
       propertyPath: m_TagString
-      value: Obstacle_CloudBG_2
+      value: Obstacle_CloudFG_2
       objectReference: {fileID: 0}
     - target: {fileID: 6860533589426396241, guid: dfd9e1aa558b28546b02e6e333ac4505, type: 3}
       propertyPath: speed

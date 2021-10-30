@@ -11,9 +11,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8dc25543eb8785b49aaef6fb8c29189f, type: 2}
+    - target: {fileID: 1883314592689781707, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883314592689781707, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle_SatelliteBG
+      objectReference: {fileID: 0}
     - target: {fileID: 3618203819094781307, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
       propertyPath: m_Name
       value: Satellite_Obstacle_BG
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618203819094781307, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618203819094781307, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle_SatelliteBG
       objectReference: {fileID: 0}
     - target: {fileID: 3618203819094781309, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
       propertyPath: m_RootOrder

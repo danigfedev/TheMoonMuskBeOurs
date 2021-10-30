@@ -18,6 +18,10 @@ public static class TagList
     public const string obstaclePrefix = "Obstacle";
     public const string cloudBG1_Tag = "Obstacle_CloudBG_1";
     public const string cloudBG2_Tag = "Obstacle_CloudBG_2";
+    public const string cloudFG1_Tag = "Obstacle_CloudFG_1";
+    public const string cloudFG2_Tag = "Obstacle_CloudFG_2";
+    public const string satelliteBG_Tag= "Obstacle_SatelliteBG";
+    public const string satelliteFG_Tag= "Obstacle_SatelliteFG";
 
     //Weapons
     public const string bulletPrefix = "Bullet";
