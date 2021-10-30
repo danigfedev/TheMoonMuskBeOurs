@@ -6,6 +6,8 @@ public class PoolableObject : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag != TagList.gameLimitTag) return;
+
         StartCoroutine(ResetAndHide());
     }
 

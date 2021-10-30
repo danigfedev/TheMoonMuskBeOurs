@@ -237,7 +237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &156867639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &840612825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,7 +803,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4384892de918f614a94334e8e15462e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPosition: {x: 0, y: 12, z: 0}
+  rotationPivot: {x: 0, y: 12, z: 0}
+  spawnLateralPosition: {x: 10, y: 8, z: 0}
 --- !u!1001 &846152619
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ TagManager:
   - EnemyShip_Destructor-T1
   - EnemyShip
   - Enemy
+  - GameLimit
   layers:
   - Default
   - TransparentFX

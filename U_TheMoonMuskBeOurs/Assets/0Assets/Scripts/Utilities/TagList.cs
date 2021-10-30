@@ -1,8 +1,9 @@
 
 public static class TagList
 {
-    //Object Pool
+    //Game Management
     public const string poolContainerTag = "ObjectPoolContainer";
+    public const string gameLimitTag = "GameLimit";
 
     //Spaceships:
     public const string playerTag = "Player";
