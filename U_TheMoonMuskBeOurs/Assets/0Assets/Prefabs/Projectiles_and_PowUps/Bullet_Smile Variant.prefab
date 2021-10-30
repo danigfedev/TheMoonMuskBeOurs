@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 2
-  bulletSpeed: 2
+  bulletSpeed: 8
 --- !u!1 &5283003883635022641
 GameObject:
   m_ObjectHideFlags: 0

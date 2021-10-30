@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4423357480675623107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621201432946875700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61845ab898c0e6a4585fe0a96c2acb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &5281077162957889862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,7 +44,7 @@ MonoBehaviour:
   bulletType: 1
   bulletDirection: 0
   bulletSpawnPosition: {fileID: 7762535915448013898}
-  fireRate: 1
+  fireRate: 2
 --- !u!1001 &2951922085962900481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,11 +175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8307287418940115715, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8307287418940115715, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8307287418940115715, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: m_LocalPosition.z

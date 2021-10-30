@@ -1,0 +1,18 @@
+{
+    "name": "GameManagement_AssemblyDef",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ecd61a6eec500a34d96f0c1cd42b95bc",
+        "GUID:00f590c523e8a5140a866c08608ec3c2",
+        "GUID:b108f6edbbf8bee4c85a8e40c1335112"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
