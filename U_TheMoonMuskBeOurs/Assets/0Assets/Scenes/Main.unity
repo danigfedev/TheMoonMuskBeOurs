@@ -803,6 +803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4384892de918f614a94334e8e15462e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenHeight: 2340
+  screenWidth: 1080
+  verticalPercentageFromBottom: 0.7
+  verticalOffsetLinearMotion: 2.5
   rotationPivot: {x: 0, y: 12, z: 0}
   spawnLateralPosition: {x: 10, y: 8, z: 0}
 --- !u!1001 &846152619
