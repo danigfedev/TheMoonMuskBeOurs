@@ -34,6 +34,8 @@ public class Enemy_Generic_StateHandler : StateHandler_Base
         {
             //TODO Play Sound
             //TODO VFX
+
+            if (dieEventSO != null) dieEventSO.RaiseEvent();
             StartCoroutine(Destroy());
         }
     }

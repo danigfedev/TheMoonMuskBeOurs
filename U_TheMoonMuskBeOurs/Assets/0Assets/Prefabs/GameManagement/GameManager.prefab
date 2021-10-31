@@ -71,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8515239217451688250}
   - component: {fileID: 4277552827552346883}
+  - component: {fileID: 2837477998419804959}
   m_Layer: 0
   m_Name: SOEvent_ListenerContainer
   m_TagString: Untagged
@@ -111,6 +112,34 @@ MonoBehaviour:
       - m_Target: {fileID: 3107793518693810442}
         m_TargetAssemblyTypeName: GameManager, GameManagement_AssemblyDef
         m_MethodName: PlayerDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2837477998419804959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6666951849566937669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bedcc3c623f4d1479a95193bd714d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSO: {fileID: 11400000, guid: 526118a3c7636664a8e1aca10f218bfe, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3107793518693810442}
+        m_TargetAssemblyTypeName: GameManager, GameManagement_AssemblyDef
+        m_MethodName: OnEnemyKilled
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

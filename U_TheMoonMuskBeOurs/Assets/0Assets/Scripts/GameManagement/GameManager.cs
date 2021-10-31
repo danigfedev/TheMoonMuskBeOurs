@@ -36,14 +36,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] DestructorInstancer destructorInstancer;
     [Space(10)]
 
-    [Header("Stage data")]
+    [Header("Stage 1 data")]
     [SerializeField] GameStages currentState = GameStages.MENU;
     [Tooltip("Number of enemy waves to clear the current stage.")]
     [SerializeField] int stage_1_TotalWaves = 1;
     [SerializeField] int stage_1_EnemiesPerWave = 4;
+    
+    [Space(5)]
+    [Header("Stage 2 data")]
     [Tooltip("Number of enemy waves to clear the current stage.")]
-    [SerializeField] int stage_2_EnemiesPerWave = 3;
     [SerializeField] int stage_2_TotalWaves = 1;
+    [SerializeField] int stage_2_EnemiesPerWave = 3;
 
     [Space(10)]
     [Header("Skybox data")]
@@ -73,8 +76,16 @@ public class GameManager : MonoBehaviour
         
     //}
 
-    //Triggered form UI
-    public void StartGame()
+
+
+
+
+
+
+    #region === Event Driven Behaviour ===
+
+    
+    public void StartGame() //Triggered form UI
     {
         //Hide UI
         mainMenu.SetActive(false);
@@ -87,6 +98,16 @@ public class GameManager : MonoBehaviour
         //Lerp sky
         //Start Spawning things
 
+    }
+
+    public void OnPlayerDied()
+    {
+        Debug.LogError("[GameManager] Player Died");
+        //TODO Enable Game over Screen
+        
+        
+        //Testing purposes
+        //RestartGame();
     }
 
     public void OnEnemyDestroyedByGameLimits()
@@ -106,29 +127,53 @@ public class GameManager : MonoBehaviour
 
     public void OnEnemyKilled()
     {
+        Debug.LogWarning("Enemy killed");
+        //return;
+
+
         //Called by Enemy State Handler via SO event
 
         totalKills++;
         totalDestroyed++;
-        //CheckWaveCompletion();
+
+
         if (!CheckWaveCompletion())
         {
             //SpawnNewWave
         }
         else
         {
+            Debug.Log(string.Format("[GameManager] Stage {0} completed!", currentState));
             //UpdateStage
         }
-        
+
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0); //Just reload, for simplicity
+    }
+
+    #endregion
+
+    private void EnablePlayerControl()
+    {
+        playerController.EnableControl(true);
+        playerWeaponHandler.Shoot(1);//.EnableShooting();/* = player.GetComponent<Player_WeaponHandler>();*/
+    }
+
+    //private void EnablePlayerShooting()
+    //{
+
+    //}
 
     private bool CheckWaveCompletion()
     {
 
-        if(totalDestroyed % currentWaveGoal == 0
+        if (totalDestroyed % currentWaveGoal == 0
             && totalKills >= currentWaveGoal * currentWaveEnemyCount) //If wave destroyed
             return true;
-        
+
         return false;
     }
 
@@ -156,8 +201,23 @@ public class GameManager : MonoBehaviour
 
     private void NextStage()
     {
+        Debug.Log(string.Format("[GameManager] Moving to Next Stage from {0}", currentState));
+
         //Check current stage
-        if (currentState == GameStages.STAGE_1)
+        if (currentState== GameStages.MENU)
+        {
+            currentState = GameStages.STAGE_1;
+
+            currentWaveGoal = stage_1_TotalWaves;
+            currentWaveEnemyCount = stage_1_EnemiesPerWave;
+
+            //Enable enemy stage 1 spawning
+            vanInstancer.SpawnFromPool();
+            //Enable obstacle instancing
+            
+            //obstacleInstancer.Sta
+        }
+        else if (currentState == GameStages.STAGE_1)
         {
             //Launch sky lerp
 
@@ -180,32 +240,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlayerDied()
-    {
-        Debug.LogError("[GameManager] Player Died");
-        //TODO Enable Game over Screen
-        
-        
-        //Testing purposes
-        //RestartGame();
-    }
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(0); //Just reload, for simplicity
-    }
-
-
-    private void EnablePlayerControl()
-    {
-        playerController.EnableControl(true);
-        playerWeaponHandler.Shoot(1);//.EnableShooting();/* = player.GetComponent<Player_WeaponHandler>();*/
-    }
-
-    //private void EnablePlayerShooting()
-    //{
-
-    //}
 
     float introElapsedTime = 0;
     float introTotalDuration = 2;
@@ -238,6 +273,7 @@ public class GameManager : MonoBehaviour
         //Disable Intro Environment:
         introEnvironment.gameObject.SetActive(false);
 
+        NextStage();//Move from menu to Stage 1
         EnablePlayerControl();
     }
     

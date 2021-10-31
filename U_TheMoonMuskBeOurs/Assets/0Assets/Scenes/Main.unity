@@ -3343,6 +3343,10 @@ PrefabInstance:
       value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: vanInstancer
+      value: 
+      objectReference: {fileID: 840612827}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
       propertyPath: camEndPosition.y
       value: 8
       objectReference: {fileID: 0}
@@ -3354,6 +3358,14 @@ PrefabInstance:
       propertyPath: introEnvironment
       value: 
       objectReference: {fileID: 910497071}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: obstacleInstancer
+      value: 
+      objectReference: {fileID: 669701014}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: destructorInstancer
+      value: 
+      objectReference: {fileID: 156867641}
     - target: {fileID: 3107793518693810443, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
       propertyPath: m_Name
       value: GameManager

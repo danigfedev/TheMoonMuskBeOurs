@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3cacfdc2d11a6489a2cce647af0ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowShooting: 1
+  shootOnStart: 0
   bulletCount: 1
   bulletType: 1
   bulletDirection: 0
@@ -32,6 +32,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalHealth: 50
   hitDamage: 3
+  dieEventSO: {fileID: 11400000, guid: 526118a3c7636664a8e1aca10f218bfe, type: 2}
 --- !u!114 &2026129427
 MonoBehaviour:
   m_ObjectHideFlags: 0
