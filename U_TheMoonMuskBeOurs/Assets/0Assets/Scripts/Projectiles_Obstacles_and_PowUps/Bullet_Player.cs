@@ -12,6 +12,7 @@ public class Bullet_Player : Bullet
         /*|| other.tag == TagList.bossTag*/
 
         if (other.tag == TagList.bulletBoxTag
+            || other.tag == TagList.satelliteFG_Tag
             || other.tag.Contains(TagList.enemyTag))
             StartCoroutine(Destroy());
     }

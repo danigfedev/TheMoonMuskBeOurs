@@ -39,7 +39,7 @@ public abstract class StateHandler_Base: MonoBehaviour
         //maxHealth = stateProperties.totalHealth;
         initialColor = mainObjectRenderer.material.color;
 
-        healthBarBaseObject.SetActive(!hideHealthBarOnAwake);
+        if (healthBarBaseObject != null) healthBarBaseObject.SetActive(!hideHealthBarOnAwake);
 
     }
 
@@ -51,7 +51,7 @@ public abstract class StateHandler_Base: MonoBehaviour
             return;
         }
         mainObjectRenderer.material.color = initialColor;
-        healthBarFill.localScale = Vector3.one;
+        if(healthBarFill!=null) healthBarFill.localScale = Vector3.one;
     }
 
     public virtual void OnDestroy()

@@ -1,5 +1,26 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8216393986081753437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018422527381769655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a5638734c804646a15de2871baf9c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 4
+  hitDamage: 2
+  hideHealthBarOnAwake: 0
+  healthBarBaseObject: {fileID: 0}
+  healthBarFill: {fileID: 0}
+  mainObjectRenderer: {fileID: 5635043689523411666}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  healingColor: {r: 0, g: 1, b: 0, a: 1}
+  dieEventSO: {fileID: 0}
 --- !u!1001 &5697527099651498188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20,12 +41,20 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1883314592689781707, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883314592689781707, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
       propertyPath: m_TagString
       value: Obstacle_SatelliteFG
       objectReference: {fileID: 0}
     - target: {fileID: 3618203819094781307, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
       propertyPath: m_Name
       value: Satellite_Obstacle_FG
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618203819094781307, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3618203819094781307, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
       propertyPath: m_TagString
@@ -75,5 +104,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401112529504595979, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+      propertyPath: isObstacle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+--- !u!1 &9018422527381769655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3618203819094781307, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+  m_PrefabInstance: {fileID: 5697527099651498188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5635043689523411666 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 81659443984128542, guid: 280e2c07e686b9f42be875afebca1c1e, type: 3}
+  m_PrefabInstance: {fileID: 5697527099651498188}
+  m_PrefabAsset: {fileID: 0}

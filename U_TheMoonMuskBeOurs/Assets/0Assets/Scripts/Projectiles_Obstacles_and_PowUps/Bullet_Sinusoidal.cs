@@ -10,6 +10,7 @@ public class Bullet_Sinusoidal : Bullet
         HORIZONTAL
     }
 
+    [SerializeField] bool isObstacle = false;
     [SerializeField] AnimationCurve curve;
     [SerializeField] float amplitude = 1;
     [SerializeField] float frequency = 1;
@@ -42,6 +43,8 @@ public class Bullet_Sinusoidal : Bullet
 
     protected override void OnTriggerEnter(Collider other)
     {
+        if (isObstacle) return;
+
         if (other.tag == TagList.playerTag
             || other.tag == TagList.shieldTag)
             StartCoroutine(Destroy());
