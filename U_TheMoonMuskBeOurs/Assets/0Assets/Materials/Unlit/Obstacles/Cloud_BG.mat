@@ -37,8 +37,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Color_intensity: 0.1
-    - Transparency: 0.5
+    - Color_intensity: 0
+    - Transparency: 0.6
     - Vertex_Displacement_Intensity: 0.5
     - Vertex_Displacement_Speed: 0.002
     m_Colors: []

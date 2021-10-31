@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private Player_WeaponHandler playerWeaponHandler;
 
     [Header("Object Poolers")]
+    [SerializeField] ObstacleInstancer backgroundInstancer;
     [SerializeField] ObstacleInstancer obstacleInstancer;
     [SerializeField] VanInstancer vanInstancer;
     [SerializeField] DestructorInstancer destructorInstancer;
@@ -204,7 +205,8 @@ public class GameManager : MonoBehaviour
 
             //Enemy and obstacle spawning:
 
-            //obstacleInstancer -> Change spawned obstacle
+            obstacleInstancer.SpawnClouds();
+            backgroundInstancer.SpawnClouds();
             vanInstancer.SpawnFromPool();
             //Enable obstacle instancing
             
@@ -221,8 +223,10 @@ public class GameManager : MonoBehaviour
 
             //Enemy and obstacle spawning:
 
-            //obstacleInstancer -> Change spawned obstacle
-            //vanInstancer -> Stop instancing objects, even destroy object pool recursively?
+            //CLEANUP: vanInstancer -> Stop instancing objects, even destroy object pool recursively?
+
+            obstacleInstancer.SpawnSatellites();
+            backgroundInstancer.SpawnSatellites();
             destructorInstancer.SpawnFromPool();
             //Launch sky lerp
 

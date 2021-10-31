@@ -19,6 +19,7 @@ public class ObstacleInstancer : MonoBehaviour
     //protected string bulletTag;
     private float shootingElapsedTime = 0;
     private ScreenExtentsWorldSpace screenExtents;
+    private Coroutine spawnCoroutine = null;
 
     private void Awake()
     {
@@ -28,8 +29,22 @@ public class ObstacleInstancer : MonoBehaviour
 
     private void Start()
     {
-        if (spawnOnStart)
-            StartCoroutine(SpawnSatellite());
+        //if (spawnOnStart)
+            //StartCoroutine(SpawnSatellite());
+    }
+
+    public void SpawnClouds()
+    {
+        if (spawnCoroutine != null)
+            StopCoroutine(spawnCoroutine);
+        spawnCoroutine = StartCoroutine(SpawnCloud());
+    }
+
+    public void SpawnSatellites()
+    {
+        if (spawnCoroutine != null)
+            StopCoroutine(spawnCoroutine);
+        spawnCoroutine = StartCoroutine(SpawnSatellite());
     }
 
     private IEnumerator SpawnCloud()
