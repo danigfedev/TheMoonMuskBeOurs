@@ -126,8 +126,8 @@ public class GameManager : MonoBehaviour
         totalDestroyed++;
 
         //Called by Object Pooler via SO event
-        //Debug.LogWarning("[GameManager] Enemy destroyed by game limits");
-        //Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
+        Debug.LogWarning("[GameManager] Enemy destroyed by game limits");
+        DebugGameStatus();
 
         CheckWaveCompletion();
     }
@@ -138,10 +138,17 @@ public class GameManager : MonoBehaviour
         totalKillsThisStage++;
         totalDestroyed++;
         totalKills++;
-        //Debug.LogWarning("[GameManager] Enemy killed");
-        //Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
+
+        Debug.LogWarning("[GameManager] Enemy killed");
+        DebugGameStatus();
 
         CheckWaveCompletion();
+    }
+
+    private void DebugGameStatus() {
+        Debug.Log(string.Format("Enemies Killed: {0} " +
+                "| Enemies destroyed: {1} " +
+                "| Total Kills: {2}", totalKillsThisStage, totalDestroyed, totalKills));
     }
 
     public void RestartGame()

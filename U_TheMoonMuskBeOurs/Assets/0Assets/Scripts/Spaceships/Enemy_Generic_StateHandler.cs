@@ -37,8 +37,8 @@ public class Enemy_Generic_StateHandler : StateHandler_Base
         {
             //TODO Play Sound
             //TODO VFX
-
-            if (dieEventSO != null) dieEventSO.RaiseEvent();
+            Debug.Log(string.Format("[EnemyGenericHandler] Killed enemy: {0}", gameObject.name));
+            //if (dieEventSO != null) dieEventSO.RaiseEvent();
             StartCoroutine(Destroy());
         }
     }
@@ -51,6 +51,9 @@ public class Enemy_Generic_StateHandler : StateHandler_Base
     private IEnumerator Destroy()
     {
         yield return new WaitForEndOfFrame();
+        
+        if (dieEventSO != null) dieEventSO.RaiseEvent();
+
         gameObject.SetActive(false);
     }
 }
