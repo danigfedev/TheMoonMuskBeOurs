@@ -13,6 +13,22 @@ public class GameManager : MonoBehaviour
         STAGE_3
     }
 
+    [Header("Intro")]
+    [SerializeField] Transform cameraEnd;
+    [SerializeField] Transform introEnvironment;
+    [SerializeField] Vector3 envEndPos;
+
+    [Space(5)]
+    [Header("UI")]
+    [SerializeField] GameObject mainMenu;
+    [SerializeField] GameObject gameMenu;
+    [SerializeField] GameObject gameOverMenu;
+
+    [Space(5)]
+    [Header("Player")]
+    [SerializeField] GameObject player;
+    private PlayerController playerController;
+    private Player_WeaponHandler playerWeaponHandler;
 
     [Header("Object Poolers")]
     [SerializeField] ObstacleInstancer obstacleInstancer;
@@ -41,6 +57,12 @@ public class GameManager : MonoBehaviour
     private int currentWaveGoal;
     private int currentWaveEnemyCount;
 
+    private void Awake()
+    {
+        playerController = player.GetComponent<PlayerController>();
+        playerWeaponHandler = player.GetComponent<Player_WeaponHandler>();
+    }
+
     void Start()
     {
         
@@ -55,7 +77,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         //Hide UI
+        mainMenu.SetActive(false);
+
         //Hide Intro Scene
+        StartCoroutine(HandleIntro());
 
         //Enable Player Control and shooting. Show fire
 
@@ -161,5 +186,45 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0); //Just reload, for simplicity
     }
 
+
+    private void EnablePlayerControl()
+    {
+        //playerController.EnableControl();
+        playerWeaponHandler.Shoot(1);//.EnableShooting();/* = player.GetComponent<Player_WeaponHandler>();*/
+    }
+
+
+    float introElapsedTime = 0;
+    float introTotalDuration = 2;
+    private IEnumerator HandleIntro()
+    {
+        //Camera:
+        Transform cam = Camera.main.transform;
+        Vector3 initialPosition = cam.position;
+        Quaternion initialRotation = cam.rotation;
+
+        //Environment:
+        Vector3 envInitialPos = introEnvironment.position;
+        
+        while (introElapsedTime <= 1)
+        {
+            //Update cam:
+            cam.position = Vector3.Lerp(initialPosition, cameraEnd.position, introElapsedTime);
+            cam.localRotation = Quaternion.Lerp(initialRotation, cameraEnd.localRotation, introElapsedTime);
+
+            //Hide Intro environment:
+            introEnvironment.position = Vector3.Lerp(envInitialPos, envEndPos, introElapsedTime);
+
+            introElapsedTime += Time.deltaTime / introTotalDuration;
+            yield return null;
+        }
+
+        //Disable Intro Environment:
+        introEnvironment.gameObject.SetActive(false);
+
+        EnablePlayerControl();
+    }
+    
     //Coroutine Lerp sky 
+
 }
