@@ -20,7 +20,7 @@ public abstract class WeaponHandler_Base: MonoBehaviour
     }
 
     [Header("== TESTING ==")]
-    public bool allowShooting = true;
+    public bool shootOnStart = false;
     [Range(1, 3)] public int bulletCount = 1;
     [Space(10)]
     //Fields:
@@ -65,7 +65,7 @@ public abstract class WeaponHandler_Base: MonoBehaviour
                 break;
         }
 
-        if (allowShooting)
+        if (shootOnStart)
             Shoot(bulletCount, bulletDirection);
     }
 

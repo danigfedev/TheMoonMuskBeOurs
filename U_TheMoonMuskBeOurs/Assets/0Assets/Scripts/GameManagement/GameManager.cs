@@ -193,6 +193,10 @@ public class GameManager : MonoBehaviour
         playerWeaponHandler.Shoot(1);//.EnableShooting();/* = player.GetComponent<Player_WeaponHandler>();*/
     }
 
+    //private void EnablePlayerShooting()
+    //{
+
+    //}
 
     float introElapsedTime = 0;
     float introTotalDuration = 2;
