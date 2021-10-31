@@ -10,15 +10,23 @@ public class PlayerController : MonoBehaviour
         MIDDLE,
         RIGHT
     }
-    
+
+    [Header("== TESTING ==")]
+    [SerializeField] bool enableControlOnAwake = false;
+    [Space(10)]
+
     [Tooltip("The spaceship's max vertical rotation in degrees caused by horizontal strafe. " +
             "Positive values rotate the object to the left from camera's PoV. Negative values rotate to the right.")]
     [SerializeField] float maxVerticalRotation_Left = 30;
     [SerializeField] float rotationDuration = 1;
 
+    [SerializeField] GameObject fireObject;
+
 
     private Camera mainCam;
-    private Rigidbody spaceshipRB;    
+    private Rigidbody spaceshipRB;
+
+    private bool controlEnabled = false;
 
     private float horizontalAmount = 0;
     private float threshold = 25;
@@ -32,17 +40,14 @@ public class PlayerController : MonoBehaviour
     {
         mainCam = Camera.main;
         spaceshipRB = gameObject.GetComponent<Rigidbody>();
+        fireObject.SetActive(false);
+        EnableControl(enableControlOnAwake);
     }
-
-    //private void Start()
-    //{
-    //    //invalidInput = Vector2.zero - Vector2.one;
-        
-    //}
-
 
     private void FixedUpdate()
     {
+        if (!controlEnabled) return;
+
 #if UNITY_EDITOR || UNITY_STANDALONE
         MovePC();
         RotationInPC();
@@ -111,7 +116,6 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
-
 
 
     #region === Player Rotation ===
@@ -287,8 +291,16 @@ public class PlayerController : MonoBehaviour
         transform.localEulerAngles = new Vector3(startRotation.x, endAngle, startRotation.z);
 
         rotationCoroutine = null;
-    }  
+    }
 
-#endregion
+    #endregion
+
+    #region === Public Methods ===
+
+    public void EnableControl(bool status) => controlEnabled = status;
+
+    public void StartEngines() => fireObject.SetActive(true);
+
+    #endregion
 }
 

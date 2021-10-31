@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
 
     private void EnablePlayerControl()
     {
-        //playerController.EnableControl();
+        playerController.EnableControl(true);
         playerWeaponHandler.Shoot(1);//.EnableShooting();/* = player.GetComponent<Player_WeaponHandler>();*/
     }
 
@@ -198,6 +198,9 @@ public class GameManager : MonoBehaviour
     float introTotalDuration = 2;
     private IEnumerator HandleIntro()
     {
+        //Player Controller:
+        playerController.StartEngines();
+
         //Camera:
         Transform cam = Camera.main.transform;
         Vector3 initialPosition = cam.position;

@@ -80,6 +80,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5814853034087736987, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+      propertyPath: fireObject
+      value: 
+      objectReference: {fileID: 8312078223613396381}
+    - target: {fileID: 5814853034087736987, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
       propertyPath: bulletPooler
       value: 
       objectReference: {fileID: 0}
@@ -196,5 +200,10 @@ PrefabInstance:
 --- !u!4 &4166128435520767570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 309341683927856839, guid: 24d98cd739c371a4e98789ae44f52ebe, type: 3}
+  m_PrefabInstance: {fileID: 4438877022762250389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8312078223613396381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5674641326954493192, guid: 24d98cd739c371a4e98789ae44f52ebe, type: 3}
   m_PrefabInstance: {fileID: 4438877022762250389}
   m_PrefabAsset: {fileID: 0}
