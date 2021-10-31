@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private PlayerController playerController;
     private Player_WeaponHandler playerWeaponHandler;
     private Player_StateHandler playerStateHandler;
+    private Coroutine powUpSpawnCoroutine = null;
 
     [Header("Object Poolers")]
     [SerializeField] ObstacleInstancer backgroundInstancer;
@@ -151,11 +152,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void CheckSpawnHealth()
+    {
+        if (playerStateHandler.GetHealthPercentage() <= healthPU_threshold)
+            powUpInstancer.SpawnPowerUp(TagList.PU_healthTag);
+    }
+
+
     private void SpawnNewWave()
     {
-        //CheckSpawnHealth()
-        if(playerStateHandler.GetHealthPercentage() <= healthPU_threshold)
-            powUpInstancer.SpawnPowerUp(TagList.PU_healthTag);
+        CheckSpawnHealth();
 
         //Check current stage
         if (currentState == GameStages.STAGE_1)
@@ -214,17 +220,28 @@ public class GameManager : MonoBehaviour
             currentWaveEnemyCount = stage_2_EnemiesPerWave;
 
             //Enemy and obstacle spawning:
-
             //CLEANUP: vanInstancer -> Stop instancing objects, even destroy object pool recursively?
-
             obstacleInstancer.SpawnSatellites();
             backgroundInstancer.SpawnSatellites();
             destructorInstancer.SpawnFromPool();
+
+
+
             //Launch sky lerp
 
-            
+
 
             //Drop Weapon 2, Health and Shield (Just to show that they are implemented)
+            CheckSpawnHealth();
+
+            string[] _tags = new string[2];
+            _tags[0] = TagList.PU_shieldTag;
+            _tags[1] = TagList.PU_weaponPlayerGun2Tag;
+            
+            if (powUpSpawnCoroutine != null)
+                StopCoroutine(powUpSpawnCoroutine);
+            powUpSpawnCoroutine = StartCoroutine(SpawnSpaced(_tags));
+
 
             currentState = GameStages.STAGE_2;
         }
@@ -232,6 +249,15 @@ public class GameManager : MonoBehaviour
         {
             //Launch sky lerp
             //Drop Weapon 3, Health+ and Shield+
+            CheckSpawnHealth();
+
+            string[] _tags = new string[2];
+            _tags[0] = TagList.PU_shieldTag;
+            _tags[1] = TagList.PU_weaponPlayerGun3Tag;
+
+            if (powUpSpawnCoroutine != null)
+                StopCoroutine(powUpSpawnCoroutine);
+            powUpSpawnCoroutine = StartCoroutine(SpawnSpaced(_tags));
 
         }
         else
@@ -245,6 +271,18 @@ public class GameManager : MonoBehaviour
         totalKills = 0;
         totalDestroyed = 0;
     }
+
+    
+    private IEnumerator SpawnSpaced(string[] powUpTags)
+    {
+        foreach(string _tag in powUpTags)
+        {
+            yield return new WaitForSeconds(2);
+            powUpInstancer.SpawnPowerUp(_tag);
+        }
+
+    }
+
 
     float introElapsedTime = 0;
     float introTotalDuration = 2;

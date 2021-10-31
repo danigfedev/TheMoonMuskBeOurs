@@ -8,10 +8,10 @@ public class CloudController_Bullet : Bullet
     protected override void OnTriggerEnter(Collider other)
     {
         //throw new System.NotImplementedException();
-        Debug.Log(other.tag);
+        //Debug.Log(other.tag);
         if (other.tag == TagList.playerTag)
         {
-            Debug.LogWarning("Player hit by cloud");
+            Debug.LogWarning("Cloud hit by player");
         }
     }
 

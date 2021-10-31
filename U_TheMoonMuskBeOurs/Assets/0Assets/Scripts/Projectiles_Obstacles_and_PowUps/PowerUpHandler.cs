@@ -23,6 +23,8 @@ public class PowerUpHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //TODO Reset position to pool's root
+        if (other.tag == TagList.gameLimitTag) return;
+
         gameObject.SetActive(false);
     }
 
