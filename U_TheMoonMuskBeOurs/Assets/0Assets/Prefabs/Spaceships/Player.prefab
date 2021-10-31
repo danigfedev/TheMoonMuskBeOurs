@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 251491799988946095, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+      propertyPath: fireRate
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1096327997769225836, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -26,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 3680136979420843694, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
       propertyPath: poolList.Array.data[0].poolPrefab
       value: 
-      objectReference: {fileID: 7556182265922871259, guid: 774486489d8045a419abf52d7352ac72, type: 3}
+      objectReference: {fileID: 2425039398121264155, guid: a3b152e21e30b8d4aaf3e4c73dfcea06, type: 3}
     - target: {fileID: 3831229393835374556, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
       propertyPath: m_RootOrder
       value: 0
