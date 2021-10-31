@@ -88,6 +88,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5814853034087736987, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+      propertyPath: spaceshipBody
+      value: 
+      objectReference: {fileID: 4166128435520767570}
+    - target: {fileID: 5814853034087736987, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
       propertyPath: bulletSpawnPosition
       value: 
       objectReference: {fileID: 9211022233555569176}

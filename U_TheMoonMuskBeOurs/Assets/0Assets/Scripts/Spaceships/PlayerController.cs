@@ -23,7 +23,9 @@ public class PlayerController : MonoBehaviour
     
     [Space(10)]
     [Header("== Spaceship structure ==")]
+    [SerializeField] Transform spaceshipBody;
     [SerializeField] GameObject fireObject;
+    
 
     [Space(10)]
     [Header("== SO Events ==")]
@@ -155,17 +157,16 @@ public class PlayerController : MonoBehaviour
                         stationaryCount = 0;
 
                         horizontalAmount = 0;
-                        float vertRot = (transform.localEulerAngles.y > 180) ? transform.localEulerAngles.y - 360 : transform.localEulerAngles.y;
+                        //float vertRot = (transform.localEulerAngles.y > 180) ? transform.localEulerAngles.y - 360 : transform.localEulerAngles.y;
+                        float vertRot = GetVerticalRotation();
                         if (vertRot != 0 && rotationCoroutine == null)
                             RotateVertically(RotationDirections.MIDDLE);
                     }
-
                 }
                 else
                 {
                     //Movement
                     horizontalAmount += (currentInput.x - prevInput.x);
-
 
                     if (rotationCoroutine != null)
                     {
@@ -179,9 +180,10 @@ public class PlayerController : MonoBehaviour
                         if (horizontalAmount > 0) direction = -1; //right: -30
                         else if (horizontalAmount < 0) direction = 1; //left 30
 
-                        float vertRot = (transform.localEulerAngles.y > 180) ? transform.localEulerAngles.y - 360 : transform.localEulerAngles.y;
-                        //Debug.Log(vertRot);
-                        if (direction == 1 && vertRot != maxVerticalRotation_Left)
+                        //float vertRot = (transform.localEulerAngles.y > 180) ? transform.localEulerAngles.y - 360 : transform.localEulerAngles.y;
+                        float vertRot = GetVerticalRotation();
+                    //Debug.Log(vertRot);
+                    if (direction == 1 && vertRot != maxVerticalRotation_Left)
                             RotateVertically(RotationDirections.LEFT);
                         else if (direction == -1 && vertRot != -maxVerticalRotation_Left)
                             RotateVertically(RotationDirections.RIGHT);
@@ -224,7 +226,8 @@ public class PlayerController : MonoBehaviour
                         if (horizontalAmount > 0) direction = -1; //right: -30
                         else if (horizontalAmount < 0) direction = 1; //left 30
 
-                        float vertRot = (transform.localEulerAngles.y > 180) ? transform.localEulerAngles.y - 360 : transform.localEulerAngles.y;
+                        //float vertRot = (transform.localEulerAngles.y > 180) ? transform.localEulerAngles.y - 360 : transform.localEulerAngles.y;
+                        float vertRot = GetVerticalRotation();
                         //Debug.Log(vertRot);
                         if (direction == 1 && vertRot != maxVerticalRotation_Left)
                             RotateVertically(RotationDirections.LEFT);
@@ -235,7 +238,8 @@ public class PlayerController : MonoBehaviour
                 else if(mainTouch.phase == TouchPhase.Stationary)
                 {
                     horizontalAmount = 0;
-                    float vertRot = (transform.localEulerAngles.y > 180) ? transform.localEulerAngles.y - 360 : transform.localEulerAngles.y;
+                    //float vertRot = (transform.localEulerAngles.y > 180) ? transform.localEulerAngles.y - 360 : transform.localEulerAngles.y;
+                    float vertRot = GetVerticalRotation();
                     if (vertRot != 0 && rotationCoroutine == null)
                         RotateVertically(RotationDirections.MIDDLE);
                 }
@@ -247,6 +251,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 #endif
+
+    private float GetVerticalRotation()
+    {
+        //return (transform.localEulerAngles.y > 180) ? transform.localEulerAngles.y - 360 : transform.localEulerAngles.y;
+        return (spaceshipBody.localEulerAngles.y > 180) ? spaceshipBody.localEulerAngles.y - 360 : spaceshipBody.localEulerAngles.y;
+    }
 
     /// <summary>
     /// Handles spaceship's vertical rotation based on user input
@@ -277,7 +287,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator RotateToReachAngle(float endAngle)
     {
         //Get current vertical rotation
-        Vector3 startRotation = transform.localEulerAngles;
+        //Vector3 startRotation = transform.localEulerAngles;
+        Vector3 startRotation = spaceshipBody.localEulerAngles;
 
         float t = 0;
         while (t <= 1)
@@ -287,18 +298,20 @@ public class PlayerController : MonoBehaviour
             if (vertRot > 180) vertRot -= 360;
 
             float newRotation = Mathf.Lerp(vertRot, endAngle, t);
-            transform.localEulerAngles = new Vector3(startRotation.x, newRotation, startRotation.z);
+            //transform.localEulerAngles = new Vector3(startRotation.x, newRotation, startRotation.z);
+            spaceshipBody.localEulerAngles = new Vector3(startRotation.x, newRotation, startRotation.z);
 
             t += Time.deltaTime / rotationDuration;
 
             yield return null;
         }
 
-        transform.localEulerAngles = new Vector3(startRotation.x, endAngle, startRotation.z);
+        //transform.localEulerAngles = new Vector3(startRotation.x, endAngle, startRotation.z);
+        spaceshipBody.localEulerAngles = new Vector3(startRotation.x, endAngle, startRotation.z);
 
         rotationCoroutine = null;
     }
-
+    
     #endregion
 
     #region === Public Methods ===
