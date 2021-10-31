@@ -112,6 +112,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9096705219074050368, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+      propertyPath: dieEventSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 64951b98587d8fe45af1ffd9ea85f6a0, type: 2}
+    - target: {fileID: 9096705219074050368, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
       propertyPath: playerShip
       value: 
       objectReference: {fileID: 4166128435520767570}

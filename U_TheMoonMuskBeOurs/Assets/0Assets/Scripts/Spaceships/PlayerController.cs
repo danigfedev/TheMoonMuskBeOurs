@@ -15,13 +15,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool enableControlOnAwake = false;
     [Space(10)]
 
+    [Header("== Spaceship Motion ==")]
     [Tooltip("The spaceship's max vertical rotation in degrees caused by horizontal strafe. " +
             "Positive values rotate the object to the left from camera's PoV. Negative values rotate to the right.")]
     [SerializeField] float maxVerticalRotation_Left = 30;
     [SerializeField] float rotationDuration = 1;
-
+    
+    [Space(10)]
+    [Header("== Spaceship structure ==")]
     [SerializeField] GameObject fireObject;
 
+    [Space(10)]
+    [Header("== SO Events ==")]
+    //SimpleEventSO dieEventSO;
 
     private Camera mainCam;
     private Rigidbody spaceshipRB;

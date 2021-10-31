@@ -180,8 +180,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayerDied()
+    {
+        Debug.LogError("[GameManager] Player Died");
+        //TODO Enable Game over Screen
+        
+        
+        //Testing purposes
+        //RestartGame();
+    }
 
-    private void GameOver()
+    public void RestartGame()
     {
         SceneManager.LoadScene(0); //Just reload, for simplicity
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player_StateHandler : StateHandler_Base
 {
+    [Space(15)]
+    [Header("=== Component Specific Fields ===")]
     [SerializeField] Transform playerShip;
     [SerializeField] Transform shieldPrefab;
     [SerializeField] Transform shieldSpawnPos;
@@ -73,6 +75,9 @@ public class Player_StateHandler : StateHandler_Base
         if (/*stateProperties.totalHealth*/totalHealth <= 0)
         {
             Debug.LogError("YOU DIED");
+            if (dieEventSO != null)
+                dieEventSO.RaiseEvent();
+            
             //GameOver!
         }
     }

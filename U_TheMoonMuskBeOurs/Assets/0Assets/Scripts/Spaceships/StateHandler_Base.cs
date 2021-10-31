@@ -7,6 +7,11 @@ public abstract class StateHandler_Base: MonoBehaviour
     //[SerializeField] protected StateHandlerProperties stateProperties;
     [SerializeField] protected float totalHealth;
     [SerializeField] protected float hitDamage;
+
+    [Space(10)]
+    [Header("== SO Events ==")]
+    [SerializeField] protected SimpleEventSO dieEventSO;
+
     protected float maxHealth;
     
     // Definitions:
