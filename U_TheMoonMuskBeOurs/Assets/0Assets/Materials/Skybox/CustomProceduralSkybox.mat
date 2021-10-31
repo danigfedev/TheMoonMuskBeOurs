@@ -37,9 +37,9 @@ Material:
     - Star_Density: 5
     - Star_Parallax_Speed: 0.05
     - Star_Size: 100
-    - Star_Visibility: 1
+    - Star_Visibility: 0
     m_Colors:
-    - Bottom_Color: {r: 1, g: 0.6231971, b: 0, a: 0}
+    - Bottom_Color: {r: 1, g: 0.63082844, b: 0, a: 0}
     - Middle_Color: {r: 0, g: 0, b: 0, a: 0}
-    - Top_Color: {r: 0.011764706, g: 0.37778518, b: 0.7529412, a: 0}
+    - Top_Color: {r: 0.011764706, g: 0.67260945, b: 0.7529412, a: 0}
   m_BuildTextureStacks: []

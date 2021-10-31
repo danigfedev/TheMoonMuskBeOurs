@@ -57,7 +57,18 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     [Header("Skybox data")]
     [SerializeField] Material skyboxMat;
-    [SerializeField] 
+    [SerializeField] string topColorMatProperty = "Top_Color";
+    [SerializeField] string bottomColorMatProperty = "Bottom_Color";
+    [SerializeField] string starVisibilityMatProperty = "Star_Visibility";
+    [SerializeField] Color bottomColorStage1;
+    [SerializeField] Color topColorStage1;
+    //[SerializeField] Color bottomColorStage2;
+    [SerializeField] Color topColorStage2;
+    //[SerializeField] Color bottomColorStage3;
+    [SerializeField] Color topColorStage3;
+
+    private float starIntensityStage1 = 0;
+    private float starIntensityStage2 = 1;
 
 
 
@@ -73,10 +84,21 @@ public class GameManager : MonoBehaviour
         playerStateHandler = player.GetComponent<Player_StateHandler>();
     }
 
+    //private void Start()
+    //{
+    //    Debug.Log("START");
+    //    //StartCoroutine(LerpSkybox(topColorStage1, topColorStage2, true));
+    //    //StartCoroutine(LerpSkybox(topColorStage2, topColorStage3));
+    //}
+
+    private void OnApplicationQuit()
+    {
+        ResetSkybox();
+    }
 
     #region === Event Driven Behaviour ===
 
-    
+
     public void StartGame() //Triggered form UI
     {
         //Hide UI:
@@ -124,6 +146,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        ResetSkybox();
         SceneManager.LoadScene(0); //Just reload, for simplicity
     }
 
@@ -228,7 +251,7 @@ public class GameManager : MonoBehaviour
 
 
             //Launch sky lerp
-
+            StartCoroutine(LerpSkybox(topColorStage1, topColorStage2, true));
 
 
             //Drop Weapon 2, Health and Shield (Just to show that they are implemented)
@@ -248,6 +271,9 @@ public class GameManager : MonoBehaviour
         else if (currentState == GameStages.STAGE_2)
         {
             //Launch sky lerp
+            StartCoroutine(LerpSkybox(topColorStage2, topColorStage3));
+
+
             //Drop Weapon 3, Health+ and Shield+
             CheckSpawnHealth();
 
@@ -321,7 +347,49 @@ public class GameManager : MonoBehaviour
         EnablePlayerControl();
 
     }
-    
-    //Coroutine Lerp sky 
+
+    #region === Skybox Management ===
+
+    private void ResetSkybox()
+    {
+        skyboxMat.SetColor(bottomColorMatProperty, bottomColorStage1);
+        skyboxMat.SetColor(topColorMatProperty, topColorStage1);
+        skyboxMat.SetFloat(starVisibilityMatProperty, 0);
+        
+    }
+
+    private float elapsetSkyboxTime = 0;
+    private float totalSkyboxLerpTime = 3;
+    private IEnumerator LerpSkybox(Color bottomEnd, Color topEnd, bool showStars = false)
+    {
+        //Color bottomEndColor = skyboxMat.GetColor("Top Color");
+        Color bottomStart = skyboxMat.GetColor(bottomColorMatProperty);
+        Color topStart = skyboxMat.GetColor(topColorMatProperty);
+        Color bC;
+        Color tC;
+
+        while (elapsetSkyboxTime <= 1)
+        {
+            bC = Color.Lerp(bottomStart, bottomEnd, elapsetSkyboxTime);
+            tC = Color.Lerp(topStart, topEnd, elapsetSkyboxTime);
+
+            skyboxMat.SetColor(bottomColorMatProperty, bC);
+            skyboxMat.SetColor(topColorMatProperty, tC);
+            
+            if(showStars)
+                skyboxMat.SetFloat(starVisibilityMatProperty, elapsetSkyboxTime);
+
+            elapsetSkyboxTime += Time.deltaTime / totalSkyboxLerpTime;
+
+            yield return null;
+        }
+
+        skyboxMat.SetColor(bottomColorMatProperty, bottomEnd);
+        skyboxMat.SetColor(topColorMatProperty, topEnd);
+        elapsetSkyboxTime = 0;
+
+    }
+
+    #endregion
 
 }

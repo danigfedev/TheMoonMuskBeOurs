@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 38d9003f5751eab4ea2d4617d93b36db, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 5454a93b89a94af4dad9c65c40732b7c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39435798, g: 0.38847685, b: 0.31935722, a: 1}
+  m_IndirectSpecularColor: {r: 0.50079983, g: 0.2324866, b: 0.26397908, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3537,6 +3537,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1354478557}
     - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: skyboxMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 5454a93b89a94af4dad9c65c40732b7c, type: 2}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
       propertyPath: envEndPos.y
       value: -15
       objectReference: {fileID: 0}
@@ -3561,6 +3565,38 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 910497071}
     - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: topColorStage1.b
+      value: 0.7529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: topColorStage1.g
+      value: 0.67260945
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: topColorStage1.r
+      value: 0.011764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: topColorStage2.b
+      value: 0.7529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: topColorStage2.g
+      value: 0.26734287
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: topColorStage2.r
+      value: 0.011764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: topColorStage3.b
+      value: 0.43396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: topColorStage3.r
+      value: 0.07264749
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
       propertyPath: obstacleInstancer
       value: 
       objectReference: {fileID: 669701014}
@@ -3576,6 +3612,14 @@ PrefabInstance:
       propertyPath: backgroundInstancer
       value: 
       objectReference: {fileID: 1716047594}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: bottomColorStage1.g
+      value: 0.63082844
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: bottomColorStage1.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
       propertyPath: destructorInstancer
       value: 
