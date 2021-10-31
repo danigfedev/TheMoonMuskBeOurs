@@ -989,8 +989,8 @@ MonoBehaviour:
   isBackground: 0
   satelliteObstacleScreenPctg: 0.4
   instanceRate: 0.15
-  topMargin: 4
-  sideMargin: 4
+  topMargin: 2
+  sideMargin: 2
   backgrounDepthPosition: 8
 --- !u!114 &669701015
 MonoBehaviour:
@@ -2143,8 +2143,8 @@ MonoBehaviour:
   isBackground: 1
   satelliteObstacleScreenPctg: 0.4
   instanceRate: 0.15
-  topMargin: 4
-  sideMargin: 4
+  topMargin: 2
+  sideMargin: 2
   backgrounDepthPosition: 8
 --- !u!1 &1728483767
 GameObject:

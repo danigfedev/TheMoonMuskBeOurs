@@ -17,7 +17,7 @@ public class ObstacleInstancer : MonoBehaviour
     private ObjectPooler backgroundPooler;
     //protected Coroutine shootingCoroutine = null;
     //protected string bulletTag;
-    private float shootingElapsedTime = 0;
+    private float shootingElapsedTime = 0.9f;
     private ScreenExtentsWorldSpace screenExtents;
     private Coroutine spawnCoroutine = null;
 
@@ -49,6 +49,7 @@ public class ObstacleInstancer : MonoBehaviour
 
     private IEnumerator SpawnCloud()
     {
+        //shootingElapsedTime = 0.9f; //Start spawning, no need for waiting
         while (true)
         {
             if (shootingElapsedTime >= 1)
@@ -68,8 +69,10 @@ public class ObstacleInstancer : MonoBehaviour
 
                 // Calculating spawn position
                 float posX = Random.Range((int)screenExtents.xMin, (int)screenExtents.xMax + 1);//Adding +1 to include the last position in the range
+                //Debug.LogError(screenExtents.yMax);
                 float posY = screenExtents.yMax + topMargin;
-                Vector3 position = new Vector3(posX, posY, backgrounDepthPosition);
+                float posZ = isBackground ? backgrounDepthPosition : 0;
+                Vector3 position = new Vector3(posX, posY, posZ);
 
                 backgroundPooler.SpawnSingleElementFromPool(_tag, position, Quaternion.identity);
 
