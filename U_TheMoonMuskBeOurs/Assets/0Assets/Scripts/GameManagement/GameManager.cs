@@ -112,61 +112,25 @@ public class GameManager : MonoBehaviour
 
     public void OnEnemyDestroyedByGameLimits()
     {
-        
-
         totalDestroyed++;
 
         //Called by Object Pooler via SO event
-        Debug.LogWarning("[GameManager] Enemy destroyed by game limits");
-        Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
-        //return;
+        //Debug.LogWarning("[GameManager] Enemy destroyed by game limits");
+        //Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
 
         CheckWaveCompletion();
-        /*
-        if (!CheckWaveCompletion())
-        {
-            //SpawnNewWave();
-        }
-        else
-        {
-            //UpdateStage
-        }
-        */
     }
 
     public void OnEnemyKilled()
     {
-
         //Called by Enemy State Handler via SO event
-
         totalKills++;
         totalDestroyed++;
 
-        Debug.LogWarning("[GameManager] Enemy killed");
-        Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
-        //return;
+        //Debug.LogWarning("[GameManager] Enemy killed");
+        //Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
 
         CheckWaveCompletion();
-        //if (totalDestroyed % currentWaveEnemyCount == 0)
-        //{
-        //    if(totalKills >= currentWaveGoal * currentWaveEnemyCount)
-        //        NextStage();
-        //    else
-        //        SpawnNewWave();
-        //}
-
-
-        //If wave destroyed
-
-        /*
-        if (!CheckWaveCompletion())
-        {
-            SpawnNewWave();
-        }
-        else
-            NextStage();
-        
-        */
     }
 
     public void RestartGame()
@@ -187,9 +151,8 @@ public class GameManager : MonoBehaviour
 
     //}
 
-    private void/*bool*/ CheckWaveCompletion()
+    private void CheckWaveCompletion()
     {
-
         if (totalDestroyed % currentWaveEnemyCount == 0)
         {
             if (totalKills >= currentWaveGoal * currentWaveEnemyCount)
@@ -197,17 +160,6 @@ public class GameManager : MonoBehaviour
             else
                 SpawnNewWave();
         }
-
-
-        /*
-        Debug.Log("=== [CheckWaveCompletion]");
-        Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
-        if (totalDestroyed % currentWaveEnemyCount == 0
-            && totalKills >= currentWaveGoal * currentWaveEnemyCount) //If wave destroyed
-            return true;
-
-        return false;
-        */
     }
 
     private void SpawnNewWave()
