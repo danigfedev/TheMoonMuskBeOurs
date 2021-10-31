@@ -9,6 +9,15 @@ public class Player_StateHandler : StateHandler_Base
     [SerializeField] Transform playerShip;
     [SerializeField] Transform shieldPrefab;
     [SerializeField] Transform shieldSpawnPos;
+    
+    [Space(15)]
+    [Header("=== Cloud Interaction Fields ===")]
+    [SerializeField] Material visibilityFadeMaterial;
+    [SerializeField] Color visibilityInitialColor;
+    [SerializeField] [Range(0, 1)] float maxFadeAlphaValue;
+    [SerializeField] float fadeDuration = 0.25f;
+    private float currentTime = 0;
+    private Coroutine fadeCoroutine = null;
 
     private Transform shieldInstance;
     
@@ -16,6 +25,12 @@ public class Player_StateHandler : StateHandler_Base
     {
         InitializeShield();
         base.Awake();
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        visibilityFadeMaterial.color = visibilityInitialColor;
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -48,8 +63,53 @@ public class Player_StateHandler : StateHandler_Base
                 HandleDamage(damage);
             }
         }
+        else if( _tag.Contains(TagList.obstaclePrefix) && _tag.Contains(TagList.cloudPrefix))
+        {
+            //Fade Out visibility
+            if (fadeCoroutine != null)
+                StopCoroutine(fadeCoroutine);
+            fadeCoroutine = StartCoroutine(Fade(maxFadeAlphaValue));
+        }
 
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        string _tag = other.tag;
+        if (_tag.Contains(TagList.obstaclePrefix) && _tag.Contains(TagList.cloudPrefix))
+        {
+            //Fade In visibility
+            if (fadeCoroutine != null)
+                StopCoroutine(fadeCoroutine);
+            fadeCoroutine = StartCoroutine(Fade(0));
+        }
+    }
+
+
+    /// <summary>
+    /// Difficutl visibility
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator Fade(float endAlpha)
+    {
+        Color c = visibilityFadeMaterial.color;
+        currentTime = 0;
+        float initialAlpha = c.a;
+        //float initialAlpha = (endAlpha > 0) ? 0 : maxFadeAlphaValue;
+        //float alpha = initialAlpha;
+        while (currentTime <= 1)
+        {
+            float alpha = Mathf.Lerp(initialAlpha, endAlpha, currentTime);
+            visibilityFadeMaterial.color = new Color(c.r, c.g, c.b, alpha);
+
+            currentTime += Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+        visibilityFadeMaterial.color = new Color(c.r, c.g, c.b, endAlpha);
+
+        fadeCoroutine = null;
+    }
+
 
     private void InitializeShield()
     {

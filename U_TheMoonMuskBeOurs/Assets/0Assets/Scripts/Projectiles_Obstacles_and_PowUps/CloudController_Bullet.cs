@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CloudController_Bullet : Bullet
 {
+        
     protected override void OnTriggerEnter(Collider other)
     {
         //throw new System.NotImplementedException();
@@ -13,4 +14,6 @@ public class CloudController_Bullet : Bullet
             Debug.LogWarning("Player hit by cloud");
         }
     }
+
+
 }

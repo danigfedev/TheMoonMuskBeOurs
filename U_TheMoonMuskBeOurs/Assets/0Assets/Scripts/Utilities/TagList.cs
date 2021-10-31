@@ -16,6 +16,7 @@ public static class TagList
 
     //Obstacles:
     public const string obstaclePrefix = "Obstacle";
+    public const string cloudPrefix = "Cloud";
     public const string cloudBG1_Tag = "Obstacle_CloudBG_1";
     public const string cloudBG2_Tag = "Obstacle_CloudBG_2";
     public const string cloudFG1_Tag = "Obstacle_CloudFG_1";

@@ -3556,6 +3556,30 @@ PrefabInstance:
       propertyPath: shieldSpawnPos
       value: 
       objectReference: {fileID: 2112203195}
+    - target: {fileID: 8406056563734607624, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
+      propertyPath: maxFadeAlphaValue
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406056563734607624, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
+      propertyPath: visibilityFadeMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: afa2db9694d0f8840b677d95e803ef4b, type: 2}
+    - target: {fileID: 8406056563734607624, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
+      propertyPath: visibilityInitialColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406056563734607624, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
+      propertyPath: visibilityInitialColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406056563734607624, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
+      propertyPath: visibilityInitialColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406056563734607624, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
+      propertyPath: visibilityInitialColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
 --- !u!1001 &6376156071384100229
