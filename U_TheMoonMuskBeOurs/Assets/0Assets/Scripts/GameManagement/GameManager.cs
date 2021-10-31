@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     private PlayerController playerController;
     private Player_WeaponHandler playerWeaponHandler;
+    private Player_StateHandler playerStateHandler;
 
     [Header("Object Poolers")]
     [SerializeField] ObstacleInstancer backgroundInstancer;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     {
         playerController = player.GetComponent<PlayerController>();
         playerWeaponHandler = player.GetComponent<Player_WeaponHandler>();
+        playerStateHandler = player.GetComponent<Player_StateHandler>();
     }
 
     void Start()
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour
     {
         playerController.EnableControl(true);
         playerWeaponHandler.Shoot(1);//.EnableShooting();/* = player.GetComponent<Player_WeaponHandler>();*/
+        playerStateHandler.ShowHealthBar();
     }
 
     //private void EnablePlayerShooting()

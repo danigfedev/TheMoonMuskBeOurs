@@ -57,6 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0e1a63fd4cc1124e9e419f879c81537, type: 3}
+--- !u!1 &4915535662428836753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5146529020247976363, guid: d0e1a63fd4cc1124e9e419f879c81537, type: 3}
+  m_PrefabInstance: {fileID: 241885155496262202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4881274009518339841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4676598560930958651, guid: d0e1a63fd4cc1124e9e419f879c81537, type: 3}
@@ -205,6 +210,14 @@ PrefabInstance:
       propertyPath: mainObjectRenderer
       value: 
       objectReference: {fileID: 2997747403697782077}
+    - target: {fileID: 9096705219074050368, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+      propertyPath: healthBarBaseObject
+      value: 
+      objectReference: {fileID: 4915535662428836753}
+    - target: {fileID: 9096705219074050368, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+      propertyPath: hideHealthBarOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 706345276747377360, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}

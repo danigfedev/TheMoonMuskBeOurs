@@ -32,6 +32,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalHealth: 50
   hitDamage: 3
+  hideHealthBarOnAwake: 0
+  healthBarBaseObject: {fileID: 2831318408135250330}
   healthBarFill: {fileID: 2359996611332355338}
   mainObjectRenderer: {fileID: 6788274493003225609}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
@@ -234,6 +236,11 @@ Transform:
 --- !u!4 &7457569879168362158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2902350707237644813, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
+  m_PrefabInstance: {fileID: 5708775268709780643}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2831318408135250330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7526493315371785529, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
   m_PrefabInstance: {fileID: 5708775268709780643}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2359996611332355338 stripped
