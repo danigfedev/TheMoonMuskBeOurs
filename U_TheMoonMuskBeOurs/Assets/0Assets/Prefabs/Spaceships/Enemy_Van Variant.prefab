@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3cacfdc2d11a6489a2cce647af0ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootOnStart: 0
+  shootOnStart: 1
   bulletCount: 1
   bulletType: 1
   bulletDirection: 0

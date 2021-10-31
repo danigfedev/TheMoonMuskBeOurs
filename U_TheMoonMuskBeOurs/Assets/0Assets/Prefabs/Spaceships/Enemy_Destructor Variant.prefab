@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3cacfdc2d11a6489a2cce647af0ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootOnStart: 0
+  shootOnStart: 1
   bulletCount: 1
   bulletType: 1
   bulletDirection: 0
   bulletSpawnPosition: {fileID: 7457569879168362158}
-  fireRate: 0.3
+  fireRate: 0.25
 --- !u!114 &2026129425
 MonoBehaviour:
   m_ObjectHideFlags: 0

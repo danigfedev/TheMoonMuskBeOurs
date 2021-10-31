@@ -130,6 +130,7 @@ public abstract class WeaponHandler_Base: MonoBehaviour
     protected IEnumerator ShootCoroutine(int bulletCount, BulletDirections direction)
     {
         shootingElapsedTime = Random.Range((float)0, (float)1);
+        Debug.Log(string.Format("Random elapsed time: {0}", shootingElapsedTime));
 
         while (true)
         {
