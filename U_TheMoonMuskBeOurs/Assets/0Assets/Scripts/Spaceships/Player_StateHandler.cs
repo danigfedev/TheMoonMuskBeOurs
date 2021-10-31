@@ -38,7 +38,7 @@ public class Player_StateHandler : StateHandler_Base
             Debug.Log("Tag: " + _tag);
             Debug.Log(other.name);
             float damage = other.gameObject.GetComponentInParent<StateHandler_Base>().GetHitDamage();
-            HandleDamage(damage);//hardcoded for now
+            HandleDamage(damage);
         }
         else if (_tag.Contains(TagList.bulletPrefix))
         {
@@ -68,6 +68,8 @@ public class Player_StateHandler : StateHandler_Base
 
     protected override void HandleDamage(float damage)
     {
+        StartCoroutine(EditMaterial(damageColor));
+
         //stateProperties.totalHealth -= damage;
         totalHealth -= damage;
         //Debug.Log("Damage taken: " + totalHealth);
@@ -84,6 +86,7 @@ public class Player_StateHandler : StateHandler_Base
 
     protected override void HandleHealing(float health)
     {
+        StartCoroutine(EditMaterial(healingColor));
         totalHealth += health;
         //stateProperties.totalHealth += health;
 

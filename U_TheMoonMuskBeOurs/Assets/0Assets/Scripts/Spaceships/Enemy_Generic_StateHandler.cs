@@ -29,6 +29,9 @@ public class Enemy_Generic_StateHandler : StateHandler_Base
 
     protected override void HandleDamage(float damage)
     {
+
+        StartCoroutine(EditMaterial(damageColor));
+
         totalHealth -= damage;
         if (totalHealth <= 0)
         {

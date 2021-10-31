@@ -32,6 +32,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalHealth: 50
   hitDamage: 3
+  mainObjectRenderer: {fileID: 6788274493003225609}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  healingColor: {r: 0, g: 1, b: 0, a: 1}
   dieEventSO: {fileID: 11400000, guid: 526118a3c7636664a8e1aca10f218bfe, type: 2}
 --- !u!114 &2026129427
 MonoBehaviour:
@@ -111,6 +114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d94f259d2438fee48bdc692ad2b1246c, type: 3}
+--- !u!23 &6788274493003225609 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1228760816183845290, guid: d94f259d2438fee48bdc692ad2b1246c, type: 3}
+  m_PrefabInstance: {fileID: 5708775268471274403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5708775268709780643
 PrefabInstance:
   m_ObjectHideFlags: 0
