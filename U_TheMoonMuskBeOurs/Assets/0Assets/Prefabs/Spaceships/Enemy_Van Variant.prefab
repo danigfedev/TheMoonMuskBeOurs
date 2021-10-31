@@ -15,7 +15,7 @@ MonoBehaviour:
   allowShooting: 1
   bulletCount: 1
   bulletType: 1
-  bulletDirection: 1
+  bulletDirection: 0
   bulletSpawnPosition: {fileID: 8488868967399015411}
   fireRate: 0.15
 --- !u!114 &1994363165

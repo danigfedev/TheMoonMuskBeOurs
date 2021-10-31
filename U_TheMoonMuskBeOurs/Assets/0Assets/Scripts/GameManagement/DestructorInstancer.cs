@@ -50,7 +50,9 @@ public class DestructorInstancer : MonoBehaviour
         
         foreach(GameObject enemy in objPack)
         {
-            enemy.transform.rotation = Quaternion.FromToRotation(enemy.transform.up, -enemy.transform.up);
+            enemy.transform.localRotation = transform.localRotation * Quaternion.Euler(transform.forward * 180);
+                
+                //Quaternion.FromToRotation(enemy.transform.up, -enemy.transform.up);
 
             //Alternative to get rotation:
             //transform.localRotation * Quaternion.Euler(transform.forward * 180);
