@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectPooler))]
 public class VanInstancer : MonoBehaviour
 {
+    [SerializeField] bool spawnOnStart = false;
     [Range(0, 1)]
     [SerializeField] float verticalPercentageFromBottom = 0.75f;
     [SerializeField] float verticalOffsetLinearMotion = 2.5f;
@@ -19,7 +20,8 @@ public class VanInstancer : MonoBehaviour
 
     private void Start()
     {
-        SpawnFromPool();
+        if(spawnOnStart)
+            SpawnFromPool();
     }
 
     [ContextMenu("Spawn From Pool")]

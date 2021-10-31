@@ -115,6 +115,10 @@ PrefabInstance:
       propertyPath: totalHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 9096705219074050368, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+      propertyPath: stateProperties
+      value: 
+      objectReference: {fileID: 11400000, guid: dbf29d94b15537b4abb3fe39cfa4094a, type: 2}
     m_RemovedComponents:
     - {fileID: 706345276747377360, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}

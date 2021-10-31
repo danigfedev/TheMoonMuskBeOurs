@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class StateHandler_Base: MonoBehaviour
 {
-
+    //[SerializeField] protected StateHandlerProperties stateProperties;
     [SerializeField] protected float totalHealth;
     [SerializeField] protected float hitDamage;
     protected float maxHealth;
@@ -21,7 +21,8 @@ public abstract class StateHandler_Base: MonoBehaviour
     public virtual void Awake()
     {
         maxHealth = totalHealth;
+        //maxHealth = stateProperties.totalHealth;
     }
 
-    public float GetHitDamage() => hitDamage;
+    public float GetHitDamage() => hitDamage;/*stateProperties.hitDamage;*/
 }

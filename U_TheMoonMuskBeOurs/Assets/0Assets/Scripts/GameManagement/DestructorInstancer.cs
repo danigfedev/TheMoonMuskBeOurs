@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectPooler))]
 public class DestructorInstancer : MonoBehaviour
 {
-
-    [SerializeField] int verticalResolution;
+    [SerializeField] bool spawnOnStart = false;
+    //[SerializeField] int verticalResolution;
     [SerializeField] float horizontalSeparationPercentage = 0.25f;
     [SerializeField] GameObject biggestPoolableObjectPrefab;
     [SerializeField] int prefabCountAsMargin = 4;
@@ -23,7 +23,8 @@ public class DestructorInstancer : MonoBehaviour
     {
         verticalOffset = prefabCountAsMargin * GetPrefabExtents().y;
 
-        SpawnFromPool();
+        if(spawnOnStart)
+            SpawnFromPool();
     }
 
     [ContextMenu("Spawn From Pool")]
@@ -32,7 +33,6 @@ public class DestructorInstancer : MonoBehaviour
         GameObject[] objPack = objectPooler.SpawnPackFromPool(TagList.enemyDestructorT1Tag, 3);
 
         int centralPos = 0;
-        //Vector3 topScreen = GetTopScreenWorlPosition();
         ScreenExtentsWorldSpace screenExtents = Utils.GetScreenWorldExtents();
         Vector3 topScreen = new Vector3(screenExtents.xMid, screenExtents.yMax, 0);
 
@@ -60,6 +60,7 @@ public class DestructorInstancer : MonoBehaviour
 
     }
 
+    /*
     private Vector3 GetTopScreenWorlPosition()
     {
         //new Vector3 
@@ -69,7 +70,7 @@ public class DestructorInstancer : MonoBehaviour
 
         return Camera.main.ScreenToWorldPoint(new Vector3(0, verticalResolution, 0));
     }
-
+    */
 
     private Vector3 GetPrefabExtents()
     {

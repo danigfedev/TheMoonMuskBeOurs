@@ -66,23 +66,28 @@ public class Player_StateHandler : StateHandler_Base
 
     protected override void HandleDamage(float damage)
     {
+        //stateProperties.totalHealth -= damage;
         totalHealth -= damage;
         //Debug.Log("Damage taken: " + totalHealth);
         //Edit material
-        if(totalHealth <= 0)
+        if (/*stateProperties.totalHealth*/totalHealth <= 0)
         {
-            //GameOver!
             Debug.LogError("YOU DIED");
+            //GameOver!
         }
     }
 
     protected override void HandleHealing(float health)
     {
         totalHealth += health;
+        //stateProperties.totalHealth += health;
 
         if (totalHealth > maxHealth) totalHealth = maxHealth;
-        
+        //if (stateProperties.totalHealth > maxHealth) stateProperties.totalHealth = maxHealth;
+
         Debug.Log("Healing: " + totalHealth);
-        //Edit material
+        //Debug.Log("Healing: " + stateProperties.totalHealth);
+        
+        //Edit material?
     }
 }

@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b9d9e5bf148b7419acb69b96dcd71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 5
+  totalHealth: 50
   hitDamage: 3
 --- !u!114 &2026129427
 MonoBehaviour:
