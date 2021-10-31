@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObstacleInstancer : MonoBehaviour
 {
+    [SerializeField] bool spawnOnStart = false;
+
     [SerializeField] bool isBackground = false;
     [Range(0, 1)]
     [SerializeField] float satelliteObstacleScreenPctg = 0.75f;
@@ -26,8 +28,8 @@ public class ObstacleInstancer : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine(SpawnCloud());
-        StartCoroutine(SpawnSatellite());
+        if (spawnOnStart)
+            StartCoroutine(SpawnSatellite());
     }
 
     private IEnumerator SpawnCloud()

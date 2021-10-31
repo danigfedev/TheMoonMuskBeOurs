@@ -60,18 +60,6 @@ public class DestructorInstancer : MonoBehaviour
 
     }
 
-    /*
-    private Vector3 GetTopScreenWorlPosition()
-    {
-        //new Vector3 
-#if UNITY_ANDROID && !UNITY_EDITOR
-        verticalResolution = Screen.height;
-#endif
-
-        return Camera.main.ScreenToWorldPoint(new Vector3(0, verticalResolution, 0));
-    }
-    */
-
     private Vector3 GetPrefabExtents()
     {
         GameObject instance = Instantiate(biggestPoolableObjectPrefab,
