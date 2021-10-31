@@ -21,7 +21,6 @@ public class Satellite_StateHandler : StateHandler_Base
         }
         else if (other.tag == TagList.bulletPlayerTag)
         {
-            Debug.LogWarning("Satellite hit by player's bullet");
             float damage = other.GetComponentInParent<Bullet>().GetBulletDamage();
             HandleDamage(damage);
         }

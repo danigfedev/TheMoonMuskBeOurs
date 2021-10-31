@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ObjectPooler))]
 public class ObstacleInstancer : MonoBehaviour
 {
     [SerializeField] bool spawnOnStart = false;
-
+    [Space(10)]
     [SerializeField] bool isBackground = false;
     [Range(0, 1)]
     [SerializeField] float satelliteObstacleScreenPctg = 0.75f;
@@ -15,8 +16,6 @@ public class ObstacleInstancer : MonoBehaviour
     [SerializeField] float backgrounDepthPosition = 8;
 
     private ObjectPooler backgroundPooler;
-    //protected Coroutine shootingCoroutine = null;
-    //protected string bulletTag;
     private float shootingElapsedTime = 0.9f;
     private ScreenExtentsWorldSpace screenExtents;
     private Coroutine spawnCoroutine = null;

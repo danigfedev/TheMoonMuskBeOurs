@@ -64,6 +64,9 @@ public abstract class StateHandler_Base: MonoBehaviour
         mainObjectRenderer.material.color = initialColor;
     }
 
+
+    public float GetHealthPercentage() => totalHealth / maxHealth;
+
     public float GetHitDamage() => hitDamage;/*stateProperties.hitDamage;*/
 
     public void ShowHealthBar() => healthBarBaseObject.SetActive(true);

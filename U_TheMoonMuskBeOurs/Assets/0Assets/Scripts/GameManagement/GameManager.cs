@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     [Space(5)]
     [Header("Player")]
     [SerializeField] GameObject player;
+    [Tooltip("Indicates the threshold behind health power ups are dropped")]
+    [SerializeField] [Range(0, 1)] float healthPU_threshold = 0.5f;
     private PlayerController playerController;
     private Player_WeaponHandler playerWeaponHandler;
     private Player_StateHandler playerStateHandler;
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] ObstacleInstancer obstacleInstancer;
     [SerializeField] VanInstancer vanInstancer;
     [SerializeField] DestructorInstancer destructorInstancer;
+    [SerializeField] PowerUpInstancer powUpInstancer;
     [Space(10)]
 
     [Header("Stage 1 data")]
@@ -69,34 +72,17 @@ public class GameManager : MonoBehaviour
         playerStateHandler = player.GetComponent<Player_StateHandler>();
     }
 
-    void Start()
-    {
-        
-    }
-
-    //void Update()
-    //{
-        
-    //}
-
-
-
-
-
-
 
     #region === Event Driven Behaviour ===
 
     
     public void StartGame() //Triggered form UI
     {
-        //Hide UI
+        //Hide UI:
         mainMenu.SetActive(false);
 
-        //Hide Intro Scene
-        StartCoroutine(HandleIntro());
-
-        //Enable Player Control and shooting. Show fire
+        //Hide Intro Scene:
+        StartCoroutine(HandleIntro()); //At the end ==> Enable Player Control and shooting. Show fire
 
         //Lerp sky
         //Start Spawning things
@@ -107,7 +93,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.LogError("[GameManager] Player Died");
         //TODO Enable Game over Screen
-        
         
         //Testing purposes
         //RestartGame();
@@ -168,6 +153,10 @@ public class GameManager : MonoBehaviour
 
     private void SpawnNewWave()
     {
+        //CheckSpawnHealth()
+        if(playerStateHandler.GetHealthPercentage() <= healthPU_threshold)
+            powUpInstancer.SpawnPowerUp(TagList.PU_healthTag);
+
         //Check current stage
         if (currentState == GameStages.STAGE_1)
         {
@@ -284,12 +273,15 @@ public class GameManager : MonoBehaviour
             introElapsedTime += Time.deltaTime / introTotalDuration;
             yield return null;
         }
+        cam.position = cameraEnd.position;
+        cam.localRotation = Quaternion.identity;
 
         //Disable Intro Environment:
         introEnvironment.gameObject.SetActive(false);
 
         NextStage();//Move from menu to Stage 1
         EnablePlayerControl();
+
     }
     
     //Coroutine Lerp sky 

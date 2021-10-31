@@ -30,6 +30,7 @@ TagManager:
   - Obstacle_CloudFG_2
   - Obstacle_SatelliteBG
   - Obstacle_SatelliteFG
+  - Utils-ScreenToWorld
   layers:
   - Default
   - TransparentFX

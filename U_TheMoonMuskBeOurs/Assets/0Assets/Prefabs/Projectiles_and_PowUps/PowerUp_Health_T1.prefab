@@ -64,6 +64,10 @@ PrefabInstance:
       value: PU_Health
       objectReference: {fileID: 0}
     - target: {fileID: 6816480665111204141, guid: 91fd9e30000e1eb4a96ca2bbee698f84, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816480665111204141, guid: 91fd9e30000e1eb4a96ca2bbee698f84, type: 3}
       propertyPath: amount
       value: 5
       objectReference: {fileID: 0}
