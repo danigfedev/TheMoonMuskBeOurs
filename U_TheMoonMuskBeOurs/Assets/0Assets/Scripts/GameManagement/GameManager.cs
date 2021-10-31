@@ -71,8 +71,8 @@ public class GameManager : MonoBehaviour
     private float starIntensityStage2 = 1;
 
 
-
     private int totalKills = 0;
+    private int totalKillsThisStage = 0;
     private int totalDestroyed = 0;
     private int currentWaveGoal;
     private int currentWaveEnemyCount;
@@ -135,9 +135,9 @@ public class GameManager : MonoBehaviour
     public void OnEnemyKilled()
     {
         //Called by Enemy State Handler via SO event
-        totalKills++;
+        totalKillsThisStage++;
         totalDestroyed++;
-
+        totalKills++;
         //Debug.LogWarning("[GameManager] Enemy killed");
         //Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
 
@@ -146,6 +146,8 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        totalKills = 0;
+        ResetEnemyWaveTotalCounts();
         ResetSkybox();
         SceneManager.LoadScene(0); //Just reload, for simplicity
     }
@@ -168,7 +170,7 @@ public class GameManager : MonoBehaviour
     {
         if (totalDestroyed % currentWaveEnemyCount == 0)
         {
-            if (totalKills >= currentWaveGoal * currentWaveEnemyCount)
+            if (totalKillsThisStage >= currentWaveGoal * currentWaveEnemyCount)
                 NextStage();
             else
                 SpawnNewWave();
@@ -294,7 +296,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetEnemyWaveTotalCounts()
     {
-        totalKills = 0;
+        totalKillsThisStage = 0;
         totalDestroyed = 0;
     }
 
