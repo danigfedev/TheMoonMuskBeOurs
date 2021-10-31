@@ -135,9 +135,11 @@ public abstract class WeaponHandler_Base: MonoBehaviour
         {
             if (shootingElapsedTime >= 1)
             {
+                //Commented on the 31/10/2021 at 2AM...
                 Quaternion rot = (direction == BulletDirections.VERTICALLY_ALIGNED) ?
                     transform.localRotation
                     : Quaternion.FromToRotation(transform.up, -transform.up);
+                
 
                 //Alternative to get rotation:
                 //transform.localRotation * Quaternion.Euler(transform.forward * 180);
