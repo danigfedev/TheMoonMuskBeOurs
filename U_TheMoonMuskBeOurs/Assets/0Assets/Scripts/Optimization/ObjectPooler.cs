@@ -46,6 +46,10 @@ public class ObjectPooler : MonoBehaviour
     [SerializeField] private List<Pool> poolList;
     [SerializeField] private Dictionary<string, Queue<GameObject>> poolDictionary;
 
+    [Space(10)]
+    [Header("== SO Events ==")]
+    [SerializeField] protected SimpleEventSO destroyEventSO;
+
     private void Awake()
     {
         poolContainer = GameObject.FindGameObjectWithTag(TagList.poolContainerTag).transform;
@@ -84,7 +88,10 @@ public class ObjectPooler : MonoBehaviour
             for(int i=0; i< pool.poolSize; i++)
             {
                 tmp = Instantiate(pool.poolPrefab, parent.transform);
-                tmp.AddComponent<PoolableObject>();
+
+                PoolableObject poolableObjComp = tmp.AddComponent<PoolableObject>();
+                poolableObjComp.SetDestroyEventSO(destroyEventSO);
+
                 pool.SetPrefabExtents(tmp);
                 tmp.SetActive(false);
                 poolDictionary[poolTag].Enqueue(tmp);

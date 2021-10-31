@@ -27,10 +27,10 @@ public class VanInstancer : MonoBehaviour
     [ContextMenu("Spawn From Pool")]
     public void SpawnFromPool()
     {
+        Debug.LogWarning("[Van] Spawning from pool");
         GameObject[] objPack = objectPooler.SpawnPackFromPool(TagList.enemyVanT1Tag, 4);
 
         Vector2 extents = objPack[0].GetComponentInChildren<Collider>().bounds.extents;
-
 
         float Xoffset =  3 * extents.x;
         float Yoffset =  3 * extents.y;

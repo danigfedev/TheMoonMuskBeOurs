@@ -119,6 +119,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2052557161877590530, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
+      propertyPath: destroyEventSO
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052557161877590530, guid: df9c59f11b0ca7347aebb4a1d053c196, type: 3}
       propertyPath: poolList.Array.size
       value: 1
       objectReference: {fileID: 0}

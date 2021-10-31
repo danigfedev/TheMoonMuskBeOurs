@@ -254,6 +254,7 @@ MonoBehaviour:
   - poolSize: 6
     poolPrefab: {fileID: 1926176282868002768, guid: 4ea5386b6dd154d449fdbdfd9309ab8a, type: 3}
     poolTag: EnemyShip_Destructor-T1
+  destroyEventSO: {fileID: 11400000, guid: 11ae791d6934c0f47baab607b7d32ded, type: 2}
 --- !u!4 &156867640
 Transform:
   m_ObjectHideFlags: 0
@@ -320,7 +321,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1013,6 +1014,7 @@ MonoBehaviour:
   - poolSize: 10
     poolPrefab: {fileID: 9018422527381769655, guid: ae60504be4781fc4bb85ec888c47b3e5, type: 3}
     poolTag: Obstacle_SatelliteFG
+  destroyEventSO: {fileID: 0}
 --- !u!4 &669701016
 Transform:
   m_ObjectHideFlags: 0
@@ -1154,6 +1156,7 @@ MonoBehaviour:
   - poolSize: 8
     poolPrefab: {fileID: 579625203256871565, guid: 0b9884ab6428eee4e96ec611e0ad1d22, type: 3}
     poolTag: EnemyShip_Van-T1
+  destroyEventSO: {fileID: 11400000, guid: 11ae791d6934c0f47baab607b7d32ded, type: 2}
 --- !u!4 &840612826
 Transform:
   m_ObjectHideFlags: 0
@@ -2109,6 +2112,7 @@ MonoBehaviour:
   - poolSize: 10
     poolPrefab: {fileID: 3279428131712032252, guid: c03b0fd645712674aa9ebc29ae92d1f0, type: 3}
     poolTag: Obstacle_SatelliteBG
+  destroyEventSO: {fileID: 0}
 --- !u!4 &1716047593
 Transform:
   m_ObjectHideFlags: 0
@@ -3362,6 +3366,10 @@ PrefabInstance:
       propertyPath: obstacleInstancer
       value: 
       objectReference: {fileID: 669701014}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: stage_1_TotalWaves
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
       propertyPath: destructorInstancer
       value: 

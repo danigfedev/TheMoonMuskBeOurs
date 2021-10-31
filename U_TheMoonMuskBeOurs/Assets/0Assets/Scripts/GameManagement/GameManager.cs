@@ -112,41 +112,61 @@ public class GameManager : MonoBehaviour
 
     public void OnEnemyDestroyedByGameLimits()
     {
-        //Called by Object Pooler via SO event
+        
 
         totalDestroyed++;
+
+        //Called by Object Pooler via SO event
+        Debug.LogWarning("[GameManager] Enemy destroyed by game limits");
+        Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
+        //return;
+
+        CheckWaveCompletion();
+        /*
         if (!CheckWaveCompletion())
         {
-            //SpawnNewWave
+            //SpawnNewWave();
         }
         else
         {
             //UpdateStage
         }
+        */
     }
 
     public void OnEnemyKilled()
     {
-        Debug.LogWarning("Enemy killed");
-        //return;
-
 
         //Called by Enemy State Handler via SO event
 
         totalKills++;
         totalDestroyed++;
 
+        Debug.LogWarning("[GameManager] Enemy killed");
+        Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
+        //return;
 
+        CheckWaveCompletion();
+        //if (totalDestroyed % currentWaveEnemyCount == 0)
+        //{
+        //    if(totalKills >= currentWaveGoal * currentWaveEnemyCount)
+        //        NextStage();
+        //    else
+        //        SpawnNewWave();
+        //}
+
+
+        //If wave destroyed
+
+        /*
         if (!CheckWaveCompletion())
         {
-            //SpawnNewWave
+            SpawnNewWave();
         }
         else
-        {
-            Debug.Log(string.Format("[GameManager] Stage {0} completed!", currentState));
-            //UpdateStage
-        }
-
+            NextStage();
+        
+        */
     }
 
     public void RestartGame()
@@ -167,14 +187,27 @@ public class GameManager : MonoBehaviour
 
     //}
 
-    private bool CheckWaveCompletion()
+    private void/*bool*/ CheckWaveCompletion()
     {
 
-        if (totalDestroyed % currentWaveGoal == 0
+        if (totalDestroyed % currentWaveEnemyCount == 0)
+        {
+            if (totalKills >= currentWaveGoal * currentWaveEnemyCount)
+                NextStage();
+            else
+                SpawnNewWave();
+        }
+
+
+        /*
+        Debug.Log("=== [CheckWaveCompletion]");
+        Debug.Log(string.Format("Enemies Killed: {0} | Enemies destroyed: {1}", totalKills, totalDestroyed));
+        if (totalDestroyed % currentWaveEnemyCount == 0
             && totalKills >= currentWaveGoal * currentWaveEnemyCount) //If wave destroyed
             return true;
 
         return false;
+        */
     }
 
     private void SpawnNewWave()
@@ -201,17 +234,25 @@ public class GameManager : MonoBehaviour
 
     private void NextStage()
     {
-        Debug.Log(string.Format("[GameManager] Moving to Next Stage from {0}", currentState));
+        Debug.Log(string.Format("[GameManager] Stage {0} completed!", currentState));
+        ResetEnemyWaveTotalCounts();
+        //Debug.Log(string.Format("[GameManager] Moving to Next Stage from {0}", currentState));
 
         //Check current stage
         if (currentState== GameStages.MENU)
         {
             currentState = GameStages.STAGE_1;
+            Debug.Log(string.Format("[GameManager] {0} reached!", currentState));
 
+            //ResetEnemyWaveTotalCounts();
             currentWaveGoal = stage_1_TotalWaves;
             currentWaveEnemyCount = stage_1_EnemiesPerWave;
 
-            //Enable enemy stage 1 spawning
+            //Launch sky lerp
+
+            //Enemy and obstacle spawning:
+
+            //obstacleInstancer -> Change spawned obstacle
             vanInstancer.SpawnFromPool();
             //Enable obstacle instancing
             
@@ -219,10 +260,21 @@ public class GameManager : MonoBehaviour
         }
         else if (currentState == GameStages.STAGE_1)
         {
+            currentState = GameStages.STAGE_2;
+            Debug.Log(string.Format("[GameManager] {0} reached!", currentState));
+
+            //ResetEnemyWaveTotalCounts();
+            currentWaveGoal = stage_2_TotalWaves;
+            currentWaveEnemyCount = stage_2_EnemiesPerWave;
+
+            //Enemy and obstacle spawning:
+
+            //obstacleInstancer -> Change spawned obstacle
+            //vanInstancer -> Stop instancing objects, even destroy object pool recursively?
+            destructorInstancer.SpawnFromPool();
             //Launch sky lerp
 
-            //vanInstancer -> Stop instancing objects
-            //obstacleInstancer -> Change spawned obstacle
+            
 
             //Drop Weapon 2, Health and Shield (Just to show that they are implemented)
 
@@ -240,7 +292,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    private void ResetEnemyWaveTotalCounts()
+    {
+        totalKills = 0;
+        totalDestroyed = 0;
+    }
 
     float introElapsedTime = 0;
     float introTotalDuration = 2;
