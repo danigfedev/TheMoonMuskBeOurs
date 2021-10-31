@@ -10,6 +10,7 @@ public abstract class StateHandler_Base: MonoBehaviour
 
     [Space(10)]
     [Header("== VFX ==")]
+    [SerializeField] protected Transform healthBarFill;
     [SerializeField] protected MeshRenderer mainObjectRenderer;
     [SerializeField] protected Color damageColor = Color.red;
     [SerializeField] protected Color healingColor = Color.green;
@@ -28,6 +29,16 @@ public abstract class StateHandler_Base: MonoBehaviour
     protected abstract void HandleDamage(float damage);
     protected abstract void HandleHealing(float health);
 
+    //Implementations:
+
+    protected void UpdateHealthBar()
+    {
+        float healthPctg = totalHealth / maxHealth;
+        healthPctg = Mathf.Clamp(healthPctg, 0, 1);
+        Vector3 currentScale = healthBarFill.localScale;
+        healthBarFill.localScale = new Vector3(healthPctg, currentScale.y, currentScale.z);
+    }
+
     protected IEnumerator EditMaterial(Color c)
     {
         mainObjectRenderer.material.color = c;
@@ -41,7 +52,6 @@ public abstract class StateHandler_Base: MonoBehaviour
         mainObjectRenderer.material.color = initialColor;
     }
 
-    //Implementations:
 
     public virtual void Awake()
     {
@@ -58,6 +68,7 @@ public abstract class StateHandler_Base: MonoBehaviour
             return;
         }
         mainObjectRenderer.material.color = initialColor;
+        healthBarFill.localScale = Vector3.one;
     }
 
     public virtual void OnDestroy()

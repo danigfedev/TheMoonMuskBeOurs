@@ -68,10 +68,12 @@ public class Player_StateHandler : StateHandler_Base
 
     protected override void HandleDamage(float damage)
     {
-        StartCoroutine(EditMaterial(damageColor));
-
         //stateProperties.totalHealth -= damage;
         totalHealth -= damage;
+
+        UpdateHealthBar();
+        StartCoroutine(EditMaterial(damageColor));
+
         //Debug.Log("Damage taken: " + totalHealth);
         //Edit material
         if (/*stateProperties.totalHealth*/totalHealth <= 0)
@@ -86,9 +88,11 @@ public class Player_StateHandler : StateHandler_Base
 
     protected override void HandleHealing(float health)
     {
-        StartCoroutine(EditMaterial(healingColor));
         totalHealth += health;
         //stateProperties.totalHealth += health;
+
+        UpdateHealthBar();
+        StartCoroutine(EditMaterial(healingColor));
 
         if (totalHealth > maxHealth) totalHealth = maxHealth;
         //if (stateProperties.totalHealth > maxHealth) stateProperties.totalHealth = maxHealth;

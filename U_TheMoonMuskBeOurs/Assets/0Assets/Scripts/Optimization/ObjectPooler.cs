@@ -48,6 +48,7 @@ public class ObjectPooler : MonoBehaviour
 
     [Space(10)]
     [Header("== SO Events ==")]
+    [Tooltip("Only assign to enemy spawners, as this interacts with game manager and influences game flow")]
     [SerializeField] protected SimpleEventSO destroyEventSO;
 
     private void Awake()
