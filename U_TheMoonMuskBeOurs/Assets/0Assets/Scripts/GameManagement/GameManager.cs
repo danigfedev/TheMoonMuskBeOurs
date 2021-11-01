@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
         STAGE_3
     }
 
+    [Header("== SO Events ==")]
+    [Space(10)]
+    [SerializeField] IntEventSO enemyCountEventSO;
+
     [Header("Intro")]
     [SerializeField] Transform cameraEnd;
     [SerializeField] Transform introEnvironment;
@@ -104,6 +108,9 @@ public class GameManager : MonoBehaviour
         //Hide UI:
         mainMenu.SetActive(false);
 
+        if (enemyCountEventSO != null)
+            enemyCountEventSO.RaiseEvent(totalKills);
+
         //Hide Intro Scene:
         StartCoroutine(HandleIntro()); //At the end ==> Enable Player Control and shooting. Show fire
 
@@ -129,6 +136,9 @@ public class GameManager : MonoBehaviour
         totalKillsThisStage++;
         totalDestroyed++;
         totalKills++;
+
+        if(enemyCountEventSO!=null)
+            enemyCountEventSO.RaiseEvent(totalKills);
 
         Debug.LogWarning("[GameManager] Enemy killed");
         DebugGameStatus();
