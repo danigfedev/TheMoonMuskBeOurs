@@ -89,12 +89,10 @@ public class GameManager : MonoBehaviour
         playerStateHandler = player.GetComponent<Player_StateHandler>();
     }
 
-    //private void Start()
-    //{
-    //    Debug.Log("START");
-    //    //StartCoroutine(LerpSkybox(topColorStage1, topColorStage2, true));
-    //    //StartCoroutine(LerpSkybox(topColorStage2, topColorStage3));
-    //}
+    private void Start()
+    {
+        Time.timeScale = 1; // In case is set to 0 in other stage
+    }
 
     private void OnApplicationQuit()
     {
