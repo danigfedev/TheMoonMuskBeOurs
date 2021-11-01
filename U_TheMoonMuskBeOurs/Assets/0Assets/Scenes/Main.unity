@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 220486258}
   - component: {fileID: 220486257}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,7 +670,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220486257
 MonoBehaviour:
@@ -1773,7 +1773,7 @@ GameObject:
   - component: {fileID: 494269700}
   - component: {fileID: 494269699}
   m_Layer: 0
-  m_Name: Image
+  m_Name: VerticalBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2319,6 +2319,8 @@ GameObject:
   - component: {fileID: 730746452}
   - component: {fileID: 730746454}
   - component: {fileID: 730746453}
+  - component: {fileID: 730746456}
+  - component: {fileID: 730746455}
   m_Layer: 0
   m_Name: Progress
   m_TagString: Untagged
@@ -2385,6 +2387,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730746451}
   m_CullTransparentMesh: 1
+--- !u!114 &730746455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730746451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bedcc3c623f4d1479a95193bd714d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSO: {fileID: 11400000, guid: 42b441340b5539c459cdbb865769894d, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 730746456}
+        m_TargetAssemblyTypeName: UI_ProgressBar, GameManagement_AssemblyDef
+        m_MethodName: MoveToNextStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &730746456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730746451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94918fe1307d53047a1fea06900e790e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 220486256}
+  stages:
+  - {fileID: 889217790}
+  - {fileID: 748442214}
+  - {fileID: 1159546722}
+  - {fileID: 2021785111}
+  - {fileID: 1107445301}
 --- !u!1 &748442213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,7 +2714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &816799164
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3153,7 +3202,7 @@ GameObject:
   - component: {fileID: 968737917}
   - component: {fileID: 968737919}
   m_Layer: 0
-  m_Name: Progress
+  m_Name: ProgressVertLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7318,6 +7367,10 @@ PrefabInstance:
       propertyPath: introEnvironment
       value: 
       objectReference: {fileID: 910497071}
+    - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
+      propertyPath: nextStageEventSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 42b441340b5539c459cdbb865769894d, type: 2}
     - target: {fileID: 3107793518693810442, guid: fb6a2dd7cae341244a36e987abf17f56, type: 3}
       propertyPath: topColorStage1.b
       value: 0.7529412

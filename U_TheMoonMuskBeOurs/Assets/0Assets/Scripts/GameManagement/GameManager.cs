@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [Header("== SO Events ==")]
     [Space(10)]
     [SerializeField] IntEventSO enemyCountEventSO;
+    [SerializeField] SimpleEventSO nextStageEventSO;
 
     [Header("Intro")]
     [SerializeField] Transform cameraEnd;
@@ -218,6 +219,8 @@ public class GameManager : MonoBehaviour
 
     private void NextStage()
     {
+        nextStageEventSO.RaiseEvent();
+
         Debug.Log(string.Format("[GameManager] Stage {0} completed!", currentState));
         ResetEnemyWaveTotalCounts();
         //Debug.Log(string.Format("[GameManager] Moving to Next Stage from {0}", currentState));
