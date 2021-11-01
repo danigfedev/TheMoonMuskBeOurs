@@ -91,6 +91,7 @@ public abstract class WeaponHandler_Base: MonoBehaviour
     [ContextMenu("Stop Shooting")]
     public void DisableShooting()
     {
+        Debug.Log("[WeaponHandler] Disable Shooting");
         StopShooting();
     }
 
