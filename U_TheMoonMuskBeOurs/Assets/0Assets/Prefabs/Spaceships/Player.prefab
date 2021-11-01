@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6138531594440262828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404614168245655613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bedcc3c623f4d1479a95193bd714d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSO: {fileID: 11400000, guid: 17ebd9710705b764c9e296df86d95771, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6496214716329941203}
+        m_TargetAssemblyTypeName: PlayerController, SpaceshipsAssemblyDef
+        m_MethodName: ResetPreviousPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &241885155496262202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,11 +249,27 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 706345276747377360, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+--- !u!1 &8404614168245655613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9094600350708229749, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+  m_PrefabInstance: {fileID: 762712366019526216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4593372616558086548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3831229393835374556, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
   m_PrefabInstance: {fileID: 762712366019526216}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6496214716329941203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5814853034087736987, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}
+  m_PrefabInstance: {fileID: 762712366019526216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404614168245655613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f593643a5313247a2e9b683ea12422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9211022233555569176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8449224798720635984, guid: a1734b6ad47f9fd4e9fce82181da4f07, type: 3}

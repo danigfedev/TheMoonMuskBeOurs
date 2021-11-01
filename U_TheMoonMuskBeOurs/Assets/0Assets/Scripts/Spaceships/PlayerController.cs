@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private int stationaryCount = 0;
     private Coroutine rotationCoroutine = null;
 
+
     #region === MonoBehaviour Methods ===
 
     private void Awake()
@@ -70,6 +71,14 @@ public class PlayerController : MonoBehaviour
 
 
     #region === Player Movement ===
+
+    public void ResetPreviousPosition()
+    {
+        Debug.Log("Resetting previous position");
+        //Move(Vector3.zero);
+        transform.position = Vector3.zero;
+    }
+
 
     private void MovePC()
     {

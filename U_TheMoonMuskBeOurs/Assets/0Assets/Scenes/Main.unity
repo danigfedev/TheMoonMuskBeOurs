@@ -2722,6 +2722,45 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8404614168245655613, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
   m_PrefabInstance: {fileID: 4493385989897447710}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &893759272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6496214716329941203, guid: 5e20eaa0db28a90438d382d87be85696, type: 3}
+  m_PrefabInstance: {fileID: 4493385989897447710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893759268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f593643a5313247a2e9b683ea12422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &893759275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893759268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bedcc3c623f4d1479a95193bd714d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSO: {fileID: 11400000, guid: 17ebd9710705b764c9e296df86d95771, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 893759272}
+        m_TargetAssemblyTypeName: PlayerController, SpaceshipsAssemblyDef
+        m_MethodName: ResetPreviousPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &904183918
 GameObject:
   m_ObjectHideFlags: 0
@@ -4853,6 +4892,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 17ebd9710705b764c9e296df86d95771, type: 2}
+        m_TargetAssemblyTypeName: SimpleEventSO, SO_AssemblyDef
+        m_MethodName: RaiseEvent
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
