@@ -138,11 +138,8 @@ public class Player_StateHandler : StateHandler_Base
         //Edit material
         if (/*stateProperties.totalHealth*/totalHealth <= 0)
         {
-            Debug.LogError("YOU DIED");
-            if (dieEventSO != null)
-                dieEventSO.RaiseEvent();
-            
             //GameOver!
+            StartCoroutine(Die());
         }
     }
 
@@ -161,5 +158,16 @@ public class Player_StateHandler : StateHandler_Base
         //Debug.Log("Healing: " + stateProperties.totalHealth);
         
         //Edit material?
+    }
+
+    private IEnumerator Die()
+    {
+        Debug.LogError("YOU DIED");
+        if (dieEventSO != null)
+            dieEventSO.RaiseEvent(); //==> GameManager? and UI
+        yield return new WaitForEndOfFrame();
+
+        gameObject.SetActive(false);
+        Time.timeScale = 0;
     }
 }

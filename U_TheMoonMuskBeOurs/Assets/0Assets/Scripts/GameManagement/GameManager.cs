@@ -112,15 +112,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnPlayerDied()
-    {
-        Debug.LogError("[GameManager] Player Died");
-        //TODO Enable Game over Screen
-        
-        //Testing purposes
-        //RestartGame();
-    }
-
     public void OnEnemyDestroyedByGameLimits()
     {
         totalDestroyed++;

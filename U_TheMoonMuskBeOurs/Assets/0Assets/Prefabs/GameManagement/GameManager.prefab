@@ -51,16 +51,25 @@ MonoBehaviour:
   gameMenu: {fileID: 0}
   gameOverMenu: {fileID: 0}
   player: {fileID: 0}
+  healthPU_threshold: 0.5
+  backgroundInstancer: {fileID: 0}
   obstacleInstancer: {fileID: 0}
   vanInstancer: {fileID: 0}
   destructorInstancer: {fileID: 0}
+  powUpInstancer: {fileID: 0}
   currentState: 0
   stage_1_TotalWaves: 1
   stage_1_EnemiesPerWave: 4
   stage_2_TotalWaves: 1
   stage_2_EnemiesPerWave: 3
   skyboxMat: {fileID: 0}
-  totalKills: 0
+  topColorMatProperty: Top_Color
+  bottomColorMatProperty: Bottom_Color
+  starVisibilityMatProperty: Star_Visibility
+  bottomColorStage1: {r: 0, g: 0, b: 0, a: 0}
+  topColorStage1: {r: 0, g: 0, b: 0, a: 0}
+  topColorStage2: {r: 0, g: 0, b: 0, a: 0}
+  topColorStage3: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6666951849566937669
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +79,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8515239217451688250}
-  - component: {fileID: 4277552827552346883}
   - component: {fileID: 2837477998419804959}
   - component: {fileID: 5349605712146545553}
   m_Layer: 0
@@ -94,34 +102,6 @@ Transform:
   m_Father: {fileID: 3107793518693810485}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4277552827552346883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6666951849566937669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bedcc3c623f4d1479a95193bd714d79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSO: {fileID: 11400000, guid: 64951b98587d8fe45af1ffd9ea85f6a0, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3107793518693810442}
-        m_TargetAssemblyTypeName: GameManager, GameManagement_AssemblyDef
-        m_MethodName: PlayerDied
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2837477998419804959
 MonoBehaviour:
   m_ObjectHideFlags: 0
