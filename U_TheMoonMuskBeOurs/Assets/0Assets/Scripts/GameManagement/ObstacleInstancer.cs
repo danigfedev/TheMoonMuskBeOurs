@@ -29,7 +29,13 @@ public class ObstacleInstancer : MonoBehaviour
     private void Start()
     {
         //if (spawnOnStart)
-            //StartCoroutine(SpawnSatellite());
+        //StartCoroutine(SpawnSatellite());
+    }
+
+    public void StopSpawning()
+    {
+        if(spawnCoroutine != null)
+            StopCoroutine(spawnCoroutine);
     }
 
     public void SpawnClouds()

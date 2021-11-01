@@ -5,6 +5,7 @@ public static class TagList
     public const string poolContainerTag = "ObjectPoolContainer";
     public const string gameLimitTag = "GameLimit";
     public const string utilsCamTag = "Utils-ScreenToWorld";
+    public const string moonTag = "Moon";
 
     //Spaceships:
     public const string playerTag = "Player";

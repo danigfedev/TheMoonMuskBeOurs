@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] VanInstancer vanInstancer;
     [SerializeField] DestructorInstancer destructorInstancer;
     [SerializeField] PowerUpInstancer powUpInstancer;
+    [SerializeField] MoonInstancer moonInstancer;
     [Space(10)]
 
     [Header("Stage 1 data")]
@@ -285,6 +286,13 @@ public class GameManager : MonoBehaviour
             StartCoroutine(LerpSkybox(topColorStage2, topColorStage3));
 
 
+            //Stop obstacle Spawning
+            obstacleInstancer.StopSpawning();
+            backgroundInstancer.StopSpawning();
+            //Enable Moon
+            moonInstancer.SpawnMoon();
+
+            /*
             //Drop Weapon 3, Health+ and Shield+
             CheckSpawnHealth();
 
@@ -295,6 +303,7 @@ public class GameManager : MonoBehaviour
             if (powUpSpawnCoroutine != null)
                 StopCoroutine(powUpSpawnCoroutine);
             powUpSpawnCoroutine = StartCoroutine(SpawnSpaced(_tags));
+            */
 
         }
         else
