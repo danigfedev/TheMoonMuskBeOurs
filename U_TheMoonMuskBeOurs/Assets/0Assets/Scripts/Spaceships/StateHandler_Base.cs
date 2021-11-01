@@ -45,6 +45,9 @@ public abstract class StateHandler_Base: MonoBehaviour
 
     public virtual void OnDisable()
     {
+        totalHealth = maxHealth;
+        UpdateHealthBar();
+
         if (mainObjectRenderer == null)
         {
             Debug.LogError("[StateHandler_Base] Main renderer not assigned");
@@ -73,6 +76,8 @@ public abstract class StateHandler_Base: MonoBehaviour
 
     protected void UpdateHealthBar()
     {
+        if (healthBarFill == null) return;
+
         float healthPctg = totalHealth / maxHealth;
         healthPctg = Mathf.Clamp(healthPctg, 0, 1);
         Vector3 currentScale = healthBarFill.localScale;

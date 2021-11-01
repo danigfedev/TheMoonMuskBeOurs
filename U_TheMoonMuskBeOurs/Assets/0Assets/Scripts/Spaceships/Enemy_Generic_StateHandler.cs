@@ -51,7 +51,7 @@ public class Enemy_Generic_StateHandler : StateHandler_Base
     private IEnumerator Destroy()
     {
         yield return new WaitForEndOfFrame();
-        
+
         if (dieEventSO != null) dieEventSO.RaiseEvent();
 
         gameObject.SetActive(false);
