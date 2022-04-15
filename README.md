@@ -1,7 +1,7 @@
 # TheMoonMustBeOurs
 
 
-![MoonMustBeOurs_Alpha_Icon](https://user-images.githubusercontent.com/37219448/163653226-0e3eabcb-808f-473e-b634-9718ea336206.png)
+![MoonMustBeOurs_Alpha_Icon](https://user-images.githubusercontent.com/37219448/163653226-0e3eabcb-808f-473e-b634-9718ea336206.png | width=250)
 
 
 
@@ -29,10 +29,7 @@ The minimum requirements for this assessment were:
 ![imagen](https://user-images.githubusercontent.com/37219448/163653357-55c8ccb1-27ef-4689-9f2c-9fe3692f5537.png)
 
 
-| ![imagen](https://user-images.githubusercontent.com/37219448/163653265-a272ca49-4299-44d0-bfcd-5aa3b8f1e70f.png)       | ![imagen](https://user-images.githubusercontent.com/37219448/163653357-55c8ccb1-27ef-4689-9f2c-9fe3692f5537.png)           |
-
-
-- **Enemies with behaciours (paths, formations):** There are two types of enemy in the game. Vans and Destructors. Vans spawn in groups of four and follow a circular pattern. They drop boxes as their projectiles. Destructors, on their part, appear in groups of three, in V formation and with a linear movement. They shoot smiles. Both can be damaged by player’s rockets.
+- **Enemies with behaviours (paths, formations):** There are two types of enemy in the game. Vans and Destructors. Vans spawn in groups of four and follow a circular pattern. They drop boxes as their projectiles. Destructors, on their part, appear in groups of three, in V formation and with a linear movement. They shoot smiles. Both can be damaged by player’s rockets.
 
 - Obstacles
 - Powerups
